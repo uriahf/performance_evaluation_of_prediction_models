@@ -42,53 +42,64 @@ You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlif
 
 -   **Utility**: The usefulness of the model in terms of decision-making.
 
-## Colors
+------------------------------------------------------------------------
 
 ::: columns
 ::: {.column width="50%"}
-### [Green]{style="color: green;"} {style="font-size: 100px;"}
+### [Green]{style="color: green;"} {style="text-align: center; font-size: 200px;"}
 
-### **🙂** {style="text-align: center; font-size: 180px;"}
+::: {style="height:123px; width:100%; clear:both;"}
+:::
+
+### **🙂** {style="text-align: center; font-size: 120px;"}
 :::
 
 ::: {.column width="50%"}
-### [Red]{style="color: red;"} {style="font-size: 100px;"}
+### [Red]{style="color: red;"} {style="text-align: center; font-size: 200px;"}
 
-### **🙁** {style="text-align: center; font-size: 180px;"}
+::: {style="height:123px; width:100%; clear:both;"}
+:::
+
+### **🙁** {style="text-align: center; font-size: 120px;"}
 :::
 :::
 
-## Colors
+------------------------------------------------------------------------
 
 ::: columns
 ::: {.column width="50%"}
-### [Green]{style="color: green;"} {style="font-size: 100px;"}
+### [Green]{style="color: green;"} {style="text-align: center; font-size: 200px;"}
+
+::: {style="height: 0px; width:100%; clear:both;"}
+:::
 
 ![](Maccabi_Haifa_FC_logo.svg){fig-align="center" width="200"}
 :::
 
 ::: {.column width="50%"}
-### [Red]{style="color: red;"} {style="font-size: 100px;"}
+### [Red]{style="color: red;"} {style="text-align: center; font-size: 200px;"}
 
-::: {style="height:49px; width:100%; clear:both;"}
+::: {style="height: 49px; width:100%; clear:both;"}
 :::
 
 ![](Hapoel_Haifa_Football_Club_Logo.png){fig-align="center" width="200"}
 :::
 :::
 
+# Discrimination
+
 ## Discrimination
 
 This is the most known and used category of performance metrics and curves.
 
-## Discrimination
+## [True Positives]{style="color: green;"} {.smaller}
 
-**💊** <br> 🤢
+### Infected and Predicted as Infected - [Good]{style="color: green;"}
+
+[**💊**]{style="font-size: 50px;"} <br> [🤢]{style="font-size: 50px;"}
 
 ```{r}
 
-  
-  
 tibble::tribble(
   ~"type", ~"predicted_positive", ~"predicted_negative",
   "Real Positive", "TP", "FN",
@@ -134,23 +145,739 @@ tibble::tribble(
   )
 ```
 
-## Discrimination
+## [False Positives]{style="color: red;"} {.smaller}
 
-#### Performance Metrics derived by using a Probability Threshold:
+### Not-Infected and Predicted as Infected - [BAD]{style="color: red;"}
 
-Most Performance Metrics are estimated by using a Probability Threshold in order to classify each probability to Predicted Negative or Predicted Positive.
+[**💊**]{style="font-size: 50px;"} <br> [🤨]{style="font-size: 50px;"}
 
-This type of Binarization is being used when the intervention carries a potential risk and there is a trade-off of risks between the intervention and the outcome.
+```{r}
+ 
+tibble::tribble(
+  ~"type", ~"predicted_positive", ~"predicted_negative",
+  "Real Positive", "TP", "FN",
+  "Real Negative", "FP", "TN"
+) |> 
+  reactable::reactable(
+    theme = reactable::reactableTheme(
+      backgroundColor = "#fdf6e3"
+    ),
+    sortable = FALSE,
+            fullWidth = FALSE,
+            borderless = FALSE,
+            defaultColDef = reactable::colDef(
+              align = "center",
+              headerStyle  = list(fontWeight = 100)
+            ),
+            columns = list(
+              type = reactable::colDef(
+                name = "",
+                align = "left",
+                style = list(fontWeight = 100),
+                minWidth = 200
+              ),
+              predicted_positive = reactable::colDef(
+                name = "Predicted Positive",
+                style = function(value) {
+                  color <- if (value == "FP") {
+                    "pink"
+                  }
+                  
+                  list(fontWeight = 600, background = color)
+                },
+                minWidth = 200
+            ),
+            predicted_negative = reactable::colDef(
+              name = "Predicted Negative",
+              style = function(value) {
+                list(fontWeight = 600)
+              },
+                minWidth = 200
+            )
+            )
+  )
+```
 
-## Discrimination
+## [False Negatives]{style="color: red;"} {.smaller}
 
-#### Performance Metrics derived by using a Predicted Positives Conditional Rate:
+### Infected and Predicted as Not-Infected - [BAD]{style="color: red;"}
 
-A different type of Binarization is the Predicted Positives Conditional Rate (also known in healthcare as "Risk Percentile").
+<br> [🤢]{style="font-size: 50px;"}
 
-PPCR (Predicted Positives Condition Rate:
+```{r}
+ 
+tibble::tribble(
+  ~"type", ~"predicted_positive", ~"predicted_negative",
+  "Real Positive", "TP", "FN",
+  "Real Negative", "FP", "TN"
+) |> 
+  reactable::reactable(
+    theme = reactable::reactableTheme(
+      backgroundColor = "#fdf6e3"
+    ),
+    sortable = FALSE,
+            fullWidth = FALSE,
+            borderless = FALSE,
+            defaultColDef = reactable::colDef(
+              align = "center",
+              headerStyle  = list(fontWeight = 100)
+            ),
+            columns = list(
+              type = reactable::colDef(
+                name = "",
+                align = "left",
+                style = list(fontWeight = 100),
+                minWidth = 200
+              ),
+              predicted_positive = reactable::colDef(
+                name = "Predicted Positive",
+                style = function(value) {
+                  list(fontWeight = 600)
+                },
+                minWidth = 200
+            ),
+            predicted_negative = reactable::colDef(
+              name = "Predicted Negative",
+              style = function(value) {
+                 color <- if (value == "FN") {
+                  "pink"
+                 }
+                list(fontWeight = 600, background = color)
+              },
+                minWidth = 200
+            )
+            )
+  )
+```
 
-$\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}\end{aligned}$
+## [True Negatives]{style="color: green;"} {.smaller}
+
+### Not-Infected and Predicted as Not-Infected - [BAD]{style="color: green;"}
+
+<br> [🤨]{style="font-size: 50px;"}
+
+```{r}
+ 
+tibble::tribble(
+  ~"type", ~"predicted_positive", ~"predicted_negative",
+  "Real Positive", "TP", "FN",
+  "Real Negative", "FP", "TN"
+) |> 
+  reactable::reactable(
+    theme = reactable::reactableTheme(
+      backgroundColor = "#fdf6e3"
+    ),
+    sortable = FALSE,
+            fullWidth = FALSE,
+            borderless = FALSE,
+            defaultColDef = reactable::colDef(
+              align = "center",
+              headerStyle  = list(fontWeight = 100)
+            ),
+            columns = list(
+              type = reactable::colDef(
+                name = "",
+                align = "left",
+                style = list(fontWeight = 100),
+                minWidth = 200
+              ),
+              predicted_positive = reactable::colDef(
+                name = "Predicted Positive",
+                style = function(value) {
+                  list(fontWeight = 600)
+                },
+                minWidth = 200
+            ),
+            predicted_negative = reactable::colDef(
+              name = "Predicted Negative",
+              style = function(value) {
+                 color <- if (value == "TN") {
+                  "lightgreen"
+                 }
+                list(fontWeight = 600, background = color)
+              },
+                minWidth = 200
+            )
+            )
+  )
+```
+
+------------------------------------------------------------------------
+
+## Probability Threshold:
+
+Most Performance Metrics are estimated by using a Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).\
+
+This type of dichotomization is being used when the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome.
+
+## Probability Threshold:
+
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>p̂</strong></p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.6</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.7</p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.2</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+</tr>
+</tbody>
+</table>
+
+## Probability Threshold:
+
+## Low Probability Threshold:
+
+Low Probability Threshold means that I'm worried about the **outcome**:
+
+-   I'm worried about **Prostate Cancer** 🦀
+-   I'm worried about **Heart Disease** 💔
+-   I'm worried about **Infection** 🤢
+
+## Probability Threshold of 0.25
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><p><strong>p̂</strong></p></th>
+<th style="text-align: center;"><p>0.3</p></th>
+<th style="text-align: center;"><p>0.6</p></th>
+<th style="text-align: center;"><p>0.4</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.4</p></th>
+<th style="text-align: center;"><p>0.7</p></th>
+<th style="text-align: center;"><p>0.3</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.2</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+</tr>
+</tbody>
+</table>
+
+## High Probability Threshold:
+
+High Probability Threshold means that I'm worried about the **Intervention**:
+
+-   I'm worried about **Biopsy** 💉
+
+-   I'm worried about **Statins** 💊
+
+-   I'm worried about **Antibiotics** 💊
+
+## Probability Threshold of 0.55
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><p><strong>p̂</strong></p></th>
+<th style="text-align: center;"><p>0.3</p></th>
+<th style="text-align: center;"><p>0.6</p></th>
+<th style="text-align: center;"><p>0.4</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.4</p></th>
+<th style="text-align: center;"><p>0.7</p></th>
+<th style="text-align: center;"><p>0.3</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.2</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+</tr>
+</tbody>
+</table>
+
+## PPCR (Predicted Positives Conditional Rate):
+
+$\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}\end{aligned} = \begin{aligned} \ {\scriptsize \frac{\text{Predicted Positives}}{\text{Total Population}}}\end{aligned}$
+
+Sometimes we will classify each observation according to the ranking of the risk in order to prioritize high-risk patients regardless their absolute risk.
+
+The implied assumption is that the highest risk might gain the highest benefit from the treatment and that the treatment does not carry a significant potential risk.
+
+This type of dichotomization is being used when the organization face **resource constraint**. In healthcare we call it also **Risk Percentile**.
+
+## PPCR of 0.1
+
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>p̂</strong></p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.6</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.7</p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.2</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>R</strong></p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+
+## PPCR of 0.1
+
+<table>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>p̂</strong></p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.6</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.7</p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.2</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>R</strong></p></td>
+<td style="text-align: center;"><p>5.5</p></td>
+<td style="text-align: center;"><p>2</p></td>
+<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>5.5</p></td>
+<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>7</p></td>
+<td style="text-align: center;"><p>9</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span> <br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+</tr>
+</tbody>
+</table>
+
+## ROC Curve
+
+-   The most famous form of Performance Metrics Visualization
+
+-   Displays Sensitivity (also known as True Positive Rate or Percision) on the y axis
+
+-   Displays 1 - Specificity (also known as False Positive Rate) on the x axis.
+
+## Why I don't like ROC Curve 😤
+
+### Why 1 - Specificity? Why not just Specificity? 🙃
+
+Honestly, I didn't find anywhere why *1 - Specificity* is more insightful than just *Specificity.*
+
+todo: add roc reversed and regular
+
+## Why I don't like ROC Curve 😤
+
+### Sensitivity and Specificity do not respect the flow of time 🕰️
+
+![](real_positives_future.jpg)
+
+## Why I don't like ROC Curve 😤
+
+### Sensitivity and Specificity do not respect the flow of time 🕰️ {.smaller}
+
+<br>
+
+Sensitivity: $\begin{aligned} \ {\scriptsize \frac{\text{TP}}{\text{TP + FN}} = \text{Prob( Predicted Positive | Real Positive )}}\end{aligned}$
+
+<br>
+
+Specificity: $\begin{aligned} \ {\scriptsize \frac{\text{TN}}{\text{TN + FP}} = \text{Prob( Predicted Negative | Real Negative )} } \end{aligned}$
+
+<br>
+
+We do not know the condition of the Conditional Probability: Not the number of future Real Positives nor the number of future Real Negatives.
+
+## Why I don't like ROC Curve 😤
+
+### Sensitivity and Specificity do not respect the flow of time 🕰️ {.smaller}
+
+<br>
+
+PPV: $\begin{aligned} \ {\scriptsize \frac{\text{TP}}{\text{TP + FP}} = \text{Prob( Real Positive | Predicted Positive )}}\end{aligned}$
+
+<br>
+
+NPV: $\begin{aligned} \ {\scriptsize \frac{\text{TN}}{\text{TN + FN}} = \text{Prob( Real Negative | Predicted Negative )} } \end{aligned}$
+
+We know the condition of the Conditional Probability: The number of Predicted Positives and the number of Predicted Negatives.
+
+## Why I don't like ROC Curve 😤
+
+### You don't care about auroc, you care about the c-statistics
+
+-   Generally speaking, the more area under a curve with two "Good" performance metrics, is better. Other than that, there is no context and performance metrics with no context might lead to ambiguity and bad decisions.
+
+-   Another Curve: Precision-Recall is made of Sensitivity (Precision) and PPV (Recall). How much PRAUC is enough?
+
+-   Why not calculating GAINSAUC? Or any combination of two good performance metrics? We can get with Sensitivity, Specificity, NPV, PPV 6 AUC metrics. Do they provide any meaningful insight besides a vague *the more the better*?
+
+-   One might suggest that the visual aspect is useful, but as human beings we are really bad at interpreting round things.
+
+-   really bad Ink-to-ratio
+
+## What is the AUROC of the following Models?
+
+```{r}
+set.seed(123)
+library(rtichoke)
+library(ggplot2)
+
+second_model_probs <- c(
+  example_dat$estimated_probabilities[1:100],
+  sample(example_dat$estimated_probabilities, size = 50)
+)
+
+create_roc_curve(
+  probs = list(
+    "First Model" = example_dat$estimated_probabilities,
+    "Second Model" = second_model_probs
+  ),
+  reals = list(example_dat$outcome),
+  interactive = FALSE
+) +
+  theme(
+    plot.background = element_rect(fill = "#fdf6e3"),
+    panel.background = element_rect(fill = "#fdf6e3",
+                                colour = "#fdf6e3"),
+    panel.border = element_blank(),
+          panel.grid.major = element_blank(),
+          panel.grid.minor = element_blank(),
+         strip.background = element_blank()
+  ) +
+  coord_fixed()
+
+```
+
+## What is the AUROC of the following Models?
+
+![](khaby.gif)
+
+```{r}
+library(reactable)
+
+options(reactable.theme = reactableTheme(
+  backgroundColor = "#fdf6e3"
+))
+
+rtichoke:::create_table_for_auc(
+  probs = list(
+    "First Model" = example_dat$estimated_probabilities,
+    "Second Model" = second_model_probs
+  ),
+  reals = list(example_dat$outcome)
+)
+```
+
+## Why I don't like ROC Curve 😤
+
+### You don't care about auroc, you care about the c-statistics
+
+Yet, the auroc is valuable because of the equivalence to the c-statistics and it might provide good intuition about the performance of the model.
 
 ## Discrimination - Common Performance Metrics:
 
@@ -162,4 +889,81 @@ Sensitivity: $\begin{aligned} \ {\scriptsize \frac{\text{TP}}{\text{TP + FN}} = 
 
 Specificity: $\begin{aligned} \ {\scriptsize \frac{\text{TP}}{\text{TP + FN}} = \text{Prob( Predicted Positive | Real Positive )} } \end{aligned}$
 
-## Discrimination - ROC Curve
+## Discrimination - bla
+
+::: columns
+::: {.column width="50%"}
+Sensitivity vs Specificity
+:::
+
+::: {.column width="50%"}
+```{r}
+#| eval: false
+#| echo: false
+
+rtichoke::create_roc_curve(
+  probs = list(
+    rtichoke::example_dat$estimated_probabilities),
+  reals = list(
+    rtichoke::example_dat$outcome),
+  size = 500
+)|> 
+plotly::layout(plot_bgcolor = "#fdf6e3", 
+               paper_bgcolor= "#fdf6e3")
+
+```
+:::
+:::
+
+## Calibration
+
+## Utility
+
+## Bla
+
+```{ojs}
+d3 = require("d3@7")
+topojson = require("topojson")
+```
+
+## bla bla
+
+```{ojs}
+import { aq, op } from '@uwdata/arquero'
+penguins = aq.loadCSV("palmer-penguins.csv")
+penguins.view()
+penguins
+  .groupby('species')
+  .filter(d => d.body_mass_g > 0)
+  .rollup({
+    count: op.count(),
+    avg_mass: op.average('body_mass_g')
+   })
+  .view()
+```
+
+If you want to use inputs in an arquero query, you can use the `params` method of table. Below is a simple example of filtering a dataset by the values provided.
+
+```{ojs}
+//| panel: input
+viewof bill_length_min = Inputs.range(
+  [32, 50],
+  {value: 35, step: 1, label: "Bill length (min):"}
+)
+viewof islands = Inputs.checkbox(
+  ["Torgersen", "Biscoe", "Dream"],
+  { value: ["Torgersen", "Biscoe"],
+    label: "Islands:"
+  }
+)
+```
+
+```{ojs}
+penguins
+  .params({
+    blm: bill_length_min,
+    i: islands
+  })
+  .filter((d, $) => op.includes($.i, d.island) && d.bill_length_mm > $.blm)
+  .view()
+```
