@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.1.251">
 
   <meta name="author" content="Uriah Finkel">
-  <title>Performance Evaluation of Prediction Models</title>
+  <title>Performance Evaluation of Prediction Models with Binary Outcome</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -382,8 +382,6 @@
       margin-right: 0; 
     }
   </style>
-  <script type="module" src="performance_evaluation_of_prediction_models_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
-  <link href="performance_evaluation_of_prediction_models_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
   
   <script src="performance_evaluation_of_prediction_models_files/libs/core-js-2.5.3/shim.min.js"></script>
   <script src="performance_evaluation_of_prediction_models_files/libs/react-17.0.0/react.min.js"></script>
@@ -397,44 +395,46 @@
     <div class="slides">
 
 <section id="title-slide" class="center">
-  <h1 class="title">Performance Evaluation of Prediction Models</h1>
+  <h1 class="title">Performance Evaluation of Prediction Models with Binary Outcome</h1>
   <p class="author">Uriah Finkel</p>
 </section>
 
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
 <ul>
-<li class="fragment"><p>Introduction to performance metrics and curves for prediction models.</p></li>
-<li class="fragment"><p>For medical prediction models the most common outcome is a binary outcome, therefore this will be the focus of the lecture.</p></li>
+<li class="fragment"><p>Introducing some of the most common or useful (and sometimes not so common) Performance Metrics and Curves.</p></li>
+<li class="fragment"><p>Discussing how and when to use (and when not to use) the mentioned performance metrics.</p></li>
 </ul>
 </section>
 <section id="code-for-performance-metrics-and-curves" class="slide level2">
 <h2>Code for Performance Metrics and Curves</h2>
 <p>All interactive plots in this presentation were created with <a href="https://uriahf.github.io/rtichoke/"><strong>rtichoke</strong></a> (I am the author 👋).</p>
-<p>You are also invited to explore <a href="https://rtichoke-blog.netlify.app/"><strong>rtichoke blog</strong></a> for reproducible examples and some theory.</p>
-</section>
-<section id="rtichoke-blog" class="slide level2" data-background-iframe="https://rtichoke-blog.netlify.app">
-<h2>rtichoke blog</h2>
+
+<img data-src="https://rtichoke-blog.netlify.app/gaston_rtichoke.png" width="200" class="r-stretch"><p>You are also invited to explore <a href="https://rtichoke-blog.netlify.app/"><strong>rtichoke blog</strong></a> for reproducible examples and some theory.</p>
 </section>
 <section id="motivation" class="slide level2">
 <h2>Motivation</h2>
-<h3 id="why-using-performance-metrics">Why using performance metrics? 🤔</h3>
+<h3 id="why-using-performance-metrics">Why using performance metrics? 🥇🥈🥉</h3>
 <ul>
 <li class="fragment">Choosing between different candidate models.</li>
 <li class="fragment">Choosing between candidate features</li>
+<li class="fragment">Choosing whether the prediction model will do more harm than good.</li>
 </ul>
-<h3 id="relevant-criteria-besides-performance">Relevant Criteria besides Performance</h3>
+</section>
+<section id="motivation-1" class="slide level2">
+<h2>Motivation</h2>
+<h3 id="relevant-criteria-besides-performance">Relevant Criteria besides Performance 🤔</h3>
 <ul>
-<li class="fragment"><p>How difficult is it to implement the model?</p></li>
-<li class="fragment"><p>How difficult is it to explain the model?</p></li>
+<li class="fragment">How difficult is it to implement the model?</li>
+<li class="fragment">How difficult is it to explain the model?</li>
 </ul>
 </section>
 <section id="categories-of-performance-metrics-and-curves" class="slide level2">
 <h2>Categories of Performance Metrics and Curves</h2>
 <ul>
-<li class="fragment"><p><strong>Discrimination</strong>: Model’s ability to separate between events and non-events.</p></li>
-<li class="fragment"><p><strong>Calibration</strong>: Agreement between predicted probabilities and the prevalence of the outcomes.</p></li>
-<li class="fragment"><p><strong>Utility</strong>: The usefulness of the model in terms of decision-making.</p></li>
+<li class="fragment"><p><strong>Discrimination 🖖</strong>: Model’s ability to separate between events and non-events.</p></li>
+<li class="fragment"><p><strong>Calibration ⚖️</strong>: Agreement between predicted probabilities and the observed outcomes.</p></li>
+<li class="fragment"><p><strong>Utility 👌</strong>: The usefulness of the model in terms of decision-making.</p></li>
 </ul>
 </section>
 <section class="slide level2">
@@ -483,11 +483,11 @@
 </section>
 <section>
 <section id="discrimination" class="title-slide slide level1 center">
-<h1>Discrimination</h1>
+<h1>Discrimination 🖖</h1>
 
 </section>
 <section id="discrimination-1" class="slide level2">
-<h2>Discrimination</h2>
+<h2>Discrimination 🖖</h2>
 <p>This is the most known and used category of performance metrics and curves.</p>
 </section>
 <section id="true-positives" class="slide level2 smaller">
@@ -497,8 +497,8 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-2950cf8b52ab652354c4" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-2950cf8b52ab652354c4">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":"lightgreen"},{"fontWeight":600,"background":null}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"0e87a4d202a6e42067acce914af1bd56"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-7b58706f3e67622a3579" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-7b58706f3e67622a3579">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":"lightgreen"},{"fontWeight":600,"background":null}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"0e87a4d202a6e42067acce914af1bd56"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -509,8 +509,8 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-b0d6c21b2b5fdbabcd79" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-b0d6c21b2b5fdbabcd79">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":null},{"fontWeight":600,"background":"pink"}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"481602af31df52dab4020d6cbdbba680"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-41163ab088b56b4868b3" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-41163ab088b56b4868b3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":null},{"fontWeight":600,"background":"pink"}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"481602af31df52dab4020d6cbdbba680"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -521,8 +521,8 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-f0373fa819abe5139bad" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-f0373fa819abe5139bad">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":"pink"},{"fontWeight":600,"background":null}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"9899aad0c3275e615a5f64b37cbf4d85"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-afcfe4c049b52b40749a" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-afcfe4c049b52b40749a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":"pink"},{"fontWeight":600,"background":null}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"9899aad0c3275e615a5f64b37cbf4d85"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -533,16 +533,18 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-a510d7b3e5ba827b5a13" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-a510d7b3e5ba827b5a13">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":null},{"fontWeight":600,"background":"lightgreen"}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"fc6b82a5989b085e90f9be912e39ffb3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-e99564aeaed4f0be42a0" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-e99564aeaed4f0be42a0">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":null},{"fontWeight":600,"background":"lightgreen"}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"fc6b82a5989b085e90f9be912e39ffb3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
 <section id="probability-threshold" class="slide level2">
 <h2>Probability Threshold:</h2>
-<p>Most Performance Metrics are estimated by using a Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).<br>
-</p>
-<p>This type of dichotomization is being used when the intervention carries a <strong>potential risk</strong> and there is a trade-off of risks between the intervention and the outcome.</p>
+<ul>
+<li class="fragment"><p>Most Performance Metrics are estimated by using a Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).<br>
+</p></li>
+<li class="fragment"><p>This type of dichotomization is being used when the intervention carries a <strong>potential risk</strong> and there is a trade-off of risks between the intervention and the outcome.</p></li>
+</ul>
 </section>
 <section id="probability-threshold-1" class="slide level2">
 <h2>Probability Threshold:</h2>
@@ -720,9 +722,6 @@
 </tbody>
 
 </table>
-</section>
-<section id="probability-threshold-2" class="slide level2">
-<h2>Probability Threshold:</h2>
 </section>
 <section id="low-probability-threshold" class="slide level2">
 <h2>Low Probability Threshold:</h2>
@@ -1325,9 +1324,11 @@
 <section id="ppcr-predicted-positives-conditional-rate" class="slide level2">
 <h2>PPCR (Predicted Positives Conditional Rate):</h2>
 <p><span class="math inline">\(\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}\end{aligned} = \begin{aligned} \ {\scriptsize \frac{\text{Predicted Positives}}{\text{Total Population}}}\end{aligned}\)</span></p>
-<p>Sometimes we will classify each observation according to the ranking of the risk in order to prioritize high-risk patients regardless their absolute risk.</p>
-<p>The implied assumption is that the highest risk might gain the highest benefit from the treatment and that the treatment does not carry a significant potential risk.</p>
-<p>This type of dichotomization is being used when the organization face <strong>resource constraint</strong>. In healthcare we call it also <strong>Risk Percentile</strong>.</p>
+<ul>
+<li class="fragment"><p>Sometimes we will classify each observation according to the ranking of the risk in order to prioritize high-risk patients regardless their absolute risk.</p></li>
+<li class="fragment"><p>The implied assumption is that the highest risk might gain the highest benefit from the treatment and that the treatment does not carry a significant potential risk.</p></li>
+<li class="fragment"><p>This type of dichotomization is being used when the organization face <strong>Resource Constraint</strong>. In healthcare we call it also <strong>Risk Percentile</strong>.</p></li>
+</ul>
 </section>
 <section id="ppcr-of-0.1" class="slide level2">
 <h2>PPCR of 0.1</h2>
@@ -1929,7 +1930,105 @@
 
 </table>
 </section>
+<section id="discrimination---performance-curves" class="slide level2">
+<h2>Discrimination - Performance Curves</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Curve</th>
+<th style="text-align: center;">Sens</th>
+<th style="text-align: center;">Spec</th>
+<th style="text-align: center;">PPV</th>
+<th style="text-align: center;">PPCR</th>
+<th style="text-align: center;">Lift</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ROC</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lift</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Precision- Recall</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gains</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="roc-curve" class="slide level2">
+<h2>ROC Curve</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Curve</th>
+<th style="text-align: center;">Sens</th>
+<th style="text-align: center;">Spec</th>
+<th style="text-align: center;">PPV</th>
+<th style="text-align: center;">PPCR</th>
+<th style="text-align: center;">Lift</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>ROC</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;"><strong>x</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lift</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Precision- Recall</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gains</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="roc-curve-1" class="slide level2">
 <h2>ROC Curve</h2>
 <ul>
 <li class="fragment"><p>The most famous form of Performance Metrics Visualization</p></li>
@@ -1941,14 +2040,28 @@
 <h2>Why I don’t like ROC Curve 😤</h2>
 <h3 id="why-1---specificity-why-not-just-specificity">Why 1 - Specificity? Why not just Specificity? 🙃</h3>
 <p>Honestly, I didn’t find anywhere why <em>1 - Specificity</em> is more insightful than just <em>Specificity.</em></p>
-<p>todo: add roc reversed and regular</p>
-</section>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "col values"</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "col values"</code></pre>
+</div>
+
+</div>
+<img data-src="performance_evaluation_of_prediction_models_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
 <section id="why-i-dont-like-roc-curve-1" class="slide level2">
+<h2>Why I don’t like ROC Curve 😤</h2>
+<h3 id="why-1---specificity-why-not-just-specificity-1">Why 1 - Specificity? Why not just Specificity? 🙃</h3>
+<p>Honestly, I didn’t find anywhere why <em>1 - Specificity</em> is more insightful than just <em>Specificity.</em></p>
+
+<img data-src="performance_evaluation_of_prediction_models_files/figure-revealjs/unnamed-chunk-6-1.png" width="960" class="r-stretch"></section>
+<section id="why-i-dont-like-roc-curve-2" class="slide level2">
 <h2>Why I don’t like ROC Curve 😤</h2>
 <h3 id="sensitivity-and-specificity-do-not-respect-the-flow-of-time">Sensitivity and Specificity do not respect the flow of time 🕰️</h3>
 
 <img data-src="real_positives_future.jpg" class="r-stretch"></section>
-<section id="why-i-dont-like-roc-curve-2" class="slide level2">
+<section id="why-i-dont-like-roc-curve-3" class="slide level2">
 <h2>Why I don’t like ROC Curve 😤</h2>
 <h3 class="smaller" id="sensitivity-and-specificity-do-not-respect-the-flow-of-time-1">Sensitivity and Specificity do not respect the flow of time 🕰️</h3>
 <p><br></p>
@@ -1958,7 +2071,7 @@
 <p><br></p>
 <p>We do not know the condition of the Conditional Probability: Not the number of future Real Positives nor the number of future Real Negatives.</p>
 </section>
-<section id="why-i-dont-like-roc-curve-3" class="slide level2">
+<section id="why-i-dont-like-roc-curve-4" class="slide level2">
 <h2>Why I don’t like ROC Curve 😤</h2>
 <h3 class="smaller" id="sensitivity-and-specificity-do-not-respect-the-flow-of-time-2">Sensitivity and Specificity do not respect the flow of time 🕰️</h3>
 <p><br></p>
@@ -1967,167 +2080,868 @@
 <p>NPV: <span class="math inline">\(\begin{aligned} \ {\scriptsize \frac{\text{TN}}{\text{TN + FN}} = \text{Prob( Real Negative | Predicted Negative )} } \end{aligned}\)</span></p>
 <p>We know the condition of the Conditional Probability: The number of Predicted Positives and the number of Predicted Negatives.</p>
 </section>
-<section id="why-i-dont-like-roc-curve-4" class="slide level2">
+<section id="why-i-dont-like-roc-curve-5" class="slide level2">
 <h2>Why I don’t like ROC Curve 😤</h2>
-<h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics">You don’t care about auroc, you care about the c-statistics</h3>
+<h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics">You don’t care about AUROC, you care about the c-statistics</h3>
 <ul>
-<li class="fragment"><p>Generally speaking, the more area under a curve with two “Good” performance metrics, is better. Other than that, there is no context and performance metrics with no context might lead to ambiguity and bad decisions.</p></li>
+<li class="fragment"><p>Generally speaking more area under a curve with two “Good” performance metrics means better model. Other than that, there is no context and performance metrics with no context might lead to ambiguity and bad decisions.</p></li>
 <li class="fragment"><p>Another Curve: Precision-Recall is made of Sensitivity (Precision) and PPV (Recall). How much PRAUC is enough?</p></li>
-<li class="fragment"><p>Why not calculating GAINSAUC? Or any combination of two good performance metrics? We can get with Sensitivity, Specificity, NPV, PPV 6 AUC metrics. Do they provide any meaningful insight besides a vague <em>the more the better</em>?</p></li>
-<li class="fragment"><p>One might suggest that the visual aspect is useful, but as human beings we are really bad at interpreting round things.</p></li>
-<li class="fragment"><p>really bad Ink-to-ratio</p></li>
+</ul>
+</section>
+<section id="why-i-dont-like-roc-curve-6" class="slide level2">
+<h2>Why I don’t like ROC Curve 😤</h2>
+<h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics-1">You don’t care about AUROC, you care about the c-statistics</h3>
+<ul>
+<li class="fragment">Why not calculating GAINSAUC? Or any combination of two good performance metrics? We can get with Sensitivity, Specificity, NPV, PPV 6 AUC metrics. Do they provide any meaningful insight besides a vague <em>the more the better</em>?</li>
 </ul>
 </section>
 <section id="what-is-the-auroc-of-the-following-models" class="slide level2">
 <h2>What is the AUROC of the following Models?</h2>
 
-<img data-src="performance_evaluation_of_prediction_models_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
+<img data-src="performance_evaluation_of_prediction_models_files/figure-revealjs/unnamed-chunk-7-1.png" width="960" class="r-stretch"></section>
 <section id="what-is-the-auroc-of-the-following-models-1" class="slide level2">
 <h2>What is the AUROC of the following Models?</h2>
 
 <img data-src="khaby.gif" class="r-stretch"><div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-d4584abf90735d84991e" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-d4584abf90735d84991e">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"population":["First Model","Second Model"],"auc":[0.9586,0.8648]},"columns":[{"accessor":"population","name":"Model","type":"factor","show":true,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"display":"inline-block","marginRight":"8px","width":"9px","height":"9px","backgroundColor":"#1b9e77","borderRadius":"50%"}},"children":[]},"First Model"]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"display":"inline-block","marginRight":"8px","width":"9px","height":"9px","backgroundColor":"#d95f02","borderRadius":"50%"}},"children":[]},"Second Model"]}],"minWidth":300},{"accessor":"auc","name":"AUROC","type":"numeric","cell":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":["0.96",{"name":"div","attribs":{"style":{"flexGrow":1,"marginLeft":"8px","background":"#e1e1e1"}},"children":[{"name":"div","attribs":{"style":{"background":"green","width":"95.86%","height":"16px"}},"children":[]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":["0.86",{"name":"div","attribs":{"style":{"flexGrow":1,"marginLeft":"8px","background":"#e1e1e1"}},"children":[{"name":"div","attribs":{"style":{"background":"green","width":"86.48%","height":"16px"}},"children":[]}]}]}],"minWidth":300,"align":"left"}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"3f38f391c186fb012470a2d5b009ebb9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-0af34fa272be5d60aa09" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-0af34fa272be5d60aa09">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"population":["First Model","Second Model"],"auc":[0.9586,0.8648]},"columns":[{"accessor":"population","name":"Model","type":"factor","show":true,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"display":"inline-block","marginRight":"8px","width":"9px","height":"9px","backgroundColor":"#1b9e77","borderRadius":"50%"}},"children":[]},"First Model"]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"display":"inline-block","marginRight":"8px","width":"9px","height":"9px","backgroundColor":"#d95f02","borderRadius":"50%"}},"children":[]},"Second Model"]}],"minWidth":300},{"accessor":"auc","name":"AUROC","type":"numeric","cell":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":["0.96",{"name":"div","attribs":{"style":{"flexGrow":1,"marginLeft":"8px","background":"#e1e1e1"}},"children":[{"name":"div","attribs":{"style":{"background":"green","width":"95.86%","height":"16px"}},"children":[]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":["0.86",{"name":"div","attribs":{"style":{"flexGrow":1,"marginLeft":"8px","background":"#e1e1e1"}},"children":[{"name":"div","attribs":{"style":{"background":"green","width":"86.48%","height":"16px"}},"children":[]}]}]}],"minWidth":300,"align":"left"}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"3f38f391c186fb012470a2d5b009ebb9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
-<section id="why-i-dont-like-roc-curve-5" class="slide level2">
+<section id="why-i-dont-like-roc-curve-7" class="slide level2">
 <h2>Why I don’t like ROC Curve 😤</h2>
-<h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics-1">You don’t care about auroc, you care about the c-statistics</h3>
-<p>Yet, the auroc is valuable because of the equivalence to the c-statistics and it might provide good intuition about the performance of the model.</p>
+<h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics-2">You don’t care about AUROC, you care about the c-statistics</h3>
+<ul>
+<li class="fragment"><p>High Ink-to-information ratio 😵</p></li>
+<li class="fragment"><p>One might suggest that the visual aspect is useful, but as human beings we are really bad at interpreting round things (That’s why pie-charts are considered to be bad practice).</p></li>
+</ul>
+<!-- -->
+<ul>
+<li class="fragment">Yet, the AUROC is valuable because of the equivalence to the c-statistics and it might provide good intuition about the performance of the model.</li>
+</ul>
 </section>
-<section id="discrimination---common-performance-metrics" class="slide level2">
-<h2>Discrimination - Common Performance Metrics:</h2>
-<p><br></p>
-<p>Sensitivity: <span class="math inline">\(\begin{aligned} \ {\scriptsize \frac{\text{TP}}{\text{TP + FN}} = \text{Prob( Predicted Positive | Real Positive )}}\end{aligned}\)</span></p>
-<p><br></p>
-<p>Specificity: <span class="math inline">\(\begin{aligned} \ {\scriptsize \frac{\text{TP}}{\text{TP + FN}} = \text{Prob( Predicted Positive | Real Positive )} } \end{aligned}\)</span></p>
+<section id="why-i-dont-like-roc-curve-8" class="slide level2">
+<h2>Why I don’t like ROC Curve 😤</h2>
+<h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics-3">You don’t care about AUROC, you care about the c-statistics</h3>
+<ul>
+<li class="fragment"><p>If you’ll take randomly one event and one non-event, the probability that the event will be estimated with higher probability is exactly the AUROC.</p></li>
+<li class="fragment"><p>AUROC = p( p̂(🤨) &gt; p̂(🤢) )</p></li>
+</ul>
 </section>
-<section id="discrimination---bla" class="slide level2">
-<h2>Discrimination - bla</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p>Sensitivity vs Specificity</p>
-</div><div class="column" style="width:50%;">
+<section id="why-i-dont-like-roc-curve-9" class="slide level2">
+<h2>Why I don’t like ROC Curve 😤</h2>
+<h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics-4">You don’t care about AUROC, you care about the c-statistics</h3>
 <div class="cell">
-
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>probs <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">0.3</span>, <span class="fl">0.6</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.7</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>reals <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>pROC<span class="sc">::</span><span class="fu">auc</span>(reals, probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Area under the curve: 0.92</code></pre>
 </div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>probs_events <span class="ot">&lt;-</span> probs[reals <span class="sc">==</span> <span class="dv">1</span>]</span>
+<span id="cb5-2"><a href="#cb5-2"></a>probs_nonevents <span class="ot">&lt;-</span> probs[reals <span class="sc">==</span> <span class="dv">0</span>]</span>
+<span id="cb5-3"><a href="#cb5-3"></a></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="fu">prop.table</span>(</span>
+<span id="cb5-5"><a href="#cb5-5"></a>  <span class="fu">table</span>(</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="fu">sample</span>(probs_events, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">10000</span>) <span class="sc">&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a>    <span class="fu">sample</span>(probs_nonevents, <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="dv">10000</span>)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>  )</span>
+<span id="cb5-9"><a href="#cb5-9"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+ FALSE   TRUE 
+0.0796 0.9204 </code></pre>
 </div>
 </div>
 </section>
-<section id="calibration" class="slide level2">
-<h2>Calibration</h2>
-</section>
-<section id="utility" class="slide level2">
-<h2>Utility</h2>
-</section>
-<section id="bla" class="slide level2">
-<h2>Bla</h2>
+<section id="why-i-dont-like-roc-curve-10" class="slide level2">
+<h2>Why I don’t like ROC Curve 😤</h2>
+<h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics-5">You don’t care about AUROC, you care about the c-statistics</h3>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="925" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 924;"><span id="cb1-925"><a href="#cb1-925"></a>d3 <span class="op">=</span> <span class="pp">require</span>(<span class="st">"d3@7"</span>)</span>
-<span id="cb1-926"><a href="#cb1-926"></a>topojson <span class="op">=</span> <span class="pp">require</span>(<span class="st">"topojson"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-1" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-2" data-nodetype="declaration">
-
-</div>
-</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="im">import</span> random</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a>probs <span class="op">=</span> np.array([<span class="fl">0.3</span>, <span class="fl">0.6</span>, <span class="fl">0.4</span>, <span class="fl">0.1</span>, <span class="fl">0.4</span>, <span class="fl">0.7</span>, <span class="fl">0.3</span>, <span class="fl">0.1</span>, <span class="fl">0.2</span>, <span class="fl">0.1</span>])</span>
+<span id="cb7-5"><a href="#cb7-5"></a>reals <span class="op">=</span> np.array([<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>])</span>
+<span id="cb7-6"><a href="#cb7-6"></a></span>
+<span id="cb7-7"><a href="#cb7-7"></a>probs_events <span class="op">=</span> probs[reals <span class="op">==</span> <span class="dv">1</span>]</span>
+<span id="cb7-8"><a href="#cb7-8"></a>probs_nonevents <span class="op">=</span> probs[reals <span class="op">==</span> <span class="dv">0</span>]</span>
+<span id="cb7-9"><a href="#cb7-9"></a></span>
+<span id="cb7-10"><a href="#cb7-10"></a>event_prob_greater_than_nonevent_prob <span class="op">=</span> np.greater(</span>
+<span id="cb7-11"><a href="#cb7-11"></a>  random.choices(<span class="bu">sorted</span>(probs_events), </span>
+<span id="cb7-12"><a href="#cb7-12"></a>  k <span class="op">=</span> <span class="dv">10000</span>),</span>
+<span id="cb7-13"><a href="#cb7-13"></a>  random.choices(<span class="bu">sorted</span>(probs_nonevents), </span>
+<span id="cb7-14"><a href="#cb7-14"></a>  k <span class="op">=</span> <span class="dv">10000</span>)</span>
+<span id="cb7-15"><a href="#cb7-15"></a>)</span>
+<span id="cb7-16"><a href="#cb7-16"></a></span>
+<span id="cb7-17"><a href="#cb7-17"></a>unique_elements, counts_elements <span class="op">=</span> np.unique(</span>
+<span id="cb7-18"><a href="#cb7-18"></a>  event_prob_greater_than_nonevent_prob, return_counts<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-19"><a href="#cb7-19"></a></span>
+<span id="cb7-20"><a href="#cb7-20"></a>counts_elements <span class="op">/</span> <span class="dv">10000</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>array([0.0781, 0.9219])</code></pre>
 </div>
 </div>
 </section>
-<section id="bla-bla" class="slide level2">
-<h2>bla bla</h2>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="932" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 931;"><span id="cb2-932"><a href="#cb2-932"></a><span class="im">import</span> { aq<span class="op">,</span> op } <span class="im">from</span> <span class="st">'@uwdata/arquero'</span></span>
-<span id="cb2-933"><a href="#cb2-933"></a>penguins <span class="op">=</span> aq<span class="op">.</span><span class="fu">loadCSV</span>(<span class="st">"palmer-penguins.csv"</span>)</span>
-<span id="cb2-934"><a href="#cb2-934"></a>penguins<span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-1" data-nodetype="declaration">
+<section id="good-auroc-does-not-necessarily-mean-a-good-model" class="slide level2">
+<h2>Good AUROC does not necessarily mean a Good model</h2>
 
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-2" data-nodetype="declaration">
+<table style="width:99%;">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">
+<p>
+Age
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+64
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+86
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+56
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+7
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+78
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+85
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+6
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+12
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+67
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+73
+</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">
+<p>
+<strong>p̂</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.3
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.6
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.4
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.4
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.7
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.3
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.2
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.1
+</p>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<p>
+<strong>Y</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+</tr>
+</tbody>
 
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-3" data-nodetype="expression">
+</table>
+<p>AUROC shows how well your model discriminates between events and non-events given a target population.</p>
+</section>
+<section id="good-auroc-does-not-necessarily-mean-a-good-model-1" class="slide level2">
+<h2>Good AUROC does not necessarily mean a Good model</h2>
 
-</div>
-</div>
-</div>
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="935" data-source-offset="-102"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 934;"><span id="cb3-935"><a href="#cb3-935"></a>penguins</span>
-<span id="cb3-936"><a href="#cb3-936"></a>  <span class="op">.</span><span class="fu">groupby</span>(<span class="st">'species'</span>)</span>
-<span id="cb3-937"><a href="#cb3-937"></a>  <span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">body_mass_g</span> <span class="op">&gt;</span> <span class="dv">0</span>)</span>
-<span id="cb3-938"><a href="#cb3-938"></a>  <span class="op">.</span><span class="fu">rollup</span>({</span>
-<span id="cb3-939"><a href="#cb3-939"></a>    <span class="dt">count</span><span class="op">:</span> op<span class="op">.</span><span class="fu">count</span>()<span class="op">,</span></span>
-<span id="cb3-940"><a href="#cb3-940"></a>    <span class="dt">avg_mass</span><span class="op">:</span> op<span class="op">.</span><span class="fu">average</span>(<span class="st">'body_mass_g'</span>)</span>
-<span id="cb3-941"><a href="#cb3-941"></a>   })</span>
-<span id="cb3-942"><a href="#cb3-942"></a>  <span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-2-4" data-nodetype="expression">
+<table style="width:99%;">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">
+<p>
+Age
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+64
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+86
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+56
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+7
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+78
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+85
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+6
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+12
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+67
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+73
+</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">
+<p>
+<strong>p̂</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.3
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.6
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.4
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.4
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.7
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.3
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.2
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0.1
+</p>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<p>
+<strong>Y</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="older_woman">👵</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="child">🧒</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="older_woman">👵</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="child">🧒</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="child">🧒</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+</tr>
+</tbody>
 
-</div>
-</div>
-</div>
-</div>
-<p>If you want to use inputs in an arquero query, you can use the <code>params</code> method of table. Below is a simple example of filtering a dataset by the values provided.</p>
-<div class="cell panel-input">
-<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="949" data-source-offset="-0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 948;"><span id="cb4-949"><a href="#cb4-949"></a>viewof bill_length_min <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
-<span id="cb4-950"><a href="#cb4-950"></a>  [<span class="dv">32</span><span class="op">,</span> <span class="dv">50</span>]<span class="op">,</span></span>
-<span id="cb4-951"><a href="#cb4-951"></a>  {<span class="dt">value</span><span class="op">:</span> <span class="dv">35</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Bill length (min):"</span>}</span>
-<span id="cb4-952"><a href="#cb4-952"></a>)</span>
-<span id="cb4-953"><a href="#cb4-953"></a>viewof islands <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">checkbox</span>(</span>
-<span id="cb4-954"><a href="#cb4-954"></a>  [<span class="st">"Torgersen"</span><span class="op">,</span> <span class="st">"Biscoe"</span><span class="op">,</span> <span class="st">"Dream"</span>]<span class="op">,</span></span>
-<span id="cb4-955"><a href="#cb4-955"></a>  { <span class="dt">value</span><span class="op">:</span> [<span class="st">"Torgersen"</span><span class="op">,</span> <span class="st">"Biscoe"</span>]<span class="op">,</span></span>
-<span id="cb4-956"><a href="#cb4-956"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Islands:"</span></span>
-<span id="cb4-957"><a href="#cb4-957"></a>  }</span>
-<span id="cb4-958"><a href="#cb4-958"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-3-1" data-nodetype="declaration">
+</table>
+<p>This model has AUROC = 0.92, but the number is misleading:<br>
+The Target Population is not well defined.</p>
+</section>
+<section id="bad-auroc-does-not-necessarily-mean-a-bad-model" class="slide level2">
+<h2>Bad AUROC does not necessarily mean a Bad model</h2>
+<table style="width:53%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Age</th>
+<th style="text-align: center;">64</th>
+<th style="text-align: center;">56</th>
+<th style="text-align: center;">78</th>
+<th style="text-align: center;">67</th>
+<th style="text-align: center;">73</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>p̂</strong></td>
+<td style="text-align: center;">0.3</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.4</td>
+<td style="text-align: center;">0.2</td>
+<td style="text-align: center;">0.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Y</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><br>
+🤨</td>
+<td style="text-align: center;"><br>
+🤢</td>
+<td style="text-align: center;"><br>
+🤢</td>
+<td style="text-align: center;"><br>
+🤢</td>
+<td style="text-align: center;"><br>
+🤨</td>
+</tr>
+</tbody>
+</table>
+<p>This model has AUROC = 0.83, but the number is misleading:<br>
+The Target Population is well defined.</p>
+</section>
+<section id="lift-curve" class="slide level2">
+<h2>Lift Curve</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Curve</th>
+<th style="text-align: center;">Sens</th>
+<th style="text-align: center;">Spec</th>
+<th style="text-align: center;">PPV</th>
+<th style="text-align: center;">PPCR</th>
+<th style="text-align: center;">Lift</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ROC</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Lift</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>x</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Precision- Recall</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gains</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lift-curve-1" class="slide level2">
+<h2>Lift Curve</h2>
+<ul>
+<li class="fragment"><p>Lift is the ratio between the PPV and the Prevalence.</p></li>
+<li class="fragment"><p>Lift Curve displays Lift on the Y axis and PPCR (Predicted Positives Conditional Rate) on the X axis.</p></li>
+<li class="fragment"><p>In other words, lift shows how much the prediction is doing better than a random guess in terms of PPV.</p></li>
+<li class="fragment"><p>The reference line stands for the Lift of a random guess for a given PPCR, which is always equal to 1 because the observations are not sorted.</p></li>
+</ul>
+</section>
+<section id="precision-recall" class="slide level2">
+<h2>Precision-Recall</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Curve</th>
+<th style="text-align: center;">Sens</th>
+<th style="text-align: center;">Spec</th>
+<th style="text-align: center;">PPV</th>
+<th style="text-align: center;">PPCR</th>
+<th style="text-align: center;">Lift</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ROC</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lift</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Precision- Recall</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Gains</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>x</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="precision-recall-curve" class="slide level2">
+<h2>Precision Recall Curve</h2>
+<ul>
+<li class="fragment"><p>Precision-Recall Curve displays PPV on the y axis and Sensitivity on the x axis.</p></li>
+<li class="fragment"><p>The reference line stands for the PPV of a random guess which is always equal to the prevalence and the Sensitivity of a random guess</p></li>
+</ul>
+</section>
+<section id="gains-curve" class="slide level2">
+<h2>Gains Curve</h2>
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Curve</th>
+<th style="text-align: center;">Sens</th>
+<th style="text-align: center;">Spec</th>
+<th style="text-align: center;">PPV</th>
+<th style="text-align: center;">PPCR</th>
+<th style="text-align: center;">Lift</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">ROC</td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Lift</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;">y</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Precision- Recall</td>
+<td style="text-align: center;">x</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">y</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Gains</strong></td>
+<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><strong>x</strong></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="gains-curve-1" class="slide level2">
+<h2>Gains Curve</h2>
+<ul>
+<li class="fragment"><p>Gains Curve displays Sensitivity on the y axis and PPCR on the x axis.</p></li>
+<li class="fragment"><p>Gains shows the Sensitivity for a given PPCR.</p></li>
+<li class="fragment"><p>The reference lines stand for</p></li>
+</ul>
+</section></section>
+<section>
+<section id="calibration" class="title-slide slide level1 center">
+<h1>Calibration <strong>⚖️</strong></h1>
 
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-3-2" data-nodetype="declaration">
+</section>
+<section id="calibration-1" class="slide level2">
+<h2>Calibration <strong>⚖️</strong></h2>
+<p>How well the model is “calibrated”.</p>
+<p>Patients with a probability of about 0.2 to have an event have a proportion of about 0.2 events.</p>
+<p>Unlike continuous outcomes in prediction of binary outcomes the prediction is continuous while the outcome is binary. In order to asses calibration we need to use quantiles of estimated probabilities (discrete version of calibration) or some kind of smoothing algorithm (gam or smoth).</p>
+<p>The main idea is to visually inspect for similarty with the linear line of 45 deg.</p>
+<p>If you use smoothed calibration, watch the ranges of the curve! It might look bad if you don’t zoom-in to the reasonable range of estimated probabilities.</p>
+<p>Why should we care?<br>
+If you use logistic regression the model is calibrated by default, but if you use fancy ML prediction models they might not. This can be easily by remodelling of the predictions with simple logistic regression (recalibration), Python users might use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html" class="uri">https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html</a>.</p>
+<p>Visual inspection might be problamatic, but from my humble experience is good enough to see if there’s something inherently wrong.</p>
+<p>Optimizing over the logloss function will produce calibrated model.</p>
+</section></section>
+<section>
+<section id="utility" class="title-slide slide level1 center">
+<h1>Utility <strong>👌</strong></h1>
 
-</div>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="961" data-source-offset="0"><pre class="sourceCode numberSource js number-lines code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 960;"><span id="cb5-961"><a href="#cb5-961"></a>penguins</span>
-<span id="cb5-962"><a href="#cb5-962"></a>  <span class="op">.</span><span class="fu">params</span>({</span>
-<span id="cb5-963"><a href="#cb5-963"></a>    <span class="dt">blm</span><span class="op">:</span> bill_length_min<span class="op">,</span></span>
-<span id="cb5-964"><a href="#cb5-964"></a>    <span class="dt">i</span><span class="op">:</span> islands</span>
-<span id="cb5-965"><a href="#cb5-965"></a>  })</span>
-<span id="cb5-966"><a href="#cb5-966"></a>  <span class="op">.</span><span class="fu">filter</span>((d<span class="op">,</span> $) <span class="kw">=&gt;</span> op<span class="op">.</span><span class="fu">includes</span>($<span class="op">.</span><span class="at">i</span><span class="op">,</span> d<span class="op">.</span><span class="at">island</span>) <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">bill_length_mm</span> <span class="op">&gt;</span> $<span class="op">.</span><span class="at">blm</span>)</span>
-<span id="cb5-967"><a href="#cb5-967"></a>  <span class="op">.</span><span class="fu">view</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<div id="ojs-cell-4" data-nodetype="expression">
-
-</div>
-</div>
-</div>
+</section>
+<section id="utility-1" class="slide level2">
+<h2>Utility <strong>👌</strong></h2>
+<p>In order to make a decision, we need to optimize utility. This requires some kind of price from the clinicians.<br>
+This price is the odds of the probability threshold.</p>
+<p>Unlike other performance metrics, NB is based on decision making theory (which is reasonable, because we want to do better decision making).</p>
+<p>Always consider two baseline approaches: Treat All and Treat None.</p>
 <div class="footer footer-default">
 
 </div>
@@ -2342,16 +3156,6 @@
           RevealZoom
         ]
       });
-    </script>
-    <script type="ojs-module-contents">
-    {"contents":[{"methodName":"interpret","cellName":"ojs-cell-1","inline":false,"source":"d3 = require(\"d3@7\")\ntopojson = require(\"topojson\")\n"},{"methodName":"interpret","cellName":"ojs-cell-2","inline":false,"source":"import { aq, op } from '@uwdata/arquero'\npenguins = aq.loadCSV(\"palmer-penguins.csv\")\npenguins.view()\npenguins\n  .groupby('species')\n  .filter(d => d.body_mass_g > 0)\n  .rollup({\n    count: op.count(),\n    avg_mass: op.average('body_mass_g')\n   })\n  .view()\n"},{"methodName":"interpret","cellName":"ojs-cell-3","inline":false,"source":"viewof bill_length_min = Inputs.range(\n  [32, 50],\n  {value: 35, step: 1, label: \"Bill length (min):\"}\n)\nviewof islands = Inputs.checkbox(\n  [\"Torgersen\", \"Biscoe\", \"Dream\"],\n  { value: [\"Torgersen\", \"Biscoe\"],\n    label: \"Islands:\"\n  }\n)\n"},{"methodName":"interpret","cellName":"ojs-cell-4","inline":false,"source":"penguins\n  .params({\n    blm: bill_length_min,\n    i: islands\n  })\n  .filter((d, $) => op.includes($.i, d.island) && d.bill_length_mm > $.blm)\n  .view()\n"},{"methodName":"interpretQuiet","source":"shinyInput('bill_length_min')"},{"methodName":"interpretQuiet","source":"shinyInput('islands')"}]}
-    </script>
-    <script type="module">
-    window._ojs.paths.runtimeToDoc = "../../..";
-    window._ojs.paths.runtimeToRoot = "../../..";
-    window._ojs.paths.docToRoot = "";
-    window._ojs.selfContained = false;
-    window._ojs.runtime.interpretFromScriptTags();
     </script>
     
     <script>

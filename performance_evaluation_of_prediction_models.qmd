@@ -1,5 +1,5 @@
 ---
-title: "Performance Evaluation of Prediction Models"
+title: "Performance Evaluation of Prediction Models with Binary Outcome"
 author: "Uriah Finkel"
 format:
   revealjs:
@@ -9,38 +9,40 @@ format:
 
 ## Agenda
 
--   Introduction to performance metrics and curves for prediction models.
+-   Introducing some of the most common or useful (and sometimes not so common) Performance Metrics and Curves.
 
--   For medical prediction models the most common outcome is a binary outcome, therefore this will be the focus of the lecture.
+-   Discussing how and when to use (and when not to use) the mentioned performance metrics.
 
 ## Code for Performance Metrics and Curves
 
 All interactive plots in this presentation were created with [**rtichoke**](https://uriahf.github.io/rtichoke/) (I am the author 👋).
 
-You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlify.app/) for reproducible examples and some theory.
+![](https://rtichoke-blog.netlify.app/gaston_rtichoke.png){width="200"}
 
-## rtichoke blog {background-iframe="https://rtichoke-blog.netlify.app"}
+You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlify.app/) for reproducible examples and some theory.
 
 ## Motivation
 
-### Why using performance metrics? 🤔
+### Why using performance metrics? 🥇🥈🥉
 
 -   Choosing between different candidate models.
 -   Choosing between candidate features
+-   Choosing whether the prediction model will do more harm than good.
 
-### Relevant Criteria besides Performance
+## Motivation
+
+### Relevant Criteria besides Performance 🤔
 
 -   How difficult is it to implement the model?
-
 -   How difficult is it to explain the model?
 
 ## Categories of Performance Metrics and Curves
 
--   **Discrimination**: Model's ability to separate between events and non-events.
+-   **Discrimination 🖖**: Model's ability to separate between events and non-events.
 
--   **Calibration**: Agreement between predicted probabilities and the prevalence of the outcomes.
+-   **Calibration ⚖️**: Agreement between predicted probabilities and the observed outcomes.
 
--   **Utility**: The usefulness of the model in terms of decision-making.
+-   **Utility 👌**: The usefulness of the model in terms of decision-making.
 
 ------------------------------------------------------------------------
 
@@ -86,9 +88,9 @@ You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlif
 :::
 :::
 
-# Discrimination
+# Discrimination 🖖
 
-## Discrimination
+## Discrimination 🖖
 
 This is the most known and used category of performance metrics and curves.
 
@@ -306,9 +308,9 @@ tibble::tribble(
 
 ## Probability Threshold:
 
-Most Performance Metrics are estimated by using a Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).\
+-   Most Performance Metrics are estimated by using a Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).\
 
-This type of dichotomization is being used when the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome.
+-   This type of dichotomization is being used when the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome.
 
 ## Probability Threshold:
 
@@ -365,8 +367,6 @@ This type of dichotomization is being used when the intervention carries a **pot
 </tr>
 </tbody>
 </table>
-
-## Probability Threshold:
 
 ## Low Probability Threshold:
 
@@ -558,11 +558,11 @@ High Probability Threshold means that I'm worried about the **Intervention**:
 
 $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}\end{aligned} = \begin{aligned} \ {\scriptsize \frac{\text{Predicted Positives}}{\text{Total Population}}}\end{aligned}$
 
-Sometimes we will classify each observation according to the ranking of the risk in order to prioritize high-risk patients regardless their absolute risk.
+-   Sometimes we will classify each observation according to the ranking of the risk in order to prioritize high-risk patients regardless their absolute risk.
 
-The implied assumption is that the highest risk might gain the highest benefit from the treatment and that the treatment does not carry a significant potential risk.
+-   The implied assumption is that the highest risk might gain the highest benefit from the treatment and that the treatment does not carry a significant potential risk.
 
-This type of dichotomization is being used when the organization face **resource constraint**. In healthcare we call it also **Risk Percentile**.
+-   This type of dichotomization is being used when the organization face **Resource Constraint**. In healthcare we call it also **Risk Percentile**.
 
 ## PPCR of 0.1
 
@@ -754,6 +754,24 @@ This type of dichotomization is being used when the organization face **resource
 </tbody>
 </table>
 
+## Discrimination - Performance Curves
+
+| Curve             | Sens | Spec | PPV | PPCR | Lift |
+|:------------------|:----:|:----:|:---:|:----:|:----:|
+| ROC               |  y   |  x   |     |      |      |
+| Lift              |      |      |     |  x   |  y   |
+| Precision- Recall |  x   |      |  y  |      |      |
+| Gains             |  y   |      |     |  x   |      |
+
+## ROC Curve
+
+| Curve             | Sens  | Spec  | PPV | PPCR | Lift |
+|:------------------|:-----:|:-----:|:---:|:----:|:----:|
+| **ROC**           | **y** | **x** |     |      |      |
+| Lift              |       |       |     |  x   |  y   |
+| Precision- Recall |   x   |       |  y  |      |      |
+| Gains             |   y   |       |     |  x   |      |
+
 ## ROC Curve
 
 -   The most famous form of Performance Metrics Visualization
@@ -768,7 +786,46 @@ This type of dichotomization is being used when the organization face **resource
 
 Honestly, I didn't find anywhere why *1 - Specificity* is more insightful than just *Specificity.*
 
-todo: add roc reversed and regular
+```{r}
+library(rtichoke)
+
+performance_data <- prepare_performance_data(
+  probs = list(example_dat$estimated_probabilities),
+  reals = list(example_dat$outcome)
+)
+
+reference_lines <- rtichoke:::create_reference_lines_data_frame(
+  "roc")
+
+roc_curve <- performance_data  |>  
+  rtichoke:::create_ggplot_for_performance_metrics(
+    "FPR", "sensitivity", "black")  |>  
+  rtichoke:::add_reference_lines_to_ggplot(
+    reference_lines) + 
+  ggplot2::xlab("1 - Specificity") + 
+  ggplot2::ylab("Sensitivity")
+
+
+roc_curve_opposite <- performance_data  |>  
+  rtichoke:::create_ggplot_for_performance_metrics(
+    "specificity", "sensitivity", "black")  |>  
+  rtichoke:::add_reference_lines_to_ggplot(
+    reference_lines) + 
+  ggplot2::xlab("Specificity") + 
+  ggplot2::ylab("Sensitivity")
+
+roc_curve
+```
+
+## Why I don't like ROC Curve 😤
+
+### Why 1 - Specificity? Why not just Specificity? 🙃
+
+Honestly, I didn't find anywhere why *1 - Specificity* is more insightful than just *Specificity.*
+
+```{r}
+roc_curve_opposite
+```
 
 ## Why I don't like ROC Curve 😤
 
@@ -808,17 +865,17 @@ We know the condition of the Conditional Probability: The number of Predicted Po
 
 ## Why I don't like ROC Curve 😤
 
-### You don't care about auroc, you care about the c-statistics
+### You don't care about AUROC, you care about the c-statistics
 
--   Generally speaking, the more area under a curve with two "Good" performance metrics, is better. Other than that, there is no context and performance metrics with no context might lead to ambiguity and bad decisions.
+-   Generally speaking more area under a curve with two "Good" performance metrics means better model. Other than that, there is no context and performance metrics with no context might lead to ambiguity and bad decisions.
 
 -   Another Curve: Precision-Recall is made of Sensitivity (Precision) and PPV (Recall). How much PRAUC is enough?
 
+## Why I don't like ROC Curve 😤
+
+### You don't care about AUROC, you care about the c-statistics
+
 -   Why not calculating GAINSAUC? Or any combination of two good performance metrics? We can get with Sensitivity, Specificity, NPV, PPV 6 AUC metrics. Do they provide any meaningful insight besides a vague *the more the better*?
-
--   One might suggest that the visual aspect is useful, but as human beings we are really bad at interpreting round things.
-
--   really bad Ink-to-ratio
 
 ## What is the AUROC of the following Models?
 
@@ -875,95 +932,343 @@ rtichoke:::create_table_for_auc(
 
 ## Why I don't like ROC Curve 😤
 
-### You don't care about auroc, you care about the c-statistics
+### You don't care about AUROC, you care about the c-statistics
 
-Yet, the auroc is valuable because of the equivalence to the c-statistics and it might provide good intuition about the performance of the model.
+-   High Ink-to-information ratio 😵
 
-## Discrimination - Common Performance Metrics:
+-   One might suggest that the visual aspect is useful, but as human beings we are really bad at interpreting round things (That's why pie-charts are considered to be bad practice).
 
-<br>
+<!-- -->
 
-Sensitivity: $\begin{aligned} \ {\scriptsize \frac{\text{TP}}{\text{TP + FN}} = \text{Prob( Predicted Positive | Real Positive )}}\end{aligned}$
+-   Yet, the AUROC is valuable because of the equivalence to the c-statistics and it might provide good intuition about the performance of the model.
 
-<br>
+## Why I don't like ROC Curve 😤
 
-Specificity: $\begin{aligned} \ {\scriptsize \frac{\text{TP}}{\text{TP + FN}} = \text{Prob( Predicted Positive | Real Positive )} } \end{aligned}$
+### You don't care about AUROC, you care about the c-statistics
 
-## Discrimination - bla
+-   If you'll take randomly one event and one non-event, the probability that the event will be estimated with higher probability is exactly the AUROC.
 
-::: columns
-::: {.column width="50%"}
-Sensitivity vs Specificity
-:::
+-   AUROC = p( p̂(🤨) \> p̂(🤢) )
 
-::: {.column width="50%"}
+## Why I don't like ROC Curve 😤
+
+### You don't care about AUROC, you care about the c-statistics
+
 ```{r}
-#| eval: false
-#| echo: false
+#| echo: true
+probs <- c(0.3, 0.6, 0.4, 0.1, 0.4, 0.7, 0.3, 0.1, 0.2, 0.1)
+reals <- c(0, 1, 1, 0, 1, 1, 0, 0, 1, 0)
 
-rtichoke::create_roc_curve(
-  probs = list(
-    rtichoke::example_dat$estimated_probabilities),
-  reals = list(
-    rtichoke::example_dat$outcome),
-  size = 500
-)|> 
-plotly::layout(plot_bgcolor = "#fdf6e3", 
-               paper_bgcolor= "#fdf6e3")
+pROC::auc(reals, probs)
 
-```
-:::
-:::
+probs_events <- probs[reals == 1]
+probs_nonevents <- probs[reals == 0]
 
-## Calibration
-
-## Utility
-
-## Bla
-
-```{ojs}
-d3 = require("d3@7")
-topojson = require("topojson")
-```
-
-## bla bla
-
-```{ojs}
-import { aq, op } from '@uwdata/arquero'
-penguins = aq.loadCSV("palmer-penguins.csv")
-penguins.view()
-penguins
-  .groupby('species')
-  .filter(d => d.body_mass_g > 0)
-  .rollup({
-    count: op.count(),
-    avg_mass: op.average('body_mass_g')
-   })
-  .view()
-```
-
-If you want to use inputs in an arquero query, you can use the `params` method of table. Below is a simple example of filtering a dataset by the values provided.
-
-```{ojs}
-//| panel: input
-viewof bill_length_min = Inputs.range(
-  [32, 50],
-  {value: 35, step: 1, label: "Bill length (min):"}
-)
-viewof islands = Inputs.checkbox(
-  ["Torgersen", "Biscoe", "Dream"],
-  { value: ["Torgersen", "Biscoe"],
-    label: "Islands:"
-  }
+prop.table(
+  table(
+    sample(probs_events, replace = TRUE, size = 10000) >
+    sample(probs_nonevents, replace = TRUE, size = 10000)
+  )
 )
 ```
 
-```{ojs}
-penguins
-  .params({
-    blm: bill_length_min,
-    i: islands
-  })
-  .filter((d, $) => op.includes($.i, d.island) && d.bill_length_mm > $.blm)
-  .view()
+## Why I don't like ROC Curve 😤
+
+### You don't care about AUROC, you care about the c-statistics
+
+```{python}
+#| echo: true
+import numpy as np
+import random
+
+probs = np.array([0.3, 0.6, 0.4, 0.1, 0.4, 0.7, 0.3, 0.1, 0.2, 0.1])
+reals = np.array([0, 1, 1, 0, 1, 1, 0, 0, 1, 0])
+
+probs_events = probs[reals == 1]
+probs_nonevents = probs[reals == 0]
+
+event_prob_greater_than_nonevent_prob = np.greater(
+  random.choices(sorted(probs_events), 
+  k = 10000),
+  random.choices(sorted(probs_nonevents), 
+  k = 10000)
+)
+
+unique_elements, counts_elements = np.unique(
+  event_prob_greater_than_nonevent_prob, return_counts=True)
+
+counts_elements / 10000
+
 ```
+
+## Good AUROC does not necessarily mean a Good model
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><p>Age</p></th>
+<th style="text-align: center;"><p>64</p></th>
+<th style="text-align: center;"><p>86</p></th>
+<th style="text-align: center;"><p>56</p></th>
+<th style="text-align: center;"><p>7</p></th>
+<th style="text-align: center;"><p>78</p></th>
+<th style="text-align: center;"><p>85</p></th>
+<th style="text-align: center;"><p>6</p></th>
+<th style="text-align: center;"><p>12</p></th>
+<th style="text-align: center;"><p>67</p></th>
+<th style="text-align: center;"><p>73</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>p̂</strong></p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.6</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.7</p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.2</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+</tr>
+</tbody>
+</table>
+
+AUROC shows how well your model discriminates between events and non-events given a target population.
+
+## Good AUROC does not necessarily mean a Good model
+
+<table style="width:99%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><p>Age</p></th>
+<th style="text-align: center;"><p>64</p></th>
+<th style="text-align: center;"><p>86</p></th>
+<th style="text-align: center;"><p>56</p></th>
+<th style="text-align: center;"><p>7</p></th>
+<th style="text-align: center;"><p>78</p></th>
+<th style="text-align: center;"><p>85</p></th>
+<th style="text-align: center;"><p>6</p></th>
+<th style="text-align: center;"><p>12</p></th>
+<th style="text-align: center;"><p>67</p></th>
+<th style="text-align: center;"><p>73</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>p̂</strong></p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.6</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.4</p></td>
+<td style="text-align: center;"><p>0.7</p></td>
+<td style="text-align: center;"><p>0.3</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.2</p></td>
+<td style="text-align: center;"><p>0.1</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="older_woman">👵</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="child">🧒</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="older_woman">👵</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="child">🧒</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="child">🧒</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+</tr>
+</tbody>
+</table>
+
+This model has AUROC = 0.92, but the number is misleading:\
+The Target Population is not well defined.
+
+## Bad AUROC does not necessarily mean a Bad model
+
++-------+-----+-----+-----+-----+-----+
+| Age   | 64  | 56  | 78  | 67  | 73  |
++:=====:+:===:+:===:+:===:+:===:+:===:+
+| **p̂** | 0.3 | 0.4 | 0.4 | 0.2 | 0.1 |
++-------+-----+-----+-----+-----+-----+
+| **Y** | 0   | 1   | 1   | 1   | 0   |
++-------+-----+-----+-----+-----+-----+
+|       | \   | \   | \   | \   | \   |
+|       | 🤨  | 🤢  | 🤢  | 🤢  | 🤨  |
++-------+-----+-----+-----+-----+-----+
+
+This model has AUROC = 0.83, but the number is misleading:\
+The Target Population is well defined.
+
+## Lift Curve
+
+| Curve             | Sens | Spec | PPV | PPCR  | Lift  |
+|:------------------|:----:|:----:|:---:|:-----:|:-----:|
+| ROC               |  y   |  x   |     |       |       |
+| **Lift**          |      |      |     | **x** | **y** |
+| Precision- Recall |  x   |      |  y  |       |       |
+| Gains             |  y   |      |     |   x   |       |
+
+## Lift Curve
+
+-   Lift is the ratio between the PPV and the Prevalence.
+
+-   Lift Curve displays Lift on the Y axis and PPCR (Predicted Positives Conditional Rate) on the X axis.
+
+-   In other words, lift shows how much the prediction is doing better than a random guess in terms of PPV.
+
+-   The reference line stands for the Lift of a random guess for a given PPCR, which is always equal to 1 because the observations are not sorted.
+
+## Precision-Recall
+
+| Curve             | Sens  | Spec | PPV | PPCR  | Lift |
+|:------------------|:-----:|:----:|:---:|:-----:|:----:|
+| ROC               |   y   |  x   |     |       |      |
+| Lift              |       |      |     |   x   |  y   |
+| Precision- Recall |   x   |      |  y  |       |      |
+| **Gains**         | **y** |      |     | **x** |      |
+
+## Precision Recall Curve
+
+-   Precision-Recall Curve displays PPV on the y axis and Sensitivity on the x axis.
+
+-   The reference line stands for the PPV of a random guess which is always equal to the prevalence and the Sensitivity of a random guess
+
+## Gains Curve
+
+| Curve             | Sens  | Spec | PPV | PPCR  | Lift |
+|:------------------|:-----:|:----:|:---:|:-----:|:----:|
+| ROC               |   y   |  x   |     |       |      |
+| Lift              |       |      |     |   x   |  y   |
+| Precision- Recall |   x   |      |  y  |       |      |
+| **Gains**         | **y** |      |     | **x** |      |
+
+## Gains Curve
+
+-   Gains Curve displays Sensitivity on the y axis and PPCR on the x axis.
+
+-   Gains shows the Sensitivity for a given PPCR.
+
+-   The reference lines stand for
+
+# Calibration **⚖️** 
+
+## Calibration **⚖️**
+
+How well the model is "calibrated".
+
+Patients with a probability of about 0.2 to have an event have a proportion of about 0.2 events.
+
+Unlike continuous outcomes in prediction of binary outcomes the prediction is continuous while the outcome is binary. In order to asses calibration we need to use quantiles of estimated probabilities (discrete version of calibration) or some kind of smoothing algorithm (gam or smoth).
+
+The main idea is to visually inspect for similarty with the linear line of 45 deg.
+
+If you use smoothed calibration, watch the ranges of the curve! It might look bad if you don't zoom-in to the reasonable range of estimated probabilities.
+
+Why should we care?\
+If you use logistic regression the model is calibrated by default, but if you use fancy ML prediction models they might not. This can be easily by remodelling of the predictions with simple logistic regression (recalibration), Python users might use <https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html>.
+
+Visual inspection might be problamatic, but from my humble experience is good enough to see if there's something inherently wrong.
+
+Optimizing over the logloss function will produce calibrated model.
+
+# Utility **👌**
+
+## Utility **👌**
+
+In order to make a decision, we need to optimize utility. This requires some kind of price from the clinicians.\
+This price is the odds of the probability threshold.
+
+Unlike other performance metrics, NB is based on decision making theory (which is reasonable, because we want to do better decision making).
+
+Always consider two baseline approaches: Treat All and Treat None.
