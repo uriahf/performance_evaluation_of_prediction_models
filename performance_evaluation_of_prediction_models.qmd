@@ -446,16 +446,16 @@ Low Probability Threshold means that I'm worried about the **outcome**:
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><span style="color: green;"><strong>TP</strong></span></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -540,16 +540,16 @@ High Probability Threshold means that I'm worried about the **Intervention**:
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -740,16 +740,16 @@ $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
+<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
 </tr>
 </tbody>
 </table>
@@ -797,19 +797,16 @@ create_roc_curve(
     )
 ```
 
-
 ## Why I don't like ROC Curve 😤 {.smaller}
 
-### Why 1 - Specificity? Why not just Specificity? 🙃 
+### Why 1 - Specificity? Why not just Specificity? 🙃
 
 ::: columns
 ::: {.column width="40%"}
-
 Honestly, I didn't find anywhere why *1 - Specificity* is more insightful than just *Specificity.*
+:::
 
-::: 
 ::: {.column width="60%"}
-
 ```{r}
 library(rtichoke)
 
@@ -824,23 +821,19 @@ create_roc_curve(
     fig_bgcolor   = "rgba(0, 0, 0, 0)"
     )
 ```
-
 :::
 :::
 
 ## Why I don't like ROC Curve 😤 {.smaller}
 
-### Why 1 - Specificity? Why not just Specificity? 🙃 
+### Why 1 - Specificity? Why not just Specificity? 🙃
 
 ::: columns
 ::: {.column width="40%"}
-
 Honestly, I didn't find anywhere why *1 - Specificity* is more insightful than just *Specificity.*
-
-::: 
+:::
 
 ::: {.column width="60%"}
-
 ```{r}
 library(rtichoke)
 
@@ -891,7 +884,6 @@ plotly::plot_ly(
     fig_bgcolor   = "rgba(0, 0, 0, 0)"
     )
 ```
-
 :::
 :::
 
@@ -1241,7 +1233,6 @@ The Target Population is well defined.
 
 $\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfrac{\text{TP}}{\text{TP + FP}}}{\cfrac{\text{TP + FN}}{\text{TP + FP + TN + FN}}} \end{aligned}$
 
-
 ## Lift Curve
 
 -   Lift is the ratio between the PPV and the Prevalence.
@@ -1252,7 +1243,7 @@ $\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfr
 
 -   The reference line stands for a random guess: the Lift is equal to 1 (PPV = Prevalence), the Sensitivity depends on the Probability Threshold or PPCR.
 
-- The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
+-   The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
 
 ## Lift Curve
 
@@ -1269,7 +1260,6 @@ create_lift_curve(
     )
 ```
 
-
 ## Precision-Recall
 
 | Curve                 | Sens  | Spec |  PPV  | PPCR | Lift |
@@ -1285,7 +1275,7 @@ create_lift_curve(
 
 -   The reference line stands for a random guess: the PPV is equal to the Prevalence, the Sensitivity depends on the Probability Threshold or PPCR.
 
-- The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
+-   The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
 
 ## Precision Recall
 
@@ -1301,8 +1291,6 @@ create_precision_recall_curve(
     fig_bgcolor   = "rgba(0, 0, 0, 0)"
     )
 ```
-
-
 
 ## Gains Curve
 
@@ -1337,7 +1325,6 @@ create_gains_curve(
     fig_bgcolor   = "rgba(0, 0, 0, 0)"
     )
 ```
-
 
 # Calibration **⚖️**
 
@@ -1714,10 +1701,9 @@ create_calibration_curve(
 
 ::: columns
 ::: {.column width="40%"}
-If you use smooth calibration, take a moment to explore the ranges of the curve! 
+If you use smooth calibration, take a moment to explore the ranges of the curve!
 
 It might look bad if you don't zoom-in to the reasonable range of estimated probabilities. That's why many times you might see Histograms or Rug-plots under the Calibration Curve.
-
 :::
 
 ::: {.column width="60%"}
@@ -1831,15 +1817,15 @@ $$\begin{aligned}[t]
 :::
 :::
 
-## Utility - Decision Curve **👌** 
+## Utility - Decision Curve **👌**
 
 -   Decision Curve displays Net Benefit on the y axis and Probability Threshold on the x axis.
 
-- Reference Line for Treat All Strategy.
+-   Reference Line for Treat All Strategy.
 
-- Reference line for Treat None Strategy.
+-   Reference line for Treat None Strategy.
 
-## Utility - Decision Curve **👌** 
+## Utility - Decision Curve **👌**
 
 ```{r}
 create_decision_curve(
