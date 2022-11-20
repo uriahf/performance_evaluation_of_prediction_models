@@ -780,52 +780,120 @@ $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}
 
 -   Displays 1 - Specificity (also known as False Positive Rate) on the x axis.
 
-## Why I don't like ROC Curve 😤
-
-### Why 1 - Specificity? Why not just Specificity? 🙃
-
-Honestly, I didn't find anywhere why *1 - Specificity* is more insightful than just *Specificity.*
+## ROC Curve
 
 ```{r}
 library(rtichoke)
 
-performance_data <- prepare_performance_data(
+create_roc_curve(
+  size = 500,
   probs = list(example_dat$estimated_probabilities),
   reals = list(example_dat$outcome)
-)
-
-reference_lines <- rtichoke:::create_reference_lines_data_frame(
-  "roc")
-
-roc_curve <- performance_data  |>  
-  rtichoke:::create_ggplot_for_performance_metrics(
-    "FPR", "sensitivity", "black")  |>  
-  rtichoke:::add_reference_lines_to_ggplot(
-    reference_lines) + 
-  ggplot2::xlab("1 - Specificity") + 
-  ggplot2::ylab("Sensitivity")
-
-
-roc_curve_opposite <- performance_data  |>  
-  rtichoke:::create_ggplot_for_performance_metrics(
-    "specificity", "sensitivity", "black")  |>  
-  rtichoke:::add_reference_lines_to_ggplot(
-    reference_lines) + 
-  ggplot2::xlab("Specificity") + 
-  ggplot2::ylab("Sensitivity")
-
-roc_curve
+) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
 ```
 
-## Why I don't like ROC Curve 😤
 
-### Why 1 - Specificity? Why not just Specificity? 🙃
+## Why I don't like ROC Curve 😤 {.smaller}
+
+### Why 1 - Specificity? Why not just Specificity? 🙃 
+
+::: columns
+::: {.column width="40%"}
 
 Honestly, I didn't find anywhere why *1 - Specificity* is more insightful than just *Specificity.*
 
+::: 
+::: {.column width="60%"}
+
 ```{r}
-roc_curve_opposite
+library(rtichoke)
+
+create_roc_curve(
+  size = 500,
+  probs = list(example_dat$estimated_probabilities),
+  reals = list(example_dat$outcome)
+) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
 ```
+
+:::
+:::
+
+## Why I don't like ROC Curve 😤 {.smaller}
+
+### Why 1 - Specificity? Why not just Specificity? 🙃 
+
+::: columns
+::: {.column width="40%"}
+
+Honestly, I didn't find anywhere why *1 - Specificity* is more insightful than just *Specificity.*
+
+::: 
+
+::: {.column width="60%"}
+
+```{r}
+library(rtichoke)
+
+perf_dat <- one_pop_one_model %>% 
+  rtichoke:::add_hover_text_to_performance_data(
+    "one population", 
+    curve = "roc", 
+    stratified_by = "probability threshold")
+
+plotly::plot_ly(
+  x = ~specificity, 
+  y = ~sensitivity, 
+  height = 550,
+  width = 500
+  ) |>  
+  plotly::add_trace(
+    data = perf_dat,
+    type = "scatter",
+    mode = "markers+lines", 
+    color = I("black"), 
+    hoverinfo = "text",
+    text = ~text) |> 
+  plotly::add_markers(
+    frame = ~probability_threshold, 
+    marker = list(
+      size = 12, 
+      line = list(width = 3, color = I("black")), 
+      color = "#f6e3be"), 
+    hoverinfo = "text", 
+    text = ~text
+  ) |> 
+  rtichoke:::remove_grid_lines_from_plotly() |>
+  plotly::layout(
+    xaxis = list(
+      title = "Specificity", fixedrange = TRUE), 
+    yaxis = list(title = "Sensitivity",fixedrange = TRUE), 
+    showlegend = FALSE) |> 
+  plotly::config(displayModeBar = FALSE)|> 
+  plotly::animation_slider(
+    currentvalue = list(
+      prefix = "Prob. Threshold: ",
+      font = list(color = "black"),
+      xanchor = "left"), 
+    pad = list(t = 50)) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
+```
+
+:::
+:::
 
 ## Why I don't like ROC Curve 😤
 
@@ -895,18 +963,14 @@ create_roc_curve(
     "Second Model" = second_model_probs
   ),
   reals = list(example_dat$outcome),
-  interactive = FALSE
-) +
-  theme(
-    plot.background = element_rect(fill = "#fdf6e3"),
-    panel.background = element_rect(fill = "#fdf6e3",
-                                colour = "#fdf6e3"),
-    panel.border = element_blank(),
-          panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-         strip.background = element_blank()
-  ) +
-  coord_fixed()
+  size = 500,
+  interactive = TRUE
+) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
 
 ```
 
@@ -1175,13 +1239,36 @@ The Target Population is well defined.
 
 ## Lift Curve
 
+$\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfrac{\text{TP}}{\text{TP + FP}}}{\cfrac{\text{TP + FN}}{\text{TP + FP + TN + FN}}} \end{aligned}$
+
+
+## Lift Curve
+
 -   Lift is the ratio between the PPV and the Prevalence.
 
 -   Lift Curve displays Lift on the Y axis and PPCR (Predicted Positives Conditional Rate) on the X axis.
 
 -   In other words, lift shows how much the prediction is doing better than a random guess in terms of PPV.
 
--   The reference line stands for the Lift of a random guess for a given PPCR, which is always equal to 1 because the observations are not sorted.
+-   The reference line stands for a random guess: the Lift is equal to 1 (PPV = Prevalence), the Sensitivity depends on the Probability Threshold or PPCR.
+
+- The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
+
+## Lift Curve
+
+```{r}
+create_lift_curve(
+  size = 500,
+  probs = list(example_dat$estimated_probabilities),
+  reals = list(example_dat$outcome)
+) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
+```
+
 
 ## Precision-Recall
 
@@ -1196,7 +1283,26 @@ The Target Population is well defined.
 
 -   Precision-Recall Curve displays PPV on the y axis and Sensitivity on the x axis.
 
--   The reference line stands for the PPV of a random guess which is always equal to the prevalence and the Sensitivity of a random guess
+-   The reference line stands for a random guess: the PPV is equal to the Prevalence, the Sensitivity depends on the Probability Threshold or PPCR.
+
+- The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
+
+## Precision Recall
+
+```{r}
+create_precision_recall_curve(
+  size = 500,
+  probs = list(example_dat$estimated_probabilities),
+  reals = list(example_dat$outcome)
+) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
+```
+
+
 
 ## Gains Curve
 
@@ -1213,7 +1319,25 @@ The Target Population is well defined.
 
 -   Gains shows the Sensitivity for a given PPCR.
 
--   The reference lines stand for
+-   Reference Line for a Random Guess: The sensitivity is equal to the proportion of predicted positives.
+
+-   Reference Line for a Perfect Prediction: All Predicted Positives are Real Positives until there are no more Real Positives (PPCR = Prevalence, Sensitivity = 1).
+
+## Gains Curve
+
+```{r}
+create_gains_curve(
+  size = 500,
+  probs = list(example_dat$estimated_probabilities),
+  reals = list(example_dat$outcome)
+) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
+```
+
 
 # Calibration **⚖️**
 
@@ -1707,8 +1831,27 @@ $$\begin{aligned}[t]
 :::
 :::
 
-## Utility **👌** {.smaller}
+## Utility - Decision Curve **👌** 
 
-TODO: Rtichoke Decision Curve
+-   Decision Curve displays Net Benefit on the y axis and Probability Threshold on the x axis.
+
+- Reference Line for Treat All Strategy.
+
+- Reference line for Treat None Strategy.
+
+## Utility - Decision Curve **👌** 
+
+```{r}
+create_decision_curve(
+  size = 500,
+  probs = list(example_dat$estimated_probabilities),
+  reals = list(example_dat$outcome)
+) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
+```
 
 # Thank You! 👋
