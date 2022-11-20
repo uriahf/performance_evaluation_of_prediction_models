@@ -948,7 +948,7 @@ rtichoke:::create_table_for_auc(
 
 -   If you'll take randomly one event and one non-event, the probability that the event will be estimated with higher probability is exactly the AUROC.
 
--   AUROC = p( p̂(🤨) \> p̂(🤢) )
+-   AUROC = p( p̂(🤨) \< p̂(🤢) )
 
 ## Why I don't like ROC Curve 😤
 
@@ -1003,20 +1003,7 @@ counts_elements / 10000
 
 ## Good AUROC does not necessarily mean a Good model
 
-<table style="width:99%;">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-</colgroup>
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: center;"><p>Age</p></th>
@@ -1089,20 +1076,7 @@ AUROC shows how well your model discriminates between events and non-events give
 
 ## Good AUROC does not necessarily mean a Good model
 
-<table style="width:99%;">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 8%" />
-</colgroup>
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: center;"><p>Age</p></th>
@@ -1211,12 +1185,12 @@ The Target Population is well defined.
 
 ## Precision-Recall
 
-| Curve             | Sens  | Spec | PPV | PPCR  | Lift |
-|:------------------|:-----:|:----:|:---:|:-----:|:----:|
-| ROC               |   y   |  x   |     |       |      |
-| Lift              |       |      |     |   x   |  y   |
-| Precision- Recall |   x   |      |  y  |       |      |
-| **Gains**         | **y** |      |     | **x** |      |
+| Curve                 | Sens  | Spec |  PPV  | PPCR | Lift |
+|:----------------------|:-----:|:----:|:-----:|:----:|:----:|
+| ROC                   |   y   |  x   |       |      |      |
+| Lift                  |       |      |       |  x   |  y   |
+| **Precision- Recall** | **x** |      | **y** |      |      |
+| Gains                 |   y   |      |       |  x   |      |
 
 ## Precision Recall Curve
 
@@ -1241,34 +1215,500 @@ The Target Population is well defined.
 
 -   The reference lines stand for
 
-# Calibration **⚖️** 
+# Calibration **⚖️**
 
 ## Calibration **⚖️**
 
-How well the model is "calibrated".
+-   How well the model is "calibrated": Patients with a probability of about 0.2 to have an event have a proportion of about 0.2 events.
 
-Patients with a probability of about 0.2 to have an event have a proportion of about 0.2 events.
+-   In order to asses calibration we need to use quantiles of estimated probabilities (discrete version of calibration) or some kind of smoothing algorithm (gam or lowess).
 
-Unlike continuous outcomes in prediction of binary outcomes the prediction is continuous while the outcome is binary. In order to asses calibration we need to use quantiles of estimated probabilities (discrete version of calibration) or some kind of smoothing algorithm (gam or smoth).
+-   The main idea is to visually inspect for similarity with the linear line of 45 degrees.
 
-The main idea is to visually inspect for similarty with the linear line of 45 deg.
+-   Visual inspection might be problematic, but from our experience it is a good-enough practice.
 
-If you use smoothed calibration, watch the ranges of the curve! It might look bad if you don't zoom-in to the reasonable range of estimated probabilities.
+## Calibration **⚖️**
 
-Why should we care?\
-If you use logistic regression the model is calibrated by default, but if you use fancy ML prediction models they might not. This can be easily by remodelling of the predictions with simple logistic regression (recalibration), Python users might use <https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html>.
+### Why should we care?
 
-Visual inspection might be problamatic, but from my humble experience is good enough to see if there's something inherently wrong.
+-   An accurate model in terms of Discrimination might produce uncalibrated estimated probabilities, that might lead to poor decisions.
 
-Optimizing over the logloss function will produce calibrated model.
+-   Logistic Regression is calibrated by default, but if you use fancy ML prediction models they might not be calibrated.
+
+## Calibration **⚖️**
+
+### What if the model is not calibrated?
+
+-   Uncalibrated models can be fixed by remodeling the predictions with a simple logistic regression (recalibration).
+
+-   Python users might use [`sklearn.calibration.CalibratedClassifierCV`](https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html).
+
+-   Optimizing the logloss function will produce calibrated model.
+
+## **Discrete** Calibration **⚖️**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><p><strong>p̂</strong></p></th>
+<th style="text-align: center;"><p>0.3</p></th>
+<th style="text-align: center;"><p>0.6</p></th>
+<th style="text-align: center;"><p>0.4</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.4</p></th>
+<th style="text-align: center;"><p>0.7</p></th>
+<th style="text-align: center;"><p>0.3</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.2</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>R</strong></p></td>
+<td style="text-align: center;"><p>5.5</p></td>
+<td style="text-align: center;"><p>2</p></td>
+<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>5.5</p></td>
+<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>7</p></td>
+<td style="text-align: center;"><p>9</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+</tr>
+</tbody>
+</table>
+
+## **Discrete** Calibration **⚖️**
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><p><strong>p̂</strong></p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.2</p></th>
+<th style="text-align: center;"><p>0.3</p></th>
+<th style="text-align: center;"><p>0.3</p></th>
+<th style="text-align: center;"><p>0.4</p></th>
+<th style="text-align: center;"><p>0.4</p></th>
+<th style="text-align: center;"><p>0.6</p></th>
+<th style="text-align: center;"><p>0.7</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>R</strong></p></td>
+<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>7</p></td>
+<td style="text-align: center;"><p>5.5</p></td>
+<td style="text-align: center;"><p>5.5</p></td>
+<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>2</p></td>
+<td style="text-align: center;"><p>1</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+</tr>
+</tbody>
+</table>
+
+## **Discrete** Calibration **⚖️**
+
+::: columns
+::: {.column width="50%"}
++:-----:+:---:+:---:+:---:+:---:+
+| **p̂** | 0.1 | 0.1 | 0.1 | 0.2 |
++-------+-----+-----+-----+-----+
+| **R** | 9   | 9   | 9   | 7   |
++-------+-----+-----+-----+-----+
+| **Ŷ** | 0   | 0   | 0   | 0   |
++-------+-----+-----+-----+-----+
+| **Y** | 0   | 0   | 0   | 1   |
++-------+-----+-----+-----+-----+
+|       | \   | \   | \   | \   |
+|       | 🤨  | 🤨  | 🤨  | 🤢  |
++-------+-----+-----+-----+-----+
+:::
+
+::: {.column width="50%"}
+$$\begin{aligned}
+\scriptsize{
+\\\text{Observed: }\frac{\text{1}}{\text{4}} = 0.25}
+\end{aligned}$$
+
+$$\begin{aligned}
+\scriptsize{
+\\\text{Predicted: }\frac{\text{0.1 + 0.1 + 0.1 + 0.2}}{\text{4}} = 0.125}
+\end{aligned}$$
+:::
+:::
+
+## **Discrete** Calibration **⚖️**
+
+::: columns
+::: {.column width="50%"}
++-------+-----+-----+-----+
+| **p̂** | 0.3 | 0.3 | 0.4 |
++:=====:+:===:+:===:+:===:+
+| **R** | 5.5 | 5.5 | 3.5 |
++-------+-----+-----+-----+
+| **Ŷ** | 0   | 0   | 0   |
++-------+-----+-----+-----+
+| **Y** | 0   | 0   | 1   |
++-------+-----+-----+-----+
+|       | \   | \   | \   |
+|       | 🤨  | 🤨  | 🤢  |
++-------+-----+-----+-----+
+:::
+
+::: {.column width="50%"}
+$$\begin{aligned}
+\scriptsize{
+\\\text{Observed: }\frac{\text{1}}{\text{3}} = 0.33'}
+\end{aligned}$$
+
+$$\begin{aligned}
+\scriptsize{
+\\\text{Predicted: }\frac{\text{0.3 + 0.3 + 0.4}}{\text{3}} = 0.33'}
+\end{aligned}$$
+:::
+:::
+
+## **Discrete** Calibration **⚖️**
+
+::: columns
+::: {.column width="50%"}
++-------+-----+-----+-----+
+| **p̂** | 0.4 | 0.6 | 0.7 |
++:=====:+:===:+:===:+:===:+
+| **R** | 3.5 | 2   | 1   |
++-------+-----+-----+-----+
+| **Ŷ** | 0   | 0   | 1   |
++-------+-----+-----+-----+
+| **Y** | 1   | 1   | 1   |
++-------+-----+-----+-----+
+|       | \   | \   | \   |
+|       | 🤢  | 🤢  | 🤢  |
++-------+-----+-----+-----+
+:::
+
+::: {.column width="50%"}
+$$\begin{aligned}
+\scriptsize{
+\\\text{Observed: }\frac{\text{3}}{\text{3}} = 1}
+\end{aligned}$$
+
+$$\begin{aligned}
+\scriptsize{
+\\\text{Predicted: }\frac{\text{0.4 + 0.6 + 0.7}}{\text{3}} = 0.566'}
+\end{aligned}$$
+:::
+:::
+
+## **Discrete** Calibration **⚖️**
+
+```{r}
+probs <- c(0.3, 0.4, 0.4, 0.2, 0.1)
+reals <- c(0, 1, 1, 1, 0)
+
+plotly::plot_ly(
+    heigt = 450,
+    width = 450,
+    x = ~Predicted, 
+    y = ~Observed) |>  
+  plotly::add_lines(
+    name = "Perfect Calibration",
+    data = data.frame(
+      Observed = c(0, 1),
+      Predicted = c(0, 1)),
+      color = I("grey"), 
+    line = list(dash="dot"),
+    showlegend = FALSE
+    ) |> 
+  plotly::add_trace(
+    data = data.frame(
+      Observed = c(0.25, 0.33, 1),
+      Predicted = c(0.15, 0.33, 0.56)),
+      color = I("black"), 
+    showlegend = FALSE,
+    name = "Discrete",
+    mode = 'lines+markers',
+    hovertemplate = paste0("<b>%{xaxis.title.text}:</b> %{x:.2f}<br>", 
+                           "<b>%{yaxis.title.text}:</b> %{y:.2f}")) |> 
+  plotly::layout(
+    xaxis = list(showgrid = FALSE),
+    yaxis = list(showgrid = FALSE),
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    ) |> 
+  plotly::config(displayModeBar = FALSE)
+```
+
+## **Discrete** Calibration **⚖️**
+
+```{r}
+
+create_calibration_curve(
+  size = 500,
+  probs = list(example_dat$estimated_probabilities),
+  reals = list(example_dat$outcome), type = "discrete"
+)|> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
+
+```
+
+## **Smooth** Calibration **⚖️** {.smaller}
+
+::: columns
+::: {.column width="40%"}
+A different approach is to use a smoothing algorithm, in {rtichoke} I use *gam* for large samples and *lowess* for small samples.
+:::
+
+::: {.column width="60%"}
+```{r}
+create_calibration_curve(
+  size = 500,
+  probs = list(example_dat$estimated_probabilities),
+  reals = list(example_dat$outcome), type = "smooth"
+) |> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
+```
+:::
+:::
+
+## **Smooth** Calibration **⚖️** {.smaller}
+
+::: columns
+::: {.column width="40%"}
+If you use smooth calibration, take a moment to explore the ranges of the curve! 
+
+It might look bad if you don't zoom-in to the reasonable range of estimated probabilities. That's why many times you might see Histograms or Rug-plots under the Calibration Curve.
+
+:::
+
+::: {.column width="60%"}
+```{r}
+
+probs_small_probs <- c(rep(0.1, 10), 
+                         rep(0.2, 10), 
+                         rep(0.15, 10), 
+                         rep(0.25, 10),
+                       0.7) + runif(min = -0.02,
+                                                max = 0.02,
+                                                n = 41)
+reals_small_probs <- c(c(1, rep(0, 9)), 
+c(1, rep(0, 9)), 
+c(rep(1, 2), rep(0, 8)), 
+c(rep(1, 2), rep(0, 8)), 0 )
+
+
+create_calibration_curve(
+  size = 500,
+  probs = list(probs_small_probs),
+  reals = list(reals_small_probs),
+  type = "smooth"
+)|> 
+  plotly::layout(
+    plot_bgcolor  = "rgba(0, 0, 0, 0)",
+    paper_bgcolor = "rgba(0, 0, 0, 0)",
+    fig_bgcolor   = "rgba(0, 0, 0, 0)"
+    )
+
+```
+:::
+:::
 
 # Utility **👌**
 
+## Utility **👌** {.smaller}
+
+$$\begin{aligned}
+\\{\text{Net Benefit}} = \frac{\text{TP}}{\text{N}} - \frac{\text{FP}}{\text{N}} * {\frac{{p_{t}}}{{1 - p_{t}}}}
+\end{aligned}$$
+
+-   In order to make a decision, we need to optimize utility. This requires some kind of price from the clinicians.\
+    This price is the odds of the probability threshold.
+
+-   Unlike other performance metrics, NB is based on decision making theory (which is reasonable, because we want to do better decision making).
+
+-   Always consider two baseline approaches: Treat All and Treat None.
+
 ## Utility **👌**
 
-In order to make a decision, we need to optimize utility. This requires some kind of price from the clinicians.\
-This price is the odds of the probability threshold.
+$$\begin{aligned}
+\scriptsize{
+\\{\text{Net Benefit}} = \frac{\text{TP}}{\text{N}} - \frac{\text{FP}}{\text{N}} * {\frac{{p_{t}}}{{1 - p_{t}}}}}
+\end{aligned}$$
 
-Unlike other performance metrics, NB is based on decision making theory (which is reasonable, because we want to do better decision making).
+$$\begin{aligned}
+\scriptsize{
+\text{Net Benefit Treat All} = {\text{Prevalence}} -  {\text{(1 - Prevalence)}} *{\frac{{p_{t}}}{{1 - p_{t}}}}}
+\end{aligned}$$
 
-Always consider two baseline approaches: Treat All and Treat None.
+$$\begin{aligned}
+\scriptsize{
+\text{Net Benefit Treat None} = {\text{0}} 
+}
+\end{aligned}$$
+
+## Utility **👌** {.smaller}
+
+::: columns
+::: {.column width="50%"}
+I will be indifferent 😐 for having 1 **TP** for 4 **FP** $$p_t = \frac{1}{1 + 4} = 0.2$$ $$\frac{p_t}{1 - p_t} = \frac{0.2}{1 - 0.2} = \frac{1}{4}$$
+
+$$\begin{aligned}[t]
+{\text{Net Benefit}} &= {\frac{\text{1}}{\text{5}} - \frac{\text{4}}{\text{5}} * {\frac{1}{4}} = 0}
+\end{aligned}$$
+:::
+
+::: {.column width="50%"}
+![](indifferent.svg)
+:::
+:::
+
+## Utility **👌** {.smaller}
+
+::: columns
+::: {.column width="50%"}
+I will be sad 🙁 for having 1 **TP** for 5 **FP** $$p_t = \frac{1}{1 + 4} = 0.2$$ $$\frac{p_t}{1 - p_t} = \frac{0.2}{1 - 0.2} = \frac{1}{4}$$ $$\begin{aligned}[t]
+{\text{Net Benefit}} &= {\frac{\text{1}}{\text{6}} - \frac{\text{5}}{\text{6}} * {\frac{1}{4}} = -0.04166'}
+\end{aligned}$$
+:::
+
+::: {.column width="50%"}
+![](sad.svg)
+:::
+:::
+
+## Utility **👌** {.smaller}
+
+::: columns
+::: {.column width="50%"}
+I will be happy 🙂 for having 1 **TP** for 3 **FP** $$p_t = \frac{1}{1 + 4} = 0.2$$ $$\frac{p_t}{1 - p_t} = \frac{0.2}{1 - 0.2} = \frac{1}{4}$$
+
+$$\begin{aligned}[t]
+{\text{Net Benefit}} &= {\frac{\text{1}}{\text{4}} - \frac{\text{3}}{\text{4}} * {\frac{1}{4}} = 0.0625}
+\end{aligned}$$
+:::
+
+::: {.column width="50%"}
+![](happy.svg)
+:::
+:::
+
+## Utility **👌** {.smaller}
+
+TODO: Rtichoke Decision Curve
+
+# Thank You! 👋

@@ -389,6 +389,13 @@
   <script src="performance_evaluation_of_prediction_models_files/libs/reactwidget-1.0.0/react-tools.js"></script>
   <script src="performance_evaluation_of_prediction_models_files/libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
   <script src="performance_evaluation_of_prediction_models_files/libs/reactable-binding-0.3.0/reactable.js"></script>
+  <script src="performance_evaluation_of_prediction_models_files/libs/plotly-binding-4.10.0/plotly.js"></script>
+  <script src="performance_evaluation_of_prediction_models_files/libs/typedarray-0.1/typedarray.min.js"></script>
+  <script src="performance_evaluation_of_prediction_models_files/libs/jquery-3.5.1/jquery.min.js"></script>
+  <link href="performance_evaluation_of_prediction_models_files/libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
+  <script src="performance_evaluation_of_prediction_models_files/libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+  <link href="performance_evaluation_of_prediction_models_files/libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+  <script src="performance_evaluation_of_prediction_models_files/libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -497,8 +504,8 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-7b58706f3e67622a3579" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-7b58706f3e67622a3579">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":"lightgreen"},{"fontWeight":600,"background":null}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"0e87a4d202a6e42067acce914af1bd56"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-b7b0b7e7eaa609fafff1" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-b7b0b7e7eaa609fafff1">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":"lightgreen"},{"fontWeight":600,"background":null}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"0e87a4d202a6e42067acce914af1bd56"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -509,8 +516,8 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-41163ab088b56b4868b3" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-41163ab088b56b4868b3">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":null},{"fontWeight":600,"background":"pink"}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"481602af31df52dab4020d6cbdbba680"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-1b4c31f57eae65a4e00f" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-1b4c31f57eae65a4e00f">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":null},{"fontWeight":600,"background":"pink"}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"481602af31df52dab4020d6cbdbba680"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -521,8 +528,8 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-afcfe4c049b52b40749a" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-afcfe4c049b52b40749a">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":"pink"},{"fontWeight":600,"background":null}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"9899aad0c3275e615a5f64b37cbf4d85"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-d54b3833052e4b392f0b" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-d54b3833052e4b392f0b">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":"pink"},{"fontWeight":600,"background":null}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"9899aad0c3275e615a5f64b37cbf4d85"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -533,8 +540,8 @@
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-e99564aeaed4f0be42a0" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-e99564aeaed4f0be42a0">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":null},{"fontWeight":600,"background":"lightgreen"}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"fc6b82a5989b085e90f9be912e39ffb3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-836d32e07fc5e5281f4c" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-836d32e07fc5e5281f4c">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"type":["Real Positive","Real Negative"],"predicted_positive":["TP","FP"],"predicted_negative":["FN","TN"]},"columns":[{"accessor":"type","name":"","type":"character","align":"left","headerStyle":{"fontWeight":100},"minWidth":200,"style":{"fontWeight":100}},{"accessor":"predicted_positive","name":"Predicted Positive","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600},{"fontWeight":600}]},{"accessor":"predicted_negative","name":"Predicted Negative","type":"character","align":"center","headerStyle":{"fontWeight":100},"minWidth":200,"style":[{"fontWeight":600,"background":null},{"fontWeight":600,"background":"lightgreen"}]}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"fc6b82a5989b085e90f9be912e39ffb3"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -2105,8 +2112,8 @@
 <img data-src="khaby.gif" class="r-stretch"><div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-0af34fa272be5d60aa09" class="reactable html-widget" style="width:auto;height:auto;"></div>
-<script type="application/json" data-for="htmlwidget-0af34fa272be5d60aa09">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"population":["First Model","Second Model"],"auc":[0.9586,0.8648]},"columns":[{"accessor":"population","name":"Model","type":"factor","show":true,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"display":"inline-block","marginRight":"8px","width":"9px","height":"9px","backgroundColor":"#1b9e77","borderRadius":"50%"}},"children":[]},"First Model"]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"display":"inline-block","marginRight":"8px","width":"9px","height":"9px","backgroundColor":"#d95f02","borderRadius":"50%"}},"children":[]},"Second Model"]}],"minWidth":300},{"accessor":"auc","name":"AUROC","type":"numeric","cell":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":["0.96",{"name":"div","attribs":{"style":{"flexGrow":1,"marginLeft":"8px","background":"#e1e1e1"}},"children":[{"name":"div","attribs":{"style":{"background":"green","width":"95.86%","height":"16px"}},"children":[]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":["0.86",{"name":"div","attribs":{"style":{"flexGrow":1,"marginLeft":"8px","background":"#e1e1e1"}},"children":[{"name":"div","attribs":{"style":{"background":"green","width":"86.48%","height":"16px"}},"children":[]}]}]}],"minWidth":300,"align":"left"}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"3f38f391c186fb012470a2d5b009ebb9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-f471556540b05d9c5f19" class="reactable html-widget" style="width:auto;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-f471556540b05d9c5f19">{"x":{"tag":{"name":"Reactable","attribs":{"data":{"population":["First Model","Second Model"],"auc":[0.9586,0.8648]},"columns":[{"accessor":"population","name":"Model","type":"factor","show":true,"cell":[{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"display":"inline-block","marginRight":"8px","width":"9px","height":"9px","backgroundColor":"#1b9e77","borderRadius":"50%"}},"children":[]},"First Model"]},{"name":"Fragment","attribs":[],"children":[{"name":"span","attribs":{"style":{"display":"inline-block","marginRight":"8px","width":"9px","height":"9px","backgroundColor":"#d95f02","borderRadius":"50%"}},"children":[]},"Second Model"]}],"minWidth":300},{"accessor":"auc","name":"AUROC","type":"numeric","cell":[{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":["0.96",{"name":"div","attribs":{"style":{"flexGrow":1,"marginLeft":"8px","background":"#e1e1e1"}},"children":[{"name":"div","attribs":{"style":{"background":"green","width":"95.86%","height":"16px"}},"children":[]}]}]},{"name":"div","attribs":{"style":{"display":"flex","alignItems":"center"}},"children":["0.86",{"name":"div","attribs":{"style":{"flexGrow":1,"marginLeft":"8px","background":"#e1e1e1"}},"children":[{"name":"div","attribs":{"style":{"background":"green","width":"86.48%","height":"16px"}},"children":[]}]}]}],"minWidth":300,"align":"left"}],"sortable":false,"defaultPageSize":10,"paginationType":"numbers","showPageInfo":true,"minRows":1,"inline":true,"theme":{"backgroundColor":"#fdf6e3"},"dataKey":"3f38f391c186fb012470a2d5b009ebb9"},"children":[]},"class":"reactR_markup"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </section>
@@ -2127,7 +2134,7 @@
 <h3 id="you-dont-care-about-auroc-you-care-about-the-c-statistics-3">You don’t care about AUROC, you care about the c-statistics</h3>
 <ul>
 <li class="fragment"><p>If you’ll take randomly one event and one non-event, the probability that the event will be estimated with higher probability is exactly the AUROC.</p></li>
-<li class="fragment"><p>AUROC = p( p̂(🤨) &gt; p̂(🤢) )</p></li>
+<li class="fragment"><p>AUROC = p( p̂(🤨) &lt; p̂(🤢) )</p></li>
 </ul>
 </section>
 <section id="why-i-dont-like-roc-curve-9" class="slide level2">
@@ -2189,20 +2196,7 @@
 <section id="good-auroc-does-not-necessarily-mean-a-good-model" class="slide level2">
 <h2>Good AUROC does not necessarily mean a Good model</h2>
 
-<table style="width:99%;">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-</colgroup>
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: center;">
@@ -2439,20 +2433,7 @@ Age
 <section id="good-auroc-does-not-necessarily-mean-a-good-model-1" class="slide level2">
 <h2>Good AUROC does not necessarily mean a Good model</h2>
 
-<table style="width:99%;">
-<colgroup>
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-<col style="width: 8%">
-</colgroup>
+<table>
 <thead>
 <tr class="header">
 <th style="text-align: center;">
@@ -2832,19 +2813,19 @@ The Target Population is well defined.</p>
 <td style="text-align: center;">y</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Precision- Recall</td>
-<td style="text-align: center;">x</td>
+<td style="text-align: left;"><strong>Precision- Recall</strong></td>
+<td style="text-align: center;"><strong>x</strong></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;">y</td>
+<td style="text-align: center;"><strong>y</strong></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;"><strong>Gains</strong></td>
-<td style="text-align: center;"><strong>y</strong></td>
+<td style="text-align: left;">Gains</td>
+<td style="text-align: center;">y</td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><strong>x</strong></td>
+<td style="text-align: center;">x</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -2921,31 +2902,943 @@ The Target Population is well defined.</p>
 </section>
 <section id="calibration-1" class="slide level2">
 <h2>Calibration <strong>⚖️</strong></h2>
-<p>How well the model is “calibrated”.</p>
-<p>Patients with a probability of about 0.2 to have an event have a proportion of about 0.2 events.</p>
-<p>Unlike continuous outcomes in prediction of binary outcomes the prediction is continuous while the outcome is binary. In order to asses calibration we need to use quantiles of estimated probabilities (discrete version of calibration) or some kind of smoothing algorithm (gam or smoth).</p>
-<p>The main idea is to visually inspect for similarty with the linear line of 45 deg.</p>
-<p>If you use smoothed calibration, watch the ranges of the curve! It might look bad if you don’t zoom-in to the reasonable range of estimated probabilities.</p>
-<p>Why should we care?<br>
-If you use logistic regression the model is calibrated by default, but if you use fancy ML prediction models they might not. This can be easily by remodelling of the predictions with simple logistic regression (recalibration), Python users might use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html" class="uri">https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html</a>.</p>
-<p>Visual inspection might be problamatic, but from my humble experience is good enough to see if there’s something inherently wrong.</p>
-<p>Optimizing over the logloss function will produce calibrated model.</p>
+<ul>
+<li class="fragment"><p>How well the model is “calibrated”: Patients with a probability of about 0.2 to have an event have a proportion of about 0.2 events.</p></li>
+<li class="fragment"><p>In order to asses calibration we need to use quantiles of estimated probabilities (discrete version of calibration) or some kind of smoothing algorithm (gam or lowess).</p></li>
+<li class="fragment"><p>The main idea is to visually inspect for similarity with the linear line of 45 degrees.</p></li>
+<li class="fragment"><p>Visual inspection might be problematic, but from our experience it is a good-enough practice.</p></li>
+</ul>
+</section>
+<section id="calibration-2" class="slide level2">
+<h2>Calibration <strong>⚖️</strong></h2>
+<h3 id="why-should-we-care">Why should we care?</h3>
+<ul>
+<li class="fragment"><p>An accurate model in terms of Discrimination might produce uncalibrated estimated probabilities, that might lead to poor decisions.</p></li>
+<li class="fragment"><p>Logistic Regression is calibrated by default, but if you use fancy ML prediction models they might not be calibrated.</p></li>
+</ul>
+</section>
+<section id="calibration-3" class="slide level2">
+<h2>Calibration <strong>⚖️</strong></h2>
+<h3 id="what-if-the-model-is-not-calibrated">What if the model is not calibrated?</h3>
+<ul>
+<li class="fragment"><p>Uncalibrated models can be fixed by remodeling the predictions with a simple logistic regression (recalibration).</p></li>
+<li class="fragment"><p>Python users might use <a href="https://scikit-learn.org/stable/modules/generated/sklearn.calibration.CalibratedClassifierCV.html"><code>sklearn.calibration.CalibratedClassifierCV</code></a>.</p></li>
+<li class="fragment"><p>Optimizing the logloss function will produce calibrated model.</p></li>
+</ul>
+</section>
+<section id="discrete-calibration" class="slide level2">
+<h2><strong>Discrete</strong> Calibration <strong>⚖️</strong></h2>
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">
+<p>
+<strong>p̂</strong>
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.3
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.6
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.4
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.1
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.4
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.7
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.3
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.1
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.2
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.1
+</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">
+<p>
+<strong>R</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+5.5
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+2
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+3.5
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+9
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+3.5
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+5.5
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+9
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+7
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+9
+</p>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<p>
+<strong>Ŷ</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">
+<p>
+<strong>Y</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+</tr>
+</tbody>
+
+</table>
+</section>
+<section id="discrete-calibration-1" class="slide level2">
+<h2><strong>Discrete</strong> Calibration <strong>⚖️</strong></h2>
+
+<table>
+<thead>
+<tr class="header">
+<th style="text-align: center;">
+<p>
+<strong>p̂</strong>
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.1
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.1
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.1
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.2
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.3
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.3
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.4
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.4
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.6
+</p>
+</th>
+<th style="text-align: center;">
+<p>
+0.7
+</p>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">
+<p>
+<strong>R</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+9
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+9
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+9
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+7
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+5.5
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+5.5
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+3.5
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+3.5
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+2
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+<p>
+<strong>Ŷ</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">
+<p>
+<strong>Y</strong>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+0
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+1
+</p>
+</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="raised_eyebrow">🤨</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+<td style="text-align: center;">
+<p>
+<br> <span class="emoji" data-emoji="nauseated_face">🤢</span>
+</p>
+</td>
+</tr>
+</tbody>
+
+</table>
+</section>
+<section id="discrete-calibration-2" class="slide level2">
+<h2><strong>Discrete</strong> Calibration <strong>⚖️</strong></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table style="width:44%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>p̂</strong></td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.1</td>
+<td style="text-align: center;">0.2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">9</td>
+<td style="text-align: center;">7</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Ŷ</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Y</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><br>
+🤨</td>
+<td style="text-align: center;"><br>
+🤨</td>
+<td style="text-align: center;"><br>
+🤨</td>
+<td style="text-align: center;"><br>
+🤢</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\\\text{Observed: }\frac{\text{1}}{\text{4}} = 0.25}
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\\\text{Predicted: }\frac{\text{0.1 + 0.1 + 0.1 + 0.2}}{\text{4}} = 0.125}
+\end{aligned}\]</span></p>
+</div>
+</div>
+</section>
+<section id="discrete-calibration-3" class="slide level2">
+<h2><strong>Discrete</strong> Calibration <strong>⚖️</strong></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table style="width:36%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>p̂</strong></th>
+<th style="text-align: center;">0.3</th>
+<th style="text-align: center;">0.3</th>
+<th style="text-align: center;">0.4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;">5.5</td>
+<td style="text-align: center;">5.5</td>
+<td style="text-align: center;">3.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Ŷ</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Y</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><br>
+🤨</td>
+<td style="text-align: center;"><br>
+🤨</td>
+<td style="text-align: center;"><br>
+🤢</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\\\text{Observed: }\frac{\text{1}}{\text{3}} = 0.33'}
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\\\text{Predicted: }\frac{\text{0.3 + 0.3 + 0.4}}{\text{3}} = 0.33'}
+\end{aligned}\]</span></p>
+</div>
+</div>
+</section>
+<section id="discrete-calibration-4" class="slide level2">
+<h2><strong>Discrete</strong> Calibration <strong>⚖️</strong></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table style="width:36%;">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>p̂</strong></th>
+<th style="text-align: center;">0.4</th>
+<th style="text-align: center;">0.6</th>
+<th style="text-align: center;">0.7</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>R</strong></td>
+<td style="text-align: center;">3.5</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Ŷ</strong></td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Y</strong></td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"></td>
+<td style="text-align: center;"><br>
+🤢</td>
+<td style="text-align: center;"><br>
+🤢</td>
+<td style="text-align: center;"><br>
+🤢</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\\\text{Observed: }\frac{\text{3}}{\text{3}} = 1}
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\\\text{Predicted: }\frac{\text{0.4 + 0.6 + 0.7}}{\text{3}} = 0.566'}
+\end{aligned}\]</span></p>
+</div>
+</div>
+</section>
+<section id="discrete-calibration-5" class="slide level2">
+<h2><strong>Discrete</strong> Calibration <strong>⚖️</strong></h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-dc824c3ec6fe7a8d65bc" style="width:450px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-dc824c3ec6fe7a8d65bc">{"x":{"visdat":{"1d30853672":["function () ","plotlyVisDat"],"1d3075a37cf4":["function () ","data"],"1d304a007d2":["function () ","data"]},"cur_data":"1d304a007d2","attrs":{"1d3075a37cf4":{"heigt":450,"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines","name":"Perfect Calibration","color":["grey"],"line":{"dash":"dot"},"showlegend":false,"inherit":true},"1d304a007d2":{"heigt":450,"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"color":["black"],"showlegend":false,"name":"Discrete","mode":"lines+markers","hovertemplate":"<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}","inherit":true}},"layout":{"width":450,"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"Predicted"},"yaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"Observed"},"plot_bgcolor":"rgba(0, 0, 0, 0)","paper_bgcolor":"rgba(0, 0, 0, 0)","fig_bgcolor":"rgba(0, 0, 0, 0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"heigt":450,"x":[0,1],"y":[0,1],"type":"scatter","mode":"lines","name":"Perfect Calibration","line":{"color":"rgba(190,190,190,1)","dash":"dot"},"showlegend":false,"marker":{"color":"rgba(190,190,190,1)","line":{"color":"rgba(190,190,190,1)"}},"textfont":{"color":"rgba(190,190,190,1)"},"error_y":{"color":"rgba(190,190,190,1)"},"error_x":{"color":"rgba(190,190,190,1)"},"xaxis":"x","yaxis":"y","frame":null},{"heigt":450,"x":[0.15,0.33,0.56],"y":[0.25,0.33,1],"showlegend":false,"name":"Discrete","mode":"lines+markers","hovertemplate":["<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}"],"type":"scatter","marker":{"color":"rgba(0,0,0,1)","line":{"color":"rgba(0,0,0,1)"}},"textfont":{"color":"rgba(0,0,0,1)"},"error_y":{"color":"rgba(0,0,0,1)"},"error_x":{"color":"rgba(0,0,0,1)"},"line":{"color":"rgba(0,0,0,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="discrete-calibration-6" class="slide level2">
+<h2><strong>Discrete</strong> Calibration <strong>⚖️</strong></h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-29b1ddc3145ffdd09172" style="width:450px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-29b1ddc3145ffdd09172">{"x":{"visdat":{"1d307e6e7dd8":["function () ","plotlyVisDat"],"1d3062493d65":["function () ","data"],"1d3018d12276":["function () ","data"]},"cur_data":"1d3018d12276","attrs":{"1d3062493d65":{"heigt":450,"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines","name":"Perfect Calibration","color":["grey"],"line":{"dash":"dot"},"showlegend":false,"inherit":true},"1d3018d12276":{"heigt":450,"x":{},"y":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"color":["black"],"showlegend":false,"name":"Discrete","mode":"lines+markers","hovertemplate":"<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}","inherit":true}},"layout":{"width":450,"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"Predicted"},"yaxis":{"domain":[0,1],"automargin":true,"showgrid":false,"title":"Observed"},"plot_bgcolor":"rgba(0, 0, 0, 0)","paper_bgcolor":"rgba(0, 0, 0, 0)","fig_bgcolor":"rgba(0, 0, 0, 0)","hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"heigt":450,"x":[0,1],"y":[0,1],"type":"scatter","mode":"lines","name":"Perfect Calibration","line":{"color":"rgba(190,190,190,1)","dash":"dot"},"showlegend":false,"marker":{"color":"rgba(190,190,190,1)","line":{"color":"rgba(190,190,190,1)"}},"textfont":{"color":"rgba(190,190,190,1)"},"error_y":{"color":"rgba(190,190,190,1)"},"error_x":{"color":"rgba(190,190,190,1)"},"xaxis":"x","yaxis":"y","frame":null},{"heigt":450,"x":[0.15,0.33,0.56],"y":[0.25,0.33,1],"showlegend":false,"name":"Discrete","mode":"lines+markers","hovertemplate":["<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}"],"type":"scatter","marker":{"color":"rgba(0,0,0,1)","line":{"color":"rgba(0,0,0,1)"}},"textfont":{"color":"rgba(0,0,0,1)"},"error_y":{"color":"rgba(0,0,0,1)"},"error_x":{"color":"rgba(0,0,0,1)"},"line":{"color":"rgba(0,0,0,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="discrete-calibration-7" class="slide level2">
+<h2><strong>Discrete</strong> Calibration <strong>⚖️</strong></h2>
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-12bc737dbd4521ae995b" style="width:500px;height:500px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-12bc737dbd4521ae995b">{"x":{"data":[{"x":[9.75287808746594e-05,0.000978719294092639,0.00498778033565823,0.0147562467544856,0.0628606645947794,0.177532122289308,0.405171579282228,0.791497348175773,0.899102264896271,0.976349078930361],"y":[0,0,0,0,0.0666666666666667,0.133333333333333,0.533333333333333,0.866666666666667,0.733333333333333,1],"legendgroup":"model 1","type":"scatter","mode":"markers","showlegend":true,"hovertemplate":["<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>"],"name":"model 1","marker":{"color":"rgba(0,0,0,1)","line":{"color":"rgba(0,0,0,1)"}},"textfont":{"color":"rgba(0,0,0,1)"},"error_y":{"color":"rgba(0,0,0,1)"},"error_x":{"color":"rgba(0,0,0,1)"},"line":{"color":"rgba(0,0,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0,1],"y":[0,1],"legendgroup":"reference","type":"scatter","mode":"lines","line":{"color":"rgba(190,190,190,1)","width":1},"name":"reference","marker":{"color":"rgba(190,190,190,1)","line":{"color":"rgba(190,190,190,1)"}},"textfont":{"color":"rgba(190,190,190,1)"},"error_y":{"color":"rgba(190,190,190,1)"},"error_x":{"color":"rgba(190,190,190,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[9.75287808746594e-05,0.000978719294092639,0.00498778033565823,0.0147562467544856,0.0628606645947794,0.177532122289308,0.405171579282228,0.791497348175773,0.899102264896271,0.976349078930361],"y":[0,0,0,0,0.0666666666666667,0.133333333333333,0.533333333333333,0.866666666666667,0.733333333333333,1],"legendgroup":"model 1","type":"scatter","mode":"lines","line":{"color":"rgba(0,0,0,1)","width":1},"name":"model 1","marker":{"color":"rgba(0,0,0,1)","line":{"color":"rgba(0,0,0,1)"}},"textfont":{"color":"rgba(0,0,0,1)"},"error_y":{"color":"rgba(0,0,0,1)"},"error_x":{"color":"rgba(0,0,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.005,0.015,0.025,0.035,0.045,0.055,0.065,0.075,0.085,0.095,0.105,0.115,0.125,0.135,0.145,0.155,0.165,0.175,0.185,0.195,0.205,0.215,0.225,0.235,0.245,0.255,0.265,0.275,0.285,0.295,0.305,0.315,0.325,0.335,0.345,0.355,0.365,0.375,0.385,0.395,0.405,0.415,0.425,0.435,0.445,0.455,0.465,0.475,0.485,0.495,0.505,0.515,0.525,0.535,0.545,0.555,0.565,0.575,0.585,0.595,0.605,0.615,0.625,0.635,0.645,0.655,0.665,0.675,0.685,0.695,0.705,0.715,0.725,0.735,0.745,0.755,0.765,0.775,0.785,0.795,0.805,0.815,0.825,0.835,0.845,0.855,0.865,0.875,0.885,0.895,0.905,0.915,0.925,0.935,0.945,0.955,0.965,0.975,0.985,0.995],"y":[51,4,6,6,0,0,3,0,0,0,7,0,0,0,0,8,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,10,0,0,0,0,6,0,0,5,0,2,5,4],"type":"bar","width":[0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01],"text":["51 observations in [0,0.01]","4 observations in (0.01,0.02]","6 observations in (0.02,0.03]","6 observations in (0.03,0.04]","0 observations in (0.04,0.05]","0 observations in (0.05,0.06]","3 observations in (0.06,0.07]","0 observations in (0.07,0.08]","0 observations in (0.08,0.09]","0 observations in (0.09,0.1]","7 observations in (0.1,0.11]","0 observations in (0.11,0.12]","0 observations in (0.12,0.13]","0 observations in (0.13,0.14]","0 observations in (0.14,0.15]","8 observations in (0.15,0.16]","0 observations in (0.16,0.17]","0 observations in (0.17,0.18]","0 observations in (0.18,0.19]","0 observations in (0.19,0.2]","0 observations in (0.2,0.21]","0 observations in (0.21,0.22]","0 observations in (0.22,0.23]","6 observations in (0.23,0.24]","0 observations in (0.24,0.25]","0 observations in (0.25,0.26]","0 observations in (0.26,0.27]","0 observations in (0.27,0.28]","0 observations in (0.28,0.29]","0 observations in (0.29,0.3]","0 observations in (0.3,0.31]","0 observations in (0.31,0.32]","0 observations in (0.32,0.33]","0 observations in (0.33,0.34]","7 observations in (0.34,0.35]","0 observations in (0.35,0.36]","0 observations in (0.36,0.37]","0 observations in (0.37,0.38]","0 observations in (0.38,0.39]","0 observations in (0.39,0.4]","0 observations in (0.4,0.41]","0 observations in (0.41,0.42]","0 observations in (0.42,0.43]","0 observations in (0.43,0.44]","0 observations in (0.44,0.45]","0 observations in (0.45,0.46]","6 observations in (0.46,0.47]","0 observations in (0.47,0.48]","0 observations in (0.48,0.49]","0 observations in (0.49,0.5]","0 observations in (0.5,0.51]","0 observations in (0.51,0.52]","0 observations in (0.52,0.53]","0 observations in (0.53,0.54]","0 observations in (0.54,0.55]","0 observations in (0.55,0.56]","0 observations in (0.56,0.57]","0 observations in (0.57,0.58]","0 observations in (0.58,0.59]","1 observations in (0.59,0.6]","0 observations in (0.6,0.61]","0 observations in (0.61,0.62]","0 observations in (0.62,0.63]","0 observations in (0.63,0.64]","0 observations in (0.64,0.65]","0 observations in (0.65,0.66]","0 observations in (0.66,0.67]","0 observations in (0.67,0.68]","0 observations in (0.68,0.69]","0 observations in (0.69,0.7]","0 observations in (0.7,0.71]","4 observations in (0.71,0.72]","0 observations in (0.72,0.73]","0 observations in (0.73,0.74]","0 observations in (0.74,0.75]","0 observations in (0.75,0.76]","0 observations in (0.76,0.77]","0 observations in (0.77,0.78]","0 observations in (0.78,0.79]","0 observations in (0.79,0.8]","9 observations in (0.8,0.81]","0 observations in (0.81,0.82]","0 observations in (0.82,0.83]","0 observations in (0.83,0.84]","0 observations in (0.84,0.85]","0 observations in (0.85,0.86]","0 observations in (0.86,0.87]","10 observations in (0.87,0.88]","0 observations in (0.88,0.89]","0 observations in (0.89,0.9]","0 observations in (0.9,0.91]","0 observations in (0.91,0.92]","6 observations in (0.92,0.93]","0 observations in (0.93,0.94]","0 observations in (0.94,0.95]","5 observations in (0.95,0.96]","0 observations in (0.96,0.97]","2 observations in (0.97,0.98]","5 observations in (0.98,0.99]","4 observations in (0.99,1]"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"textposition":["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"],"marker":{"color":"rgba(89,89,89,1)","line":{"color":"rgba(89,89,89,1)"}},"textfont":{"color":"rgba(89,89,89,1)"},"error_y":{"color":"rgba(89,89,89,1)"},"error_x":{"color":"rgba(89,89,89,1)"},"xaxis":"x","yaxis":"y2","frame":null}],"layout":{"xaxis":{"domain":[0,1],"automargin":true,"range":[-0.05,1.05],"showgrid":false,"title":"Predicted","anchor":"y2"},"yaxis2":{"domain":[0,0.18],"automargin":true,"showgrid":false,"anchor":"x"},"yaxis":{"domain":[0.22,1],"automargin":true,"range":[-0.05,1.05],"showgrid":false,"anchor":"x","title":"Observed"},"annotations":[],"shapes":[],"images":[],"width":500,"height":500,"margin":{"b":40,"l":60,"t":25,"r":10},"showlegend":false,"hovermode":"closest","barmode":"overlay","plot_bgcolor":"rgba(0, 0, 0, 0)","paper_bgcolor":"rgba(0, 0, 0, 0)","fig_bgcolor":"rgba(0, 0, 0, 0)"},"attrs":{"1d3034e128dc":{"x":{},"y":{},"legendgroup":{},"color":{},"colors":["grey","black"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"markers","showlegend":true,"hovertemplate":"<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","inherit":true},"1d302b6d6638":{"x":{},"y":{},"legendgroup":{},"color":{},"colors":["grey","black"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines","line":{"width":1},"inherit":true},"1d3027843d3":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"bar","width":0.01,"color":["grey35"],"text":{},"hoverinfo":"text","textposition":"none","inherit":true}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"subplot":true,"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</section>
+<section id="smooth-calibration" class="slide level2 smaller">
+<h2><strong>Smooth</strong> Calibration <strong>⚖️</strong></h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>A different approach is to use a smoothing algorithm, in {rtichoke} I use <em>gam</em> for large samples and <em>lowess</em> for small samples.</p>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-f56b2ba8fe7b9189bac0" style="width:500px;height:500px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f56b2ba8fe7b9189bac0">{"x":{"data":[{"x":[0,1],"y":[0,1],"hovertemplate":["<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>"],"type":"scatter","mode":"lines","name":"reference","marker":{"color":"rgba(190,190,190,1)","line":{"color":"rgba(190,190,190,1)"}},"textfont":{"color":"rgba(190,190,190,1)"},"error_y":{"color":"rgba(190,190,190,1)"},"error_x":{"color":"rgba(190,190,190,1)"},"line":{"color":"rgba(190,190,190,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.01,0.02,0.03,0.04,0.05,0.06,0.07,0.08,0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35,0.36,0.37,0.38,0.39,0.4,0.41,0.42,0.43,0.44,0.45,0.46,0.47,0.48,0.49,0.5,0.51,0.52,0.53,0.54,0.55,0.56,0.57,0.58,0.59,0.6,0.61,0.62,0.63,0.64,0.65,0.66,0.67,0.68,0.69,0.7,0.71,0.72,0.73,0.74,0.75,0.76,0.77,0.78,0.79,0.8,0.81,0.82,0.83,0.84,0.85,0.86,0.87,0.88,0.89,0.9,0.91,0.92,0.93,0.94,0.95,0.96,0.97,0.98,0.99],"y":[0.00856505413372012,0.0163324553250164,0.0240040268388449,0.0316130271204156,0.0390842149987235,0.0465554028770314,0.0538503816691293,0.0610867109720325,0.0683230402749356,0.0755593695778388,0.0826606754609369,0.0897532965950382,0.0968459177291396,0.103938538863241,0.111031159997342,0.118144737096453,0.125343744985834,0.132542752875215,0.139741760764596,0.146940768653977,0.154139776543358,0.161338784432739,0.16853779232212,0.176527102585517,0.199733829521711,0.222940556457905,0.246147283394098,0.269354010330292,0.292560737266485,0.315767464202679,0.338974191138872,0.362180918075066,0.385387645011259,0.408594371947453,0.426367902101635,0.436820997898237,0.44727409369484,0.457727189491442,0.468180285288044,0.478633381084647,0.489086476881249,0.499539572677851,0.509992668474453,0.520445764271056,0.530898860067658,0.54135195586426,0.551794243173705,0.558082151698707,0.564370060223709,0.570657968748711,0.576945877273714,0.583233785798716,0.589521694323718,0.59580960284872,0.602097511373722,0.608385419898724,0.614673328423727,0.620961236948729,0.627249145473731,0.634028758654322,0.642830379474573,0.651632000294824,0.660433621115075,0.669235241935327,0.678036862755578,0.686838483575829,0.695640104396081,0.704441725216332,0.713243346036583,0.722044966856834,0.730846587677086,0.739398045046563,0.747782726949977,0.756167408853391,0.764552090756805,0.772936772660219,0.781321454563633,0.789706136467047,0.798090818370461,0.806475500273875,0.814746592645741,0.822712978393655,0.830679364141569,0.838645749889483,0.846612135637397,0.854578521385311,0.862544907133225,0.870378724872695,0.878053752592451,0.885728780312207,0.893403808031963,0.901078835751719,0.908611885093658,0.916112939807655,0.923613994521651,0.931039470824949,0.93844722277245,0.945808018891759,0.953141772344014],"hovertemplate":["<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>"],"type":"scatter","mode":"lines","name":"model 1","marker":{"color":"rgba(0,0,0,1)","line":{"color":"rgba(0,0,0,1)"}},"textfont":{"color":"rgba(0,0,0,1)"},"error_y":{"color":"rgba(0,0,0,1)"},"error_x":{"color":"rgba(0,0,0,1)"},"line":{"color":"rgba(0,0,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.005,0.015,0.025,0.035,0.045,0.055,0.065,0.075,0.085,0.095,0.105,0.115,0.125,0.135,0.145,0.155,0.165,0.175,0.185,0.195,0.205,0.215,0.225,0.235,0.245,0.255,0.265,0.275,0.285,0.295,0.305,0.315,0.325,0.335,0.345,0.355,0.365,0.375,0.385,0.395,0.405,0.415,0.425,0.435,0.445,0.455,0.465,0.475,0.485,0.495,0.505,0.515,0.525,0.535,0.545,0.555,0.565,0.575,0.585,0.595,0.605,0.615,0.625,0.635,0.645,0.655,0.665,0.675,0.685,0.695,0.705,0.715,0.725,0.735,0.745,0.755,0.765,0.775,0.785,0.795,0.805,0.815,0.825,0.835,0.845,0.855,0.865,0.875,0.885,0.895,0.905,0.915,0.925,0.935,0.945,0.955,0.965,0.975,0.985,0.995],"y":[51,4,6,6,0,0,3,0,0,0,7,0,0,0,0,8,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,7,0,0,0,0,0,0,0,0,0,0,0,6,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,4,0,0,0,0,0,0,0,0,9,0,0,0,0,0,0,10,0,0,0,0,6,0,0,5,0,2,5,4],"type":"bar","width":[0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01],"text":["51 observations in [0,0.01]","4 observations in (0.01,0.02]","6 observations in (0.02,0.03]","6 observations in (0.03,0.04]","0 observations in (0.04,0.05]","0 observations in (0.05,0.06]","3 observations in (0.06,0.07]","0 observations in (0.07,0.08]","0 observations in (0.08,0.09]","0 observations in (0.09,0.1]","7 observations in (0.1,0.11]","0 observations in (0.11,0.12]","0 observations in (0.12,0.13]","0 observations in (0.13,0.14]","0 observations in (0.14,0.15]","8 observations in (0.15,0.16]","0 observations in (0.16,0.17]","0 observations in (0.17,0.18]","0 observations in (0.18,0.19]","0 observations in (0.19,0.2]","0 observations in (0.2,0.21]","0 observations in (0.21,0.22]","0 observations in (0.22,0.23]","6 observations in (0.23,0.24]","0 observations in (0.24,0.25]","0 observations in (0.25,0.26]","0 observations in (0.26,0.27]","0 observations in (0.27,0.28]","0 observations in (0.28,0.29]","0 observations in (0.29,0.3]","0 observations in (0.3,0.31]","0 observations in (0.31,0.32]","0 observations in (0.32,0.33]","0 observations in (0.33,0.34]","7 observations in (0.34,0.35]","0 observations in (0.35,0.36]","0 observations in (0.36,0.37]","0 observations in (0.37,0.38]","0 observations in (0.38,0.39]","0 observations in (0.39,0.4]","0 observations in (0.4,0.41]","0 observations in (0.41,0.42]","0 observations in (0.42,0.43]","0 observations in (0.43,0.44]","0 observations in (0.44,0.45]","0 observations in (0.45,0.46]","6 observations in (0.46,0.47]","0 observations in (0.47,0.48]","0 observations in (0.48,0.49]","0 observations in (0.49,0.5]","0 observations in (0.5,0.51]","0 observations in (0.51,0.52]","0 observations in (0.52,0.53]","0 observations in (0.53,0.54]","0 observations in (0.54,0.55]","0 observations in (0.55,0.56]","0 observations in (0.56,0.57]","0 observations in (0.57,0.58]","0 observations in (0.58,0.59]","1 observations in (0.59,0.6]","0 observations in (0.6,0.61]","0 observations in (0.61,0.62]","0 observations in (0.62,0.63]","0 observations in (0.63,0.64]","0 observations in (0.64,0.65]","0 observations in (0.65,0.66]","0 observations in (0.66,0.67]","0 observations in (0.67,0.68]","0 observations in (0.68,0.69]","0 observations in (0.69,0.7]","0 observations in (0.7,0.71]","4 observations in (0.71,0.72]","0 observations in (0.72,0.73]","0 observations in (0.73,0.74]","0 observations in (0.74,0.75]","0 observations in (0.75,0.76]","0 observations in (0.76,0.77]","0 observations in (0.77,0.78]","0 observations in (0.78,0.79]","0 observations in (0.79,0.8]","9 observations in (0.8,0.81]","0 observations in (0.81,0.82]","0 observations in (0.82,0.83]","0 observations in (0.83,0.84]","0 observations in (0.84,0.85]","0 observations in (0.85,0.86]","0 observations in (0.86,0.87]","10 observations in (0.87,0.88]","0 observations in (0.88,0.89]","0 observations in (0.89,0.9]","0 observations in (0.9,0.91]","0 observations in (0.91,0.92]","6 observations in (0.92,0.93]","0 observations in (0.93,0.94]","0 observations in (0.94,0.95]","5 observations in (0.95,0.96]","0 observations in (0.96,0.97]","2 observations in (0.97,0.98]","5 observations in (0.98,0.99]","4 observations in (0.99,1]"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"textposition":["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"],"marker":{"color":"rgba(89,89,89,1)","line":{"color":"rgba(89,89,89,1)"}},"textfont":{"color":"rgba(89,89,89,1)"},"error_y":{"color":"rgba(89,89,89,1)"},"error_x":{"color":"rgba(89,89,89,1)"},"xaxis":"x","yaxis":"y2","frame":null}],"layout":{"xaxis":{"domain":[0,1],"automargin":true,"range":[-0.05,1.05],"showgrid":false,"title":"Predicted","anchor":"y2"},"yaxis2":{"domain":[0,0.18],"automargin":true,"showgrid":false,"anchor":"x"},"yaxis":{"domain":[0.22,1],"automargin":true,"range":[-0.05,1.05],"showgrid":false,"anchor":"x","title":"Observed"},"annotations":[],"shapes":[],"images":[],"width":500,"height":500,"margin":{"b":40,"l":60,"t":25,"r":10},"showlegend":false,"hovermode":"closest","barmode":"overlay","plot_bgcolor":"rgba(0, 0, 0, 0)","paper_bgcolor":"rgba(0, 0, 0, 0)","fig_bgcolor":"rgba(0, 0, 0, 0)"},"attrs":{"1d304fbf61f4":{"x":{},"y":{},"hovertemplate":"<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","color":{},"colors":["grey","black"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines","inherit":true},"1d30434a2ecc":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"bar","width":0.01,"color":["grey35"],"text":{},"hoverinfo":"text","textposition":"none","inherit":true}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"subplot":true,"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="smooth-calibration-1" class="slide level2 smaller">
+<h2><strong>Smooth</strong> Calibration <strong>⚖️</strong></h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p>If you use smooth calibration, take a moment to explore the ranges of the curve!</p>
+<p>It might look bad if you don’t zoom-in to the reasonable range of estimated probabilities. That’s why many times you might see Histograms or Rug-plots under the Calibration Curve.</p>
+</div><div class="column" style="width:60%;">
+<div class="cell">
+<div class="cell-output-display">
+<div id="htmlwidget-f9ee8247cbaeb547dfe7" style="width:500px;height:500px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f9ee8247cbaeb547dfe7">{"x":{"data":[{"x":[0,1],"y":[0,1],"hovertemplate":["<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>"],"type":"scatter","mode":"lines","name":"reference","marker":{"color":"rgba(190,190,190,1)","line":{"color":"rgba(190,190,190,1)"}},"textfont":{"color":"rgba(190,190,190,1)"},"error_y":{"color":"rgba(190,190,190,1)"},"error_x":{"color":"rgba(190,190,190,1)"},"line":{"color":"rgba(190,190,190,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.09,0.1,0.11,0.12,0.13,0.14,0.15,0.16,0.17,0.18,0.19,0.2,0.21,0.22,0.23,0.24,0.25,0.26,0.27,0.28,0.29,0.3,0.31,0.32,0.33,0.34,0.35,0.36,0.37,0.38,0.39,0.4,0.41,0.42,0.43,0.44,0.45,0.46,0.47,0.48,0.49,0.5,0.51,0.52,0.53,0.54,0.55,0.56,0.57,0.58,0.59,0.6,0.61,0.62,0.63,0.64,0.65,0.66,0.67,0.68,0.69,0.7,0.71],"y":[0.0380488611424907,0.067579058896737,0.0975520356655913,0.128977517707331,0.161021539651453,0.184044004985487,0.189548282415039,0.183272320543753,0.177805864012094,0.176818104117712,0.171892204347666,0.149751311401516,0.126942636411508,0.138436153490403,0.164963107215816,0.196376680778968,0.232679942965928,0.271791696844748,0.294975727510229,0.288499787251163,0.282023846992097,0.275547906733031,0.269071966473965,0.262596026214898,0.256120085955832,0.249644145696766,0.2431682054377,0.236692265178634,0.230216324919567,0.223740384660501,0.217264444401435,0.210788504142369,0.204312563883303,0.197836623624237,0.19136068336517,0.184884743106104,0.178408802847038,0.171932862587972,0.165456922328906,0.158980982069839,0.152505041810773,0.146029101551707,0.139553161292641,0.133077221033575,0.126601280774509,0.120125340515442,0.113649400256376,0.10717345999731,0.100697519738244,0.0942215794791776,0.0877456392201114,0.0812696989610452,0.074793758701979,0.0683178184429128,0.0618418781838467,0.0553659379247805,0.0488899976657143,0.0424140574066481,0.0359381171475819,0.0294621768885157,0.0229862366294495,0.0165102963703834,0.0100343561113172],"hovertemplate":["<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>"],"type":"scatter","mode":"lines","name":"model 1","marker":{"color":"rgba(0,0,0,1)","line":{"color":"rgba(0,0,0,1)"}},"textfont":{"color":"rgba(0,0,0,1)"},"error_y":{"color":"rgba(0,0,0,1)"},"error_x":{"color":"rgba(0,0,0,1)"},"line":{"color":"rgba(0,0,0,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[0.005,0.015,0.025,0.035,0.045,0.055,0.065,0.075,0.085,0.095,0.105,0.115,0.125,0.135,0.145,0.155,0.165,0.175,0.185,0.195,0.205,0.215,0.225,0.235,0.245,0.255,0.265,0.275,0.285,0.295,0.305,0.315,0.325,0.335,0.345,0.355,0.365,0.375,0.385,0.395,0.405,0.415,0.425,0.435,0.445,0.455,0.465,0.475,0.485,0.495,0.505,0.515,0.525,0.535,0.545,0.555,0.565,0.575,0.585,0.595,0.605,0.615,0.625,0.635,0.645,0.655,0.665,0.675,0.685,0.695,0.705,0.715,0.725,0.735,0.745,0.755,0.765,0.775,0.785,0.795,0.805,0.815,0.825,0.835,0.845,0.855,0.865,0.875,0.885,0.895,0.905,0.915,0.925,0.935,0.945,0.955,0.965,0.975,0.985,0.995],"y":[0,0,0,0,0,0,0,0,3,2,3,2,0,3,1,4,2,0,2,2,3,3,0,3,4,2,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"type":"bar","width":[0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01],"text":["0 observations in [0,0.01]","0 observations in (0.01,0.02]","0 observations in (0.02,0.03]","0 observations in (0.03,0.04]","0 observations in (0.04,0.05]","0 observations in (0.05,0.06]","0 observations in (0.06,0.07]","0 observations in (0.07,0.08]","3 observations in (0.08,0.09]","2 observations in (0.09,0.1]","3 observations in (0.1,0.11]","2 observations in (0.11,0.12]","0 observations in (0.12,0.13]","3 observations in (0.13,0.14]","1 observations in (0.14,0.15]","4 observations in (0.15,0.16]","2 observations in (0.16,0.17]","0 observations in (0.17,0.18]","2 observations in (0.18,0.19]","2 observations in (0.19,0.2]","3 observations in (0.2,0.21]","3 observations in (0.21,0.22]","0 observations in (0.22,0.23]","3 observations in (0.23,0.24]","4 observations in (0.24,0.25]","2 observations in (0.25,0.26]","1 observations in (0.26,0.27]","0 observations in (0.27,0.28]","0 observations in (0.28,0.29]","0 observations in (0.29,0.3]","0 observations in (0.3,0.31]","0 observations in (0.31,0.32]","0 observations in (0.32,0.33]","0 observations in (0.33,0.34]","0 observations in (0.34,0.35]","0 observations in (0.35,0.36]","0 observations in (0.36,0.37]","0 observations in (0.37,0.38]","0 observations in (0.38,0.39]","0 observations in (0.39,0.4]","0 observations in (0.4,0.41]","0 observations in (0.41,0.42]","0 observations in (0.42,0.43]","0 observations in (0.43,0.44]","0 observations in (0.44,0.45]","0 observations in (0.45,0.46]","0 observations in (0.46,0.47]","0 observations in (0.47,0.48]","0 observations in (0.48,0.49]","0 observations in (0.49,0.5]","0 observations in (0.5,0.51]","0 observations in (0.51,0.52]","0 observations in (0.52,0.53]","0 observations in (0.53,0.54]","0 observations in (0.54,0.55]","0 observations in (0.55,0.56]","0 observations in (0.56,0.57]","0 observations in (0.57,0.58]","0 observations in (0.58,0.59]","0 observations in (0.59,0.6]","0 observations in (0.6,0.61]","0 observations in (0.61,0.62]","0 observations in (0.62,0.63]","0 observations in (0.63,0.64]","0 observations in (0.64,0.65]","0 observations in (0.65,0.66]","0 observations in (0.66,0.67]","0 observations in (0.67,0.68]","0 observations in (0.68,0.69]","0 observations in (0.69,0.7]","0 observations in (0.7,0.71]","1 observations in (0.71,0.72]","0 observations in (0.72,0.73]","0 observations in (0.73,0.74]","0 observations in (0.74,0.75]","0 observations in (0.75,0.76]","0 observations in (0.76,0.77]","0 observations in (0.77,0.78]","0 observations in (0.78,0.79]","0 observations in (0.79,0.8]","0 observations in (0.8,0.81]","0 observations in (0.81,0.82]","0 observations in (0.82,0.83]","0 observations in (0.83,0.84]","0 observations in (0.84,0.85]","0 observations in (0.85,0.86]","0 observations in (0.86,0.87]","0 observations in (0.87,0.88]","0 observations in (0.88,0.89]","0 observations in (0.89,0.9]","0 observations in (0.9,0.91]","0 observations in (0.91,0.92]","0 observations in (0.92,0.93]","0 observations in (0.93,0.94]","0 observations in (0.94,0.95]","0 observations in (0.95,0.96]","0 observations in (0.96,0.97]","0 observations in (0.97,0.98]","0 observations in (0.98,0.99]","0 observations in (0.99,1]"],"hoverinfo":["text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text","text"],"textposition":["none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none","none"],"marker":{"color":"rgba(89,89,89,1)","line":{"color":"rgba(89,89,89,1)"}},"textfont":{"color":"rgba(89,89,89,1)"},"error_y":{"color":"rgba(89,89,89,1)"},"error_x":{"color":"rgba(89,89,89,1)"},"xaxis":"x","yaxis":"y2","frame":null}],"layout":{"xaxis":{"domain":[0,1],"automargin":true,"range":[-0.0186069532444235,0.390746018132893],"showgrid":false,"title":"Predicted","anchor":"y2"},"yaxis2":{"domain":[0,0.18],"automargin":true,"showgrid":false,"anchor":"x"},"yaxis":{"domain":[0.22,1],"automargin":true,"range":[-0.0186069532444235,0.390746018132893],"showgrid":false,"anchor":"x","title":"Observed"},"annotations":[],"shapes":[],"images":[],"width":500,"height":500,"margin":{"b":40,"l":60,"t":25,"r":10},"showlegend":false,"hovermode":"closest","barmode":"overlay","plot_bgcolor":"rgba(0, 0, 0, 0)","paper_bgcolor":"rgba(0, 0, 0, 0)","fig_bgcolor":"rgba(0, 0, 0, 0)"},"attrs":{"1d3037255e0a":{"x":{},"y":{},"hovertemplate":"<b>%{xaxis.title.text}:<\/b> %{x:.2f}<br><b>%{yaxis.title.text}:<\/b> %{y:.2f}<extra><\/extra>","color":{},"colors":["grey","black"],"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter","mode":"lines","inherit":true},"1d30754c541e":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"x":{},"y":{},"type":"bar","width":0.01,"color":["grey35"],"text":{},"hoverinfo":"text","textposition":"none","inherit":true}},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"subplot":true,"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
+</div>
+</div>
 </section></section>
 <section>
 <section id="utility" class="title-slide slide level1 center">
 <h1>Utility <strong>👌</strong></h1>
 
 </section>
-<section id="utility-1" class="slide level2">
+<section id="utility-1" class="slide level2 smaller">
 <h2>Utility <strong>👌</strong></h2>
-<p>In order to make a decision, we need to optimize utility. This requires some kind of price from the clinicians.<br>
-This price is the odds of the probability threshold.</p>
-<p>Unlike other performance metrics, NB is based on decision making theory (which is reasonable, because we want to do better decision making).</p>
-<p>Always consider two baseline approaches: Treat All and Treat None.</p>
+<p><span class="math display">\[\begin{aligned}
+\\{\text{Net Benefit}} = \frac{\text{TP}}{\text{N}} - \frac{\text{FP}}{\text{N}} * {\frac{{p_{t}}}{{1 - p_{t}}}}
+\end{aligned}\]</span></p>
+<ul>
+<li class="fragment"><p>In order to make a decision, we need to optimize utility. This requires some kind of price from the clinicians.<br>
+This price is the odds of the probability threshold.</p></li>
+<li class="fragment"><p>Unlike other performance metrics, NB is based on decision making theory (which is reasonable, because we want to do better decision making).</p></li>
+<li class="fragment"><p>Always consider two baseline approaches: Treat All and Treat None.</p></li>
+</ul>
+</section>
+<section id="utility-2" class="slide level2">
+<h2>Utility <strong>👌</strong></h2>
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\\{\text{Net Benefit}} = \frac{\text{TP}}{\text{N}} - \frac{\text{FP}}{\text{N}} * {\frac{{p_{t}}}{{1 - p_{t}}}}}
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\text{Net Benefit Treat All} = {\text{Prevalence}} -  {\text{(1 - Prevalence)}} *{\frac{{p_{t}}}{{1 - p_{t}}}}}
+\end{aligned}\]</span></p>
+<p><span class="math display">\[\begin{aligned}
+\scriptsize{
+\text{Net Benefit Treat None} = {\text{0}}
+}
+\end{aligned}\]</span></p>
+</section>
+<section id="utility-3" class="slide level2 smaller">
+<h2>Utility <strong>👌</strong></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>I will be indifferent 😐 for having 1 <strong>TP</strong> for 4 <strong>FP</strong> <span class="math display">\[p_t = \frac{1}{1 + 4} = 0.2\]</span> <span class="math display">\[\frac{p_t}{1 - p_t} = \frac{0.2}{1 - 0.2} = \frac{1}{4}\]</span></p>
+<p><span class="math display">\[\begin{aligned}[t]
+{\text{Net Benefit}} &amp;= {\frac{\text{1}}{\text{5}} - \frac{\text{4}}{\text{5}} * {\frac{1}{4}} = 0}
+\end{aligned}\]</span></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="indifferent.svg"></p>
+</div>
+</div>
+</section>
+<section id="utility-4" class="slide level2 smaller">
+<h2>Utility <strong>👌</strong></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>I will be sad 🙁 for having 1 <strong>TP</strong> for 5 <strong>FP</strong> <span class="math display">\[p_t = \frac{1}{1 + 4} = 0.2\]</span> <span class="math display">\[\frac{p_t}{1 - p_t} = \frac{0.2}{1 - 0.2} = \frac{1}{4}\]</span> <span class="math display">\[\begin{aligned}[t]
+{\text{Net Benefit}} &amp;= {\frac{\text{1}}{\text{6}} - \frac{\text{5}}{\text{6}} * {\frac{1}{4}} = -0.04166'}
+\end{aligned}\]</span></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="sad.svg"></p>
+</div>
+</div>
+</section>
+<section id="utility-5" class="slide level2 smaller">
+<h2>Utility <strong>👌</strong></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p>I will be happy 🙂 for having 1 <strong>TP</strong> for 3 <strong>FP</strong> <span class="math display">\[p_t = \frac{1}{1 + 4} = 0.2\]</span> <span class="math display">\[\frac{p_t}{1 - p_t} = \frac{0.2}{1 - 0.2} = \frac{1}{4}\]</span></p>
+<p><span class="math display">\[\begin{aligned}[t]
+{\text{Net Benefit}} &amp;= {\frac{\text{1}}{\text{4}} - \frac{\text{3}}{\text{4}} * {\frac{1}{4}} = 0.0625}
+\end{aligned}\]</span></p>
+</div><div class="column" style="width:50%;">
+<p><img data-src="happy.svg"></p>
+</div>
+</div>
+</section>
+<section id="utility-6" class="slide level2 smaller">
+<h2>Utility <strong>👌</strong></h2>
+<p>TODO: Rtichoke Decision Curve</p>
+</section></section>
+<section id="thank-you" class="title-slide slide level1 center">
+<h1>Thank You! 👋</h1>
 <div class="footer footer-default">
 
 </div>
-</section></section>
+</section>
     </div>
   </div>
 

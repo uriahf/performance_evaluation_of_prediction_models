@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 24.1px;" x="246.552" y="52.586"> </text>
+  <path d="M 112.97 124.138 L 168.104 337.068 L 66.38 337.068 L 112.97 124.138 Z" style="stroke: rgb(0, 0, 0); fill-opacity: 0; fill: rgb(27, 0, 0);" bx:shape="triangle 66.38 124.138 101.724 212.93 0.458 0 1@4e56b73e"/>
+  <path style="stroke: rgb(0, 0, 0); fill: rgb(27, 0, 0);" d="M 66.38 336.069 C 70.176 400.603 170.327 387.651 167.242 335.207"/>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 24.1px;" x="-232.227" y="52.343" transform="matrix(-1, 0, 0, 1, 0, 0)"> </text>
+  <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x1="238.793" y1="37.069" x2="243.965" y2="406.034"/>
+  <path d="M 243.534 393.103 L 330.172 452.586 L 156.896 452.586 L 243.534 393.103 Z" style="stroke: rgb(0, 0, 0);" bx:shape="triangle 156.896 393.103 173.276 59.483 0.5 0 1@ad64372b"/>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.3px;" x="336.166" y="222.313">🤨</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.3px;" x="335.655" y="206.445">💊</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.3px;" x="352.545" y="221.451">🤨</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.3px;" x="352.034" y="205.582">💊</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.3px;" x="368.925" y="221.451">🤨</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.3px;" x="368.414" y="205.582">💊</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 24.1px;" x="-231.365" y="53.043" transform="matrix(-1, 0, 0, 1, 0, 0)"> </text>
+  <path d="M -367.361 17.871 L -312.227 230.801 L -413.951 230.801 L -367.361 17.871 Z" style="stroke: rgb(0, 0, 0); fill-opacity: 0; fill: rgb(27, 0, 0);" transform="matrix(-1, 0, 0, 1, 0, 0)" bx:shape="triangle -413.951 17.871 101.724 212.93 0.458 0 1@d78d510f"/>
+  <path style="stroke: rgb(0, 0, 0); fill: rgb(27, 0, 0);" d="M 312.157 273.666 C 315.953 209.132 416.104 222.084 413.019 274.528" transform="matrix(-1, 0, 0, -1, 725.24585, 504.606293)"/>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 24.1px;" x="245.69" y="52.8"> </text>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 101.538 70.641 L 377.774 71.409" transform="matrix(0.918802, -0.394718, 0.394718, 0.918802, -8.57534, 100.363547)"/>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.3px;" x="104.994" y="329.39">🤢</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 14.3px;" x="104.483" y="313.521">💊</text>
+</svg>
