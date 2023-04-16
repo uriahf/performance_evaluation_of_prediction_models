@@ -5,6 +5,7 @@ format:
   revealjs:
     theme:  [solarized, custom.scss]
     incremental: true
+    preview-links: true
 ---
 
 ## Agenda
@@ -446,16 +447,16 @@ Low Probability Threshold means that I'm worried about the **outcome**:
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><span style="color: green;"><strong>TP</strong></span></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -540,16 +541,16 @@ High Probability Threshold means that I'm worried about the **Intervention**:
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -740,16 +741,16 @@ $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: green;"><strong>TP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FP</strong></span></p></td>
-<td style="text-align: center;"><p><span style="color: red;"><strong>FN</strong></span></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
 </tr>
 </tbody>
 </table>
