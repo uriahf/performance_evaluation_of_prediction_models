@@ -28,22 +28,18 @@ You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlif
 
 ::: columns
 ::: {.column width="50%"}
-
 ### Why using performance metrics? 🥇🥈🥉
 
 -   Choosing between different candidate models.
 -   Choosing between candidate features
 -   Choosing whether the prediction model will do more harm than good.
-
 :::
 
-::: {.column width="50%"} 
-
+::: {.column width="50%"}
 ### Relevant Criteria besides Performance 🤔
 
 -   How difficult is it to implement the model?
 -   How difficult is it to explain the model?
-
 :::
 :::
 
@@ -314,10 +310,6 @@ tibble::tribble(
             )
   )
 ```
-
-------------------------------------------------------------------------
-
-![](decision_tree_mermaid_2.svg)
 
 ## Probability Threshold:
 
@@ -789,13 +781,11 @@ $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}
 
 ::: columns
 ::: {.column width="50%"}
-
 -   The most famous form of Performance Metrics Visualization
 
 -   Displays Sensitivity (also known as True Positive Rate or Percision) on the y axis
 
 -   Displays 1 - Specificity (also known as False Positive Rate) on the x axis.
-
 :::
 
 ::: {.column width="50%"}
@@ -1762,6 +1752,10 @@ $$\begin{aligned}
 -   Unlike other performance metrics, NB is based on decision making theory (which is reasonable, because we want to do better decision making).
 
 -   Always consider two baseline approaches: Treat All and Treat None.
+
+------------------------------------------------------------------------
+
+![](decision_tree_mermaid_2.svg)
 
 ## Utility **👌**
 
