@@ -6,6 +6,7 @@ format:
     theme:  [solarized, custom.scss]
     incremental: true
     preview-links: true
+    chalkboard: true
 ---
 
 ## Agenda
@@ -255,7 +256,7 @@ tibble::tribble(
 
 ## [True Negatives]{style="color: green;"} {.smaller}
 
-### Not-Infected and Predicted as Not-Infected - [BAD]{style="color: green;"}
+### Not-Infected and Predicted as Not-Infected - [GOOD]{style="color: green;"}
 
 <br> [🤨]{style="font-size: 50px;"}
 
@@ -309,9 +310,9 @@ tibble::tribble(
 
 ## Probability Threshold:
 
--   Most Performance Metrics are estimated by using a Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).\
+- When the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome we will use Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).
 
--   This type of dichotomization is being used when the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome.
+- This type of dichotomization is related to individuals with different preferences.
 
 ## Probability Threshold:
 
@@ -1230,13 +1231,14 @@ The Target Population is well defined.
 | Precision- Recall |  x   |      |  y  |       |       |
 | Gains             |  y   |      |     |   x   |       |
 
-## Lift Curve
+## Lift Curve 
 
 $\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfrac{\text{TP}}{\text{TP + FP}}}{\cfrac{\text{TP + FN}}{\text{TP + FP + TN + FN}}} \end{aligned}$
 
-## Lift Curve
+## Lift Curve {.smaller}
 
--   Lift is the ratio between the PPV and the Prevalence.
+::: columns
+::: {.column width="50%"} 
 
 -   Lift Curve displays Lift on the Y axis and PPCR (Predicted Positives Conditional Rate) on the X axis.
 
@@ -1246,20 +1248,21 @@ $\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfr
 
 -   The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
 
-## Lift Curve
+:::
+
+::: {.column width="50%"}
 
 ```{r}
 create_lift_curve(
   size = 500,
   probs = list(example_dat$estimated_probabilities),
   reals = list(example_dat$outcome)
-) |> 
-  plotly::layout(
-    plot_bgcolor  = "rgba(0, 0, 0, 0)",
-    paper_bgcolor = "rgba(0, 0, 0, 0)",
-    fig_bgcolor   = "rgba(0, 0, 0, 0)"
-    )
+) 
 ```
+
+
+:::
+:::
 
 ## Precision-Recall
 
@@ -1270,7 +1273,10 @@ create_lift_curve(
 | **Precision- Recall** | **x** |      | **y** |      |      |
 | Gains                 |   y   |      |       |  x   |      |
 
-## Precision Recall Curve
+## Precision Recall {.smaller}
+
+::: columns
+::: {.column width="50%"} 
 
 -   Precision-Recall Curve displays PPV on the y axis and Sensitivity on the x axis.
 
@@ -1278,20 +1284,24 @@ create_lift_curve(
 
 -   The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
 
-## Precision Recall
+:::
+
+::: {.column width="50%"}
 
 ```{r}
 create_precision_recall_curve(
   size = 500,
   probs = list(example_dat$estimated_probabilities),
   reals = list(example_dat$outcome)
-) |> 
-  plotly::layout(
-    plot_bgcolor  = "rgba(0, 0, 0, 0)",
-    paper_bgcolor = "rgba(0, 0, 0, 0)",
-    fig_bgcolor   = "rgba(0, 0, 0, 0)"
-    )
+) 
 ```
+
+:::
+:::
+
+
+
+
 
 ## Gains Curve
 
@@ -1302,7 +1312,10 @@ create_precision_recall_curve(
 | Precision- Recall |   x   |      |  y  |       |      |
 | **Gains**         | **y** |      |     | **x** |      |
 
-## Gains Curve
+## Gains Curve {.smaller}
+
+::: columns
+::: {.column width="50%"} 
 
 -   Gains Curve displays Sensitivity on the y axis and PPCR on the x axis.
 
@@ -1312,20 +1325,20 @@ create_precision_recall_curve(
 
 -   Reference Line for a Perfect Prediction: All Predicted Positives are Real Positives until there are no more Real Positives (PPCR = Prevalence, Sensitivity = 1).
 
-## Gains Curve
+:::
+
+::: {.column width="50%"}
 
 ```{r}
 create_gains_curve(
   size = 500,
   probs = list(example_dat$estimated_probabilities),
   reals = list(example_dat$outcome)
-) |> 
-  plotly::layout(
-    plot_bgcolor  = "rgba(0, 0, 0, 0)",
-    paper_bgcolor = "rgba(0, 0, 0, 0)",
-    fig_bgcolor   = "rgba(0, 0, 0, 0)"
-    )
+)
 ```
+
+:::
+:::
 
 # Calibration **⚖️**
 
