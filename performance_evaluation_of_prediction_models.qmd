@@ -7,6 +7,7 @@ format:
     incremental: true
     preview-links: true
     chalkboard: true
+    slide-number: true
 ---
 
 ## Agenda
@@ -23,7 +24,10 @@ All interactive plots in this presentation were created with [**rtichoke**](http
 
 You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlify.app/) for reproducible examples and some theory.
 
-## Motivation
+## Motivation {.smaller}
+
+::: columns
+::: {.column width="50%"}
 
 ### Why using performance metrics? 🥇🥈🥉
 
@@ -31,12 +35,17 @@ You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlif
 -   Choosing between candidate features
 -   Choosing whether the prediction model will do more harm than good.
 
-## Motivation
+:::
+
+::: {.column width="50%"} 
 
 ### Relevant Criteria besides Performance 🤔
 
 -   How difficult is it to implement the model?
 -   How difficult is it to explain the model?
+
+:::
+:::
 
 ## Categories of Performance Metrics and Curves
 
@@ -308,11 +317,13 @@ tibble::tribble(
 
 ------------------------------------------------------------------------
 
+![](decision_tree_mermaid_2.svg)
+
 ## Probability Threshold:
 
-- When the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome we will use Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).
+-   When the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome we will use Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).
 
-- This type of dichotomization is related to individuals with different preferences.
+-   This type of dichotomization is related to individuals with different preferences.
 
 ## Probability Threshold:
 
@@ -774,7 +785,10 @@ $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}
 | Precision- Recall |   x   |       |  y  |      |      |
 | Gains             |   y   |       |     |  x   |      |
 
-## ROC Curve
+## ROC Curve {.smaller}
+
+::: columns
+::: {.column width="50%"}
 
 -   The most famous form of Performance Metrics Visualization
 
@@ -782,22 +796,21 @@ $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}
 
 -   Displays 1 - Specificity (also known as False Positive Rate) on the x axis.
 
-## ROC Curve
+:::
 
+::: {.column width="50%"}
 ```{r}
+
 library(rtichoke)
 
 create_roc_curve(
   size = 500,
   probs = list(example_dat$estimated_probabilities),
   reals = list(example_dat$outcome)
-) |> 
-  plotly::layout(
-    plot_bgcolor  = "rgba(0, 0, 0, 0)",
-    paper_bgcolor = "rgba(0, 0, 0, 0)",
-    fig_bgcolor   = "rgba(0, 0, 0, 0)"
-    )
+)
 ```
+:::
+:::
 
 ## Why I don't like ROC Curve 😤 {.smaller}
 
@@ -1231,15 +1244,14 @@ The Target Population is well defined.
 | Precision- Recall |  x   |      |  y  |       |       |
 | Gains             |  y   |      |     |   x   |       |
 
-## Lift Curve 
+## Lift Curve
 
 $\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfrac{\text{TP}}{\text{TP + FP}}}{\cfrac{\text{TP + FN}}{\text{TP + FP + TN + FN}}} \end{aligned}$
 
 ## Lift Curve {.smaller}
 
 ::: columns
-::: {.column width="50%"} 
-
+::: {.column width="50%"}
 -   Lift Curve displays Lift on the Y axis and PPCR (Predicted Positives Conditional Rate) on the X axis.
 
 -   In other words, lift shows how much the prediction is doing better than a random guess in terms of PPV.
@@ -1247,11 +1259,9 @@ $\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfr
 -   The reference line stands for a random guess: the Lift is equal to 1 (PPV = Prevalence), the Sensitivity depends on the Probability Threshold or PPCR.
 
 -   The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
-
 :::
 
 ::: {.column width="50%"}
-
 ```{r}
 create_lift_curve(
   size = 500,
@@ -1259,8 +1269,6 @@ create_lift_curve(
   reals = list(example_dat$outcome)
 ) 
 ```
-
-
 :::
 :::
 
@@ -1276,18 +1284,15 @@ create_lift_curve(
 ## Precision Recall {.smaller}
 
 ::: columns
-::: {.column width="50%"} 
-
+::: {.column width="50%"}
 -   Precision-Recall Curve displays PPV on the y axis and Sensitivity on the x axis.
 
 -   The reference line stands for a random guess: the PPV is equal to the Prevalence, the Sensitivity depends on the Probability Threshold or PPCR.
 
 -   The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
-
 :::
 
 ::: {.column width="50%"}
-
 ```{r}
 create_precision_recall_curve(
   size = 500,
@@ -1295,13 +1300,8 @@ create_precision_recall_curve(
   reals = list(example_dat$outcome)
 ) 
 ```
-
 :::
 :::
-
-
-
-
 
 ## Gains Curve
 
@@ -1315,8 +1315,7 @@ create_precision_recall_curve(
 ## Gains Curve {.smaller}
 
 ::: columns
-::: {.column width="50%"} 
-
+::: {.column width="50%"}
 -   Gains Curve displays Sensitivity on the y axis and PPCR on the x axis.
 
 -   Gains shows the Sensitivity for a given PPCR.
@@ -1324,11 +1323,9 @@ create_precision_recall_curve(
 -   Reference Line for a Random Guess: The sensitivity is equal to the proportion of predicted positives.
 
 -   Reference Line for a Perfect Prediction: All Predicted Positives are Real Positives until there are no more Real Positives (PPCR = Prevalence, Sensitivity = 1).
-
 :::
 
 ::: {.column width="50%"}
-
 ```{r}
 create_gains_curve(
   size = 500,
@@ -1336,7 +1333,6 @@ create_gains_curve(
   reals = list(example_dat$outcome)
 )
 ```
-
 :::
 :::
 
