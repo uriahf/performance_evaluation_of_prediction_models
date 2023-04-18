@@ -12,9 +12,9 @@ format:
 
 ## Agenda
 
--   Introducing some of the most common or useful (and sometimes not so common) Performance Metrics and Curves.
+-   Introducing some of the most common or useful (and sometimes not so common nor useful) performance metrics and curves.
 
--   Discussing how and when to use (and when not to use) the mentioned performance metrics.
+-   Discussing how and when to use (and when not to use) the mentioned performance metrics and curves.
 
 ## Code for Performance Metrics and Curves
 
@@ -24,24 +24,13 @@ All interactive plots in this presentation were created with [**rtichoke**](http
 
 You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlify.app/) for reproducible examples and some theory.
 
-## Motivation {.smaller}
+## Motivation
 
-::: columns
-::: {.column width="50%"}
 ### Why using performance metrics? 🥇🥈🥉
 
--   Choosing between different candidate models.
--   Choosing between candidate features
--   Choosing whether the prediction model will do more harm than good.
-:::
-
-::: {.column width="50%"}
-### Relevant Criteria besides Performance 🤔
-
--   How difficult is it to implement the model?
--   How difficult is it to explain the model?
-:::
-:::
+-   Compare different candidate models.
+-   Selecting features
+-   Evaluate if the prediction model will do more harm than good.
 
 ## Categories of Performance Metrics and Curves
 
@@ -96,10 +85,6 @@ You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlif
 :::
 
 # Discrimination 🖖
-
-## Discrimination 🖖
-
-This is the most known and used category of performance metrics and curves.
 
 ## [True Positives]{style="color: green;"} {.smaller}
 
@@ -313,7 +298,7 @@ tibble::tribble(
 
 ## Probability Threshold:
 
--   When the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome we will use Probability Threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).
+-   When the intervention carries a **potential risk** and there is a trade-off of risks between the intervention and the outcome we will use probability threshold in order to classify each probability to Predicted Negative (Do not Treat) or Predicted Positive (Treat 💊).
 
 -   This type of dichotomization is related to individuals with different preferences.
 
@@ -460,7 +445,7 @@ Low Probability Threshold means that I'm worried about the **outcome**:
 <td style="text-align: center;"><p><strong>FP</strong></p></td>
 <td style="text-align: center;"><p><strong>TN</strong></p></td>
 <td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -554,7 +539,7 @@ High Probability Threshold means that I'm worried about the **Intervention**:
 <td style="text-align: center;"><p><strong>TN</strong></p></td>
 <td style="text-align: center;"><p><strong>TN</strong></p></td>
 <td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -563,11 +548,11 @@ High Probability Threshold means that I'm worried about the **Intervention**:
 
 $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}\end{aligned} = \begin{aligned} \ {\scriptsize \frac{\text{Predicted Positives}}{\text{Total Population}}}\end{aligned}$
 
--   Sometimes we will classify each observation according to the ranking of the risk in order to prioritize high-risk patients regardless their absolute risk.
+-   Sometimes we will classify each observation according to the ranking of the risk In order to prioritize high-risk patients regardless their absolute risk.
 
--   The implied assumption is that the highest risk might gain the highest benefit from the treatment and that the treatment does not carry a significant potential risk.
+-   The implied assumption is that the highest risk patients will gain the highest benefit from the treatment and that the treatment does not carry a significant potential risk.
 
--   This type of dichotomization is being used when the organization face **Resource Constraint**. In healthcare we call it also **Risk Percentile**.
+-   This type of dichotomization is being used when the organization face resource constraint, In healthcare we call it also risk percentile.
 
 ## PPCR of 0.1
 
@@ -754,7 +739,7 @@ $\begin{aligned} \ {\scriptsize \frac{\text{TP + FP}}{\text{TP + FP + TN + FN}}}
 <td style="text-align: center;"><p><strong>FN</strong></p></td>
 <td style="text-align: center;"><p><strong>FN</strong></p></td>
 <td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -912,7 +897,7 @@ Specificity: $\begin{aligned} \ {\scriptsize \frac{\text{TN}}{\text{TN + FP}} = 
 
 <br>
 
-We do not know the condition of the Conditional Probability: Not the number of future Real Positives nor the number of future Real Negatives.
+We do not know the condition of the conditional probability: Not the number of future Real Positives nor the number of Real Negatives in the future.
 
 ## Why I don't like ROC Curve 😤
 
@@ -930,15 +915,15 @@ We know the condition of the Conditional Probability: The number of Predicted Po
 
 ## Why I don't like ROC Curve 😤
 
-### You don't care about AUROC, you care about the c-statistics
+### You don't care about AUROC, you care about the c-statistic
 
--   Generally speaking more area under a curve with two "Good" performance metrics means better model. Other than that, there is no context and performance metrics with no context might lead to ambiguity and bad decisions.
+-   Generally speaking more area under a curve with two "Good" performance metrics means a better model. Other than that, there is no context and performance metrics with no context might lead to ambiguity and bad decisions.
 
--   Another Curve: Precision-Recall is made of Sensitivity (Precision) and PPV (Recall). How much PRAUC is enough?
+-   Another Curve: Precision-Recall is made of PPV (Precision) and Sensitivity (Recall). How much PRAUC is enough?
 
 ## Why I don't like ROC Curve 😤
 
-### You don't care about AUROC, you care about the c-statistics
+### You don't care about AUROC, you care about the c-statistic
 
 -   Why not calculating GAINSAUC? Or any combination of two good performance metrics? We can get with Sensitivity, Specificity, NPV, PPV 6 AUC metrics. Do they provide any meaningful insight besides a vague *the more the better*?
 
@@ -993,7 +978,7 @@ rtichoke:::create_table_for_auc(
 
 ## Why I don't like ROC Curve 😤
 
-### You don't care about AUROC, you care about the c-statistics
+### You don't care about AUROC, you care about the c-statistic
 
 -   High Ink-to-information ratio 😵
 
@@ -1001,19 +986,19 @@ rtichoke:::create_table_for_auc(
 
 <!-- -->
 
--   Yet, the AUROC is valuable because of the equivalence to the c-statistics and it might provide good intuition about the performance of the model.
+-   Yet, the AUROC is valuable because of the equivalence to the c-statistic and it might provide good intuition about the performance of the model.
 
 ## Why I don't like ROC Curve 😤
 
-### You don't care about AUROC, you care about the c-statistics
+### You don't care about AUROC, you care about the c-statistic
 
--   If you'll take randomly one event and one non-event, the probability that the event will be estimated with higher probability is exactly the AUROC.
+-   If you'll take randomly one event and one non-event, the probability that the event will be estimated with higher probability than the non-event is exactly the AUROC.
 
 -   AUROC = p( p̂(🤨) \< p̂(🤢) )
 
 ## Why I don't like ROC Curve 😤
 
-### You don't care about AUROC, you care about the c-statistics
+### You don't care about AUROC, you care about the c-statistic
 
 ```{r}
 #| echo: true
@@ -1035,7 +1020,7 @@ prop.table(
 
 ## Why I don't like ROC Curve 😤
 
-### You don't care about AUROC, you care about the c-statistics
+### You don't care about AUROC, you care about the c-statistic
 
 ```{python}
 #| echo: true
@@ -1246,7 +1231,7 @@ $\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfr
 
 -   In other words, lift shows how much the prediction is doing better than a random guess in terms of PPV.
 
--   The reference line stands for a random guess: the Lift is equal to 1 (PPV = Prevalence), the Sensitivity depends on the Probability Threshold or PPCR.
+-   The reference line stands for a random guess: the Lift is equal to 1 (PPV = Prevalence).
 
 -   The Curve is not defined if there are no Predicted Positives (probability threshold is too high or PPCR = 0).
 :::
@@ -1330,9 +1315,9 @@ create_gains_curve(
 
 ## Calibration **⚖️**
 
--   How well the model is "calibrated": Patients with a probability of about 0.2 to have an event have a proportion of about 0.2 events.
+-   How well the model is "calibrated": Patients with a probability of about 0.2 are expected to have a proportion of about 0.2 observed events.
 
--   In order to asses calibration we need to use quantiles of estimated probabilities (discrete version of calibration) or some kind of smoothing algorithm (gam or lowess).
+-   In order to asses calibration we need to use quantiles of estimated probabilities (discrete version of calibration) or some kind of smoothing algorithm.
 
 -   The main idea is to visually inspect for similarity with the linear line of 45 degrees.
 
@@ -1342,7 +1327,7 @@ create_gains_curve(
 
 ### Why should we care?
 
--   An accurate model in terms of Discrimination might produce uncalibrated estimated probabilities, that might lead to poor decisions.
+-   An accurate model in terms of discrimination might produce uncalibrated estimated probabilities what will lead to poor decisions.
 
 -   Logistic Regression is calibrated by default, but if you use fancy ML prediction models they might not be calibrated.
 
