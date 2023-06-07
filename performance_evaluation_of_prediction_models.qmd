@@ -659,7 +659,7 @@ tibble::tibble(     reals = c("**Real<br>Positives** ", "**Real<br>Negatives**",
 :::
 
 ::: {.column width="50%"}
-$$\frac{\sum \text{Predicted-Positives}}{\sum \text{Observations}} = \frac{3}{10}$$
+$$\frac{\sum \text{Predicted-Positives}}{\sum \text{Observations}} = \frac{2}{10}$$
 :::
 :::
 
