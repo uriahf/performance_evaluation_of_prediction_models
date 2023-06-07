@@ -71,16 +71,16 @@ You are also invited to explore [**rtichoke blog**](https://rtichoke-blog.netlif
 ::: {style="height: 0px; width:100%; clear:both;"}
 :::
 
-![](Maccabi_Haifa_FC_logo.svg){fig-align="center" width="200"}
+![](Maccabi_Haifa_FC_logo2.png){fig-align="center" width="300"}
 :::
 
 ::: {.column width="50%"}
 ### [Red]{style="color: red;"} {style="text-align: center; font-size: 200px;"}
 
-::: {style="height: 49px; width:100%; clear:both;"}
+::: {style="height: 55px; width:100%; clear:both;"}
 :::
 
-![](Hapoel_Haifa_Football_Club_Logo.png){fig-align="center" width="200"}
+![](Hapoel_Haifa_Football_Club_Logo.png){fig-align="center" width="258"}
 :::
 :::
 
