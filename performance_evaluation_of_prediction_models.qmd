@@ -101,7 +101,7 @@ performance_data_example <- rtichoke::prepare_performance_data(
     c(0.72, 0.63, 0.47, 0.45, 0.33, 0.31, 0.29, 0.18, 0.15, 0.11)
   ),
   reals = list(
-    c(1, 1, 0, 1, 0, 1, 0, 0, 0, 0)
+     c(1, 1, 0, 1, 0, 1, 0, 0, 0, 0)
   ),
   by = 0.1, stratified_by = "ppcr"
 )
@@ -398,56 +398,69 @@ tibble::tribble(
 
 ## Probability Threshold:
 
-<table>
+<table style="width:88%;">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+</colgroup>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><p><strong>p̂</strong></p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.6</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.7</p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.2</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.11</p></td>
+<td style="text-align: center;"><p>0.15</p></td>
+<td style="text-align: center;"><p>0.18</p></td>
+<td style="text-align: center;"><p>0.29</p></td>
+<td style="text-align: center;"><p>0.31</p></td>
+<td style="text-align: center;"><p>0.33</p></td>
+<td style="text-align: center;"><p>0.45</p></td>
+<td style="text-align: center;"><p>0.47</p></td>
+<td style="text-align: center;"><p>0.63</p></td>
+<td style="text-align: center;"><p>0.72</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><p><strong>Y</strong></p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
 <td style="text-align: center;"><p><br />
+🤨</p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
+<td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
 </tr>
 </tbody>
 </table>
@@ -466,80 +479,80 @@ Low Probability Threshold means that I'm worried about the **outcome**:
 <thead>
 <tr class="header">
 <th style="text-align: center;"><p><strong>p̂</strong></p></th>
-<th style="text-align: center;"><p>0.3</p></th>
-<th style="text-align: center;"><p>0.6</p></th>
-<th style="text-align: center;"><p>0.4</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.4</p></th>
-<th style="text-align: center;"><p>0.7</p></th>
-<th style="text-align: center;"><p>0.3</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.2</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.11</p></th>
+<th style="text-align: center;"><p>0.15</p></th>
+<th style="text-align: center;"><p>0.18</p></th>
+<th style="text-align: center;"><p>0.29</p></th>
+<th style="text-align: center;"><p>0.31</p></th>
+<th style="text-align: center;"><p>0.33</p></th>
+<th style="text-align: center;"><p>0.45</p></th>
+<th style="text-align: center;"><p>0.47</p></th>
+<th style="text-align: center;"><p>0.63</p></th>
+<th style="text-align: center;"><p>0.72</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><p><strong>Y</strong></p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
+🤨</p></td>
+<td style="text-align: center;"><p>💊<br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+🤨</p></td>
+<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
+🤢</p></td>
+<td style="text-align: center;"><p>💊<br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p>💊<br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p>💊<br />
+🤢</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>FP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
 <td style="text-align: center;"><p><strong>FP</strong></p></td>
 <td style="text-align: center;"><p><strong>TP</strong></p></td>
 <td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -560,80 +573,80 @@ High Probability Threshold means that I'm worried about the **Intervention**:
 <thead>
 <tr class="header">
 <th style="text-align: center;"><p><strong>p̂</strong></p></th>
-<th style="text-align: center;"><p>0.3</p></th>
-<th style="text-align: center;"><p>0.6</p></th>
-<th style="text-align: center;"><p>0.4</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.4</p></th>
-<th style="text-align: center;"><p>0.7</p></th>
-<th style="text-align: center;"><p>0.3</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.2</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
+<th style="text-align: center;"><p>0.11</p></th>
+<th style="text-align: center;"><p>0.15</p></th>
+<th style="text-align: center;"><p>0.18</p></th>
+<th style="text-align: center;"><p>0.29</p></th>
+<th style="text-align: center;"><p>0.31</p></th>
+<th style="text-align: center;"><p>0.33</p></th>
+<th style="text-align: center;"><p>0.45</p></th>
+<th style="text-align: center;"><p>0.47</p></th>
+<th style="text-align: center;"><p>0.63</p></th>
+<th style="text-align: center;"><p>0.72</p></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><p><strong>Y</strong></p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
 <td style="text-align: center;"><p><br />
+🤨</p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
+<td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p>💊<br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p>💊<br />
+🤢</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
 <td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
 <td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>TN</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -896,8 +909,8 @@ rtichoke:::create_table_for_auc(
 
 ```{r}
 #| echo: true
-probs <- c(0.3, 0.6, 0.4, 0.1, 0.4, 0.7, 0.3, 0.1, 0.2, 0.1)
-reals <- c(0, 1, 1, 0, 1, 1, 0, 0, 1, 0)
+probs <- c(0.11, 0.15, 0.18, 0.29, 0.31, 0.33, 0.45, 0.47, 0.63, 0.72)
+reals <- c(0, 0, 0, 0, 1, 0, 1, 0, 1, 1)
 
 pROC::auc(reals, probs)
 
@@ -921,8 +934,8 @@ prop.table(
 import numpy as np
 import random
 
-probs = np.array([0.3, 0.6, 0.4, 0.1, 0.4, 0.7, 0.3, 0.1, 0.2, 0.1])
-reals = np.array([0, 1, 1, 0, 1, 1, 0, 0, 1, 0])
+probs = np.array([0.11, 0.15, 0.18, 0.29, 0.31, 0.33, 0.45, 0.47, 0.63, 0.72])
+reals = np.array([0, 0, 0, 0, 1, 0, 1, 0, 1, 1])
 
 probs_events = probs[reals == 1]
 probs_nonevents = probs[reals == 0]
@@ -943,71 +956,82 @@ counts_elements / 10000
 
 ## Good AUROC does not necessarily mean a Good model
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><p>Age</p></th>
-<th style="text-align: center;"><p>64</p></th>
-<th style="text-align: center;"><p>86</p></th>
-<th style="text-align: center;"><p>56</p></th>
-<th style="text-align: center;"><p>7</p></th>
-<th style="text-align: center;"><p>78</p></th>
-<th style="text-align: center;"><p>85</p></th>
-<th style="text-align: center;"><p>6</p></th>
-<th style="text-align: center;"><p>12</p></th>
-<th style="text-align: center;"><p>67</p></th>
-<th style="text-align: center;"><p>73</p></th>
-</tr>
-</thead>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><p><strong>p̂</strong></p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.6</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.7</p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.2</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p><strong>Age</strong></p></td>
+<td style="text-align: center;"><p>7</p></td>
+<td style="text-align: center;"><p>6</p></td>
+<td style="text-align: center;"><p>49</p></td>
+<td style="text-align: center;"><p>56</p></td>
+<td style="text-align: center;"><p>64</p></td>
+<td style="text-align: center;"><p>54</p></td>
+<td style="text-align: center;"><p>72</p></td>
+<td style="text-align: center;"><p>68</p></td>
+<td style="text-align: center;"><p>91</p></td>
+<td style="text-align: center;"><p>86</p></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><p><strong>Y</strong></p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p><strong>p̂</strong></p></td>
+<td style="text-align: center;"><p>0.11</p></td>
+<td style="text-align: center;"><p>0.15</p></td>
+<td style="text-align: center;"><p>0.18</p></td>
+<td style="text-align: center;"><p>0.29</p></td>
+<td style="text-align: center;"><p>0.31</p></td>
+<td style="text-align: center;"><p>0.33</p></td>
+<td style="text-align: center;"><p>0.45</p></td>
+<td style="text-align: center;"><p>0.47</p></td>
+<td style="text-align: center;"><p>0.63</p></td>
+<td style="text-align: center;"><p>0.72</p></td>
 </tr>
 <tr class="odd">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+</tr>
+<tr class="even">
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
 <td style="text-align: center;"><p><br />
+🤨</p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
+<td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
 </tr>
 </tbody>
 </table>
@@ -1016,92 +1040,103 @@ AUROC shows how well your model discriminates between events and non-events give
 
 ## Good AUROC does not necessarily mean a Good model
 
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><p>Age</p></th>
-<th style="text-align: center;"><p>64</p></th>
-<th style="text-align: center;"><p>86</p></th>
-<th style="text-align: center;"><p>56</p></th>
-<th style="text-align: center;"><p>7</p></th>
-<th style="text-align: center;"><p>78</p></th>
-<th style="text-align: center;"><p>85</p></th>
-<th style="text-align: center;"><p>6</p></th>
-<th style="text-align: center;"><p>12</p></th>
-<th style="text-align: center;"><p>67</p></th>
-<th style="text-align: center;"><p>73</p></th>
-</tr>
-</thead>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><p><strong>p̂</strong></p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.6</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.7</p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.2</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p><strong>Age</strong></p></td>
+<td style="text-align: center;"><p>7</p></td>
+<td style="text-align: center;"><p>6</p></td>
+<td style="text-align: center;"><p>49</p></td>
+<td style="text-align: center;"><p>56</p></td>
+<td style="text-align: center;"><p>64</p></td>
+<td style="text-align: center;"><p>54</p></td>
+<td style="text-align: center;"><p>72</p></td>
+<td style="text-align: center;"><p>68</p></td>
+<td style="text-align: center;"><p>91</p></td>
+<td style="text-align: center;"><p>86</p></td>
 </tr>
 <tr class="even">
-<td style="text-align: center;"><p><strong>Y</strong></p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p><strong>p̂</strong></p></td>
+<td style="text-align: center;"><p>0.11</p></td>
+<td style="text-align: center;"><p>0.15</p></td>
+<td style="text-align: center;"><p>0.18</p></td>
+<td style="text-align: center;"><p>0.29</p></td>
+<td style="text-align: center;"><p>0.31</p></td>
+<td style="text-align: center;"><p>0.33</p></td>
+<td style="text-align: center;"><p>0.45</p></td>
+<td style="text-align: center;"><p>0.47</p></td>
+<td style="text-align: center;"><p>0.63</p></td>
+<td style="text-align: center;"><p>0.72</p></td>
 </tr>
 <tr class="odd">
+<td style="text-align: center;"><p><strong>Y</strong></p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
+</tr>
+<tr class="even">
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+🧒</p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="older_woman">👵</span></p></td>
+🧒</p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="child">🧒</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="older_woman">👵</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="child">🧒</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="child">🧒</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+🤨</p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+👵</p></td>
+<td style="text-align: center;"><p><br />
+👵</p></td>
 </tr>
 </tbody>
 </table>
 
-This model has AUROC = 0.92, but the number is misleading:\
+This model has AUROC = 0875, but the number is misleading:\
 The Target Population is not well defined.
 
 ## Bad AUROC does not necessarily mean a Bad model
 
-+-------+-----+-----+-----+-----+-----+
-| Age   | 64  | 56  | 78  | 67  | 73  |
-+:=====:+:===:+:===:+:===:+:===:+:===:+
-| **p̂** | 0.3 | 0.4 | 0.4 | 0.2 | 0.1 |
-+-------+-----+-----+-----+-----+-----+
-| **Y** | 0   | 1   | 1   | 1   | 0   |
-+-------+-----+-----+-----+-----+-----+
-|       | \   | \   | \   | \   | \   |
-|       | 🤨  | 🤢  | 🤢  | 🤢  | 🤨  |
-+-------+-----+-----+-----+-----+-----+
++:-------:+:----:+:----:+:----:+:----:+:----:+:----:+
+| **Age** | 49   | 56   | 64   | 54   | 72   | 68   |
++---------+------+------+------+------+------+------+
+| **p̂**   | 0.18 | 0.29 | 0.31 | 0.33 | 0.45 | 0.47 |
++---------+------+------+------+------+------+------+
+| **Y**   | 0    | 0    | 1    | 0    | 1    | 0    |
++---------+------+------+------+------+------+------+
+|         | \    | \    | \    | \    | \    | \    |
+|         | 🤨   | 🤨   | 🤢   | 🤨   | 🤢   | 🤨   |
++---------+------+------+------+------+------+------+
 
-This model has AUROC = 0.83, but the number is misleading:\
+This model has AUROC = 0.625, but the number is misleading:\
 The Target Population is well defined.
 
 ## Lift Curve
@@ -1112,7 +1147,6 @@ The Target Population is well defined.
 | **Lift**          |      |      |     | **x** | **y** |
 | Precision- Recall |  x   |      |  y  |       |       |
 | Gains             |  y   |      |     |   x   |       |
-
 
 ## Prevalence
 
@@ -1239,20 +1273,33 @@ tibble::tibble(   y_hat = c(1, 1, 0, 0, 0, 0, 0, 0, 0, 0) ) |>
 
 ## PPCR of 0.2
 
-<table>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><p><strong>p̂</strong></p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.6</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.7</p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.2</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.11</p></td>
+<td style="text-align: center;"><p>0.15</p></td>
+<td style="text-align: center;"><p>0.18</p></td>
+<td style="text-align: center;"><p>0.29</p></td>
+<td style="text-align: center;"><p>0.31</p></td>
+<td style="text-align: center;"><p>0.33</p></td>
+<td style="text-align: center;"><p>0.45</p></td>
+<td style="text-align: center;"><p>0.47</p></td>
+<td style="text-align: center;"><p>0.63</p></td>
+<td style="text-align: center;"><p>0.72</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><p><strong>R</strong></p></td>
@@ -1283,38 +1330,38 @@ tibble::tibble(   y_hat = c(1, 1, 0, 0, 0, 0, 0, 0, 0, 0) ) |>
 <tr class="even">
 <td style="text-align: center;"><p><strong>Y</strong></p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
 <td style="text-align: center;"><p><br />
+🤨</p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
+<td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p><br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
@@ -1334,33 +1381,46 @@ tibble::tibble(   y_hat = c(1, 1, 0, 0, 0, 0, 0, 0, 0, 0) ) |>
 
 ## PPCR of 0.2
 
-<table>
+<table style="width:98%;">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+</colgroup>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;"><p><strong>p̂</strong></p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.6</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.4</p></td>
-<td style="text-align: center;"><p>0.7</p></td>
-<td style="text-align: center;"><p>0.3</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
-<td style="text-align: center;"><p>0.2</p></td>
-<td style="text-align: center;"><p>0.1</p></td>
+<td style="text-align: center;"><p>0.11</p></td>
+<td style="text-align: center;"><p>0.15</p></td>
+<td style="text-align: center;"><p>0.18</p></td>
+<td style="text-align: center;"><p>0.29</p></td>
+<td style="text-align: center;"><p>0.31</p></td>
+<td style="text-align: center;"><p>0.33</p></td>
+<td style="text-align: center;"><p>0.45</p></td>
+<td style="text-align: center;"><p>0.47</p></td>
+<td style="text-align: center;"><p>0.63</p></td>
+<td style="text-align: center;"><p>0.72</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><p><strong>R</strong></p></td>
-<td style="text-align: center;"><p>5.5</p></td>
-<td style="text-align: center;"><p>2</p></td>
-<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>10</p></td>
 <td style="text-align: center;"><p>9</p></td>
-<td style="text-align: center;"><p>3.5</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>5.5</p></td>
-<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>8</p></td>
 <td style="text-align: center;"><p>7</p></td>
-<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>6</p></td>
+<td style="text-align: center;"><p>5</p></td>
+<td style="text-align: center;"><p>4</p></td>
+<td style="text-align: center;"><p>3</p></td>
+<td style="text-align: center;"><p>2</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
@@ -1369,60 +1429,60 @@ tibble::tibble(   y_hat = c(1, 1, 0, 0, 0, 0, 0, 0, 0, 0) ) |>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"><p><strong>Y</strong></p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
+<td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p>💊<br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><span class="emoji" data-emoji="pill">💊</span> <br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+🤨</p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
 <td style="text-align: center;"><p><br />
+🤨</p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
+<td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+<td style="text-align: center;"><p>💊 <br />
+<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p>💊 <br />
+🤢</p></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;"></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
-<td style="text-align: center;"><p><strong>TP</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FN</strong></p></td>
-<td style="text-align: center;"><p><strong>FP</strong></p></td>
 <td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>FN</strong></p></td>
+<td style="text-align: center;"><p><strong>TN</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
+<td style="text-align: center;"><p><strong>TP</strong></p></td>
 </tr>
 </tbody>
 </table>
@@ -1430,7 +1490,6 @@ tibble::tibble(   y_hat = c(1, 1, 0, 0, 0, 0, 0, 0, 0, 0) ) |>
 ## Lift Curve
 
 $\begin{aligned} \text{Lift} = \frac{\text{PPV}}{\text{Prevalence}} = \frac{\cfrac{\text{TP}}{\text{TP + FP}}}{\cfrac{\text{TP + FN}}{\text{TP + FP + TN + FN}}} \end{aligned}$
-
 
 ## Lift Curve {.smaller}
 
@@ -1506,14 +1565,12 @@ create_lift_curve(
 :::
 :::
 
-
 ## 
 
 ![](line%20of%20patients/line_ppcr_0.svg)
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 
 confusion_matrix_list[1,] |>
@@ -1522,9 +1579,6 @@ confusion_matrix_list[1,] |>
   gt::as_raw_html()
 
 ```
-
-
-
 :::
 
 ::: {.column width="50%"}
@@ -1536,14 +1590,12 @@ create_rtichoke_curve_by_frame(
 :::
 :::
 
-
 ## 
 
 ![](line%20of%20patients/line_ppcr_01.svg)
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 
 confusion_matrix_list[2,] |>
@@ -1569,7 +1621,6 @@ create_rtichoke_curve_by_frame(
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 
 confusion_matrix_list[3,] |>
@@ -1596,7 +1647,6 @@ create_rtichoke_curve_by_frame(
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 
 confusion_matrix_list[4,] |>
@@ -1623,7 +1673,6 @@ create_rtichoke_curve_by_frame(
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 
 confusion_matrix_list[5,] |>
@@ -1650,7 +1699,6 @@ create_rtichoke_curve_by_frame(
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 
 confusion_matrix_list[6,] |>
@@ -1677,7 +1725,6 @@ create_rtichoke_curve_by_frame(
 
 ::: columns
 ::: {.column width="50%"}
-
 ```{r}
 
 confusion_matrix_list[7,] |>
@@ -1855,7 +1902,6 @@ create_rtichoke_curve_by_frame(
 :::
 :::
 
-
 ## Precision-Recall
 
 | Curve                 | Sens  | Spec |  PPV  | PPCR | Lift |
@@ -1953,130 +1999,44 @@ create_gains_curve(
 ## **Discrete** Calibration **⚖️**
 
 <table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><p><strong>p̂</strong></p></th>
-<th style="text-align: center;"><p>0.3</p></th>
-<th style="text-align: center;"><p>0.6</p></th>
-<th style="text-align: center;"><p>0.4</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.4</p></th>
-<th style="text-align: center;"><p>0.7</p></th>
-<th style="text-align: center;"><p>0.3</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.2</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-</tr>
-</thead>
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+</colgroup>
 <tbody>
 <tr class="odd">
+<td style="text-align: center;"><p><strong>p̂</strong></p></td>
+<td style="text-align: center;"><p>0.11</p></td>
+<td style="text-align: center;"><p>0.15</p></td>
+<td style="text-align: center;"><p>0.18</p></td>
+<td style="text-align: center;"><p>0.29</p></td>
+<td style="text-align: center;"><p>0.31</p></td>
+<td style="text-align: center;"><p>0.33</p></td>
+<td style="text-align: center;"><p>0.45</p></td>
+<td style="text-align: center;"><p>0.47</p></td>
+<td style="text-align: center;"><p>0.63</p></td>
+<td style="text-align: center;"><p>0.72</p></td>
+</tr>
+<tr class="even">
 <td style="text-align: center;"><p><strong>R</strong></p></td>
-<td style="text-align: center;"><p>5.5</p></td>
-<td style="text-align: center;"><p>2</p></td>
-<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>10</p></td>
 <td style="text-align: center;"><p>9</p></td>
-<td style="text-align: center;"><p>3.5</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>5.5</p></td>
-<td style="text-align: center;"><p>9</p></td>
+<td style="text-align: center;"><p>8</p></td>
 <td style="text-align: center;"><p>7</p></td>
-<td style="text-align: center;"><p>9</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><p><strong>Y</strong></p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-</tr>
-</tbody>
-</table>
-
-## **Discrete** Calibration **⚖️**
-
-<table>
-<thead>
-<tr class="header">
-<th style="text-align: center;"><p><strong>p̂</strong></p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.1</p></th>
-<th style="text-align: center;"><p>0.2</p></th>
-<th style="text-align: center;"><p>0.3</p></th>
-<th style="text-align: center;"><p>0.3</p></th>
-<th style="text-align: center;"><p>0.4</p></th>
-<th style="text-align: center;"><p>0.4</p></th>
-<th style="text-align: center;"><p>0.6</p></th>
-<th style="text-align: center;"><p>0.7</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;"><p><strong>R</strong></p></td>
-<td style="text-align: center;"><p>9</p></td>
-<td style="text-align: center;"><p>9</p></td>
-<td style="text-align: center;"><p>9</p></td>
-<td style="text-align: center;"><p>7</p></td>
-<td style="text-align: center;"><p>5.5</p></td>
-<td style="text-align: center;"><p>5.5</p></td>
-<td style="text-align: center;"><p>3.5</p></td>
-<td style="text-align: center;"><p>3.5</p></td>
+<td style="text-align: center;"><p>6</p></td>
+<td style="text-align: center;"><p>5</p></td>
+<td style="text-align: center;"><p>4</p></td>
+<td style="text-align: center;"><p>3</p></td>
 <td style="text-align: center;"><p>2</p></td>
-<td style="text-align: center;"><p>1</p></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><p><strong>Ŷ</strong></p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
 </tr>
 <tr class="odd">
@@ -2084,11 +2044,11 @@ create_gains_curve(
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
-<td style="text-align: center;"><p>1</p></td>
-<td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
+<td style="text-align: center;"><p>0</p></td>
 <td style="text-align: center;"><p>1</p></td>
 <td style="text-align: center;"><p>1</p></td>
 </tr>
@@ -2097,23 +2057,23 @@ create_gains_curve(
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+🤨</p></td>
+<td style="text-align: center;"><p><br />
+🤨</p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
 <td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
+🤨</p></td>
+<td style="text-align: center;"><p><br />
+🤢</p></td>
 <td style="text-align: center;"><p><br />
 <span class="emoji" data-emoji="raised_eyebrow">🤨</span></p></td>
-<td style="text-align: center;"><p><br />
+<td style="text-align: center;"><p>  <br />
 <span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
-<td style="text-align: center;"><p><br />
-<span class="emoji" data-emoji="nauseated_face">🤢</span></p></td>
+<td style="text-align: center;"><p>  <br />
+🤢</p></td>
 </tr>
 </tbody>
 </table>
@@ -2122,60 +2082,29 @@ create_gains_curve(
 
 ::: columns
 ::: {.column width="50%"}
-+:-----:+:---:+:---:+:---:+:---:+
-| **p̂** | 0.1 | 0.1 | 0.1 | 0.2 |
-+-------+-----+-----+-----+-----+
-| **R** | 9   | 9   | 9   | 7   |
-+-------+-----+-----+-----+-----+
-| **Ŷ** | 0   | 0   | 0   | 0   |
-+-------+-----+-----+-----+-----+
-| **Y** | 0   | 0   | 0   | 1   |
-+-------+-----+-----+-----+-----+
-|       | \   | \   | \   | \   |
-|       | 🤨  | 🤨  | 🤨  | 🤢  |
-+-------+-----+-----+-----+-----+
++:-----:+:----:+:----:+:----:+:----:+
+| **p̂** | 0.11 | 0.15 | 0.18 | 0.29 |
++-------+------+------+------+------+
+| **R** | 10   | 9    | 8    | 7    |
++-------+------+------+------+------+
+| **Ŷ** | 0    | 0    | 0    | 0    |
++-------+------+------+------+------+
+| **Y** | 0    | 0    | 0    | 0    |
++-------+------+------+------+------+
+|       | \    | \    | \    | \    |
+|       | 🤨   | 🤨   | 🤨   | 🤨   |
++-------+------+------+------+------+
 :::
 
 ::: {.column width="50%"}
 $$\begin{aligned}
 \scriptsize{
-\\\text{Observed: }\frac{\text{1}}{\text{4}} = 0.25}
+\\\text{Observed: }\frac{\text{0}}{\text{4}} = 0}
 \end{aligned}$$
 
 $$\begin{aligned}
 \scriptsize{
-\\\text{Predicted: }\frac{\text{0.1 + 0.1 + 0.1 + 0.2}}{\text{4}} = 0.125}
-\end{aligned}$$
-:::
-:::
-
-## **Discrete** Calibration **⚖️**
-
-::: columns
-::: {.column width="50%"}
-+-------+-----+-----+-----+
-| **p̂** | 0.3 | 0.3 | 0.4 |
-+:=====:+:===:+:===:+:===:+
-| **R** | 5.5 | 5.5 | 3.5 |
-+-------+-----+-----+-----+
-| **Ŷ** | 0   | 0   | 0   |
-+-------+-----+-----+-----+
-| **Y** | 0   | 0   | 1   |
-+-------+-----+-----+-----+
-|       | \   | \   | \   |
-|       | 🤨  | 🤨  | 🤢  |
-+-------+-----+-----+-----+
-:::
-
-::: {.column width="50%"}
-$$\begin{aligned}
-\scriptsize{
-\\\text{Observed: }\frac{\text{1}}{\text{3}} = 0.33'}
-\end{aligned}$$
-
-$$\begin{aligned}
-\scriptsize{
-\\\text{Predicted: }\frac{\text{0.3 + 0.3 + 0.4}}{\text{3}} = 0.33'}
+\\\text{Predicted: }\frac{\text{0.11 + 0.15 + 0.18 + 0.29}}{\text{4}} = 0.1825}
 \end{aligned}$$
 :::
 :::
@@ -2184,29 +2113,56 @@ $$\begin{aligned}
 
 ::: columns
 ::: {.column width="50%"}
-+-------+-----+-----+-----+
-| **p̂** | 0.4 | 0.6 | 0.7 |
-+:=====:+:===:+:===:+:===:+
-| **R** | 3.5 | 2   | 1   |
-+-------+-----+-----+-----+
-| **Ŷ** | 0   | 0   | 1   |
-+-------+-----+-----+-----+
-| **Y** | 1   | 1   | 1   |
-+-------+-----+-----+-----+
-|       | \   | \   | \   |
-|       | 🤢  | 🤢  | 🤢  |
-+-------+-----+-----+-----+
++:-----:+:---:+:----:+:----:+
+| **p̂** | 031 | 0.33 | 0.45 |
++-------+-----+------+------+
+| **R** | 6   | 5    | 4    |
++-------+-----+------+------+
+| **Y** | 1   | 0    | 1    |
++-------+-----+------+------+
+|       | \   | \    | \    |
+|       | 🤢  | 🤨   | 🤢   |
++-------+-----+------+------+
 :::
 
 ::: {.column width="50%"}
 $$\begin{aligned}
 \scriptsize{
-\\\text{Observed: }\frac{\text{3}}{\text{3}} = 1}
+\\\text{Observed: }\frac{\text{2}}{\text{3}} = 0.66'}
 \end{aligned}$$
 
 $$\begin{aligned}
 \scriptsize{
-\\\text{Predicted: }\frac{\text{0.4 + 0.6 + 0.7}}{\text{3}} = 0.566'}
+\\\text{Predicted: }\frac{\text{0.31 + 0.33 + 0.45}}{\text{3}} = 0.363'}
+\end{aligned}$$
+:::
+:::
+
+## **Discrete** Calibration **⚖️**
+
+::: columns
+::: {.column width="50%"}
++:-----:+:----:+:----:+:----:+
+| **p̂** | 0.47 | 0.63 | 0.72 |
++-------+------+------+------+
+| **R** | 3    | 2    | 1    |
++-------+------+------+------+
+| **Y** | 0    | 1    | 1    |
++-------+------+------+------+
+|       | \    | \    | \    |
+|       | 🤨   | 🤢   | 🤢   |
++-------+------+------+------+
+:::
+
+::: {.column width="50%"}
+$$\begin{aligned}
+\scriptsize{
+\\\text{Observed: }\frac{\text{2}}{\text{3}} = 0.66'}
+\end{aligned}$$
+
+$$\begin{aligned}
+\scriptsize{
+\\\text{Predicted: }\frac{\text{0.47 + 0.63 + 0.72}}{\text{3}} = 0.607}
 \end{aligned}$$
 :::
 :::
@@ -2233,8 +2189,8 @@ plotly::plot_ly(
     ) |> 
   plotly::add_trace(
     data = data.frame(
-      Observed = c(0.25, 0.33, 1),
-      Predicted = c(0.15, 0.33, 0.56)),
+      Observed = c(0, 2/3, 2/3),
+      Predicted = c(0.1825, 0.363, 0.607)),
       color = I("black"), 
     showlegend = FALSE,
     name = "Discrete",
