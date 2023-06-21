@@ -903,6 +903,667 @@ rtichoke:::create_table_for_auc(
 
 -   AUROC = p( p̂(🤨) \< p̂(🤢) )
 
+------------------------------------------------------------------------
+
+```{r}
+probs <- c(0.72, 0.63, 0.47, 0.45, 0.33, 0.31, 0.29, 0.18, 0.15, 0.11)
+reals <- c(1, 1, 0, 1, 0, 1, 0, 0, 0, 0)
+
+library(gt)
+library(dplyr)
+library(tibble)
+library(glue)
+library(tidyr)
+
+original_data <-  tibble(
+  probs = probs,
+  reals = reals) %>%
+  mutate(" " =ifelse(reals == 1, "🤢", "🤨"))
+
+original_gt <- original_data  |>
+  gt::gt()  
+
+original_gt_sorted <- original_data |>
+  arrange(desc(probs)) |>
+  gt() |>
+  cols_label (
+    probs = md("**p̂**"),
+    reals ~ md("**Y**")
+  ) |> 
+  tab_options(
+    table.background.color = "#fdf6e3"
+    )
+
+split_data <- original_data |> 
+  split(reals)
+  
+split_gt_events  <- split_data$`1` |>
+  gt::gt() |>
+  cols_label (
+    probs = md("**p̂**"),
+    reals ~ md("**Y**")
+  ) |> 
+  tab_options(
+    table.background.color = "#fdf6e3"
+    )
+
+split_gt_nonevents <- split_data$`0` |>
+  gt::gt() |>
+  cols_label (
+    probs = md("**p̂**"),
+    reals ~ md("**Y**")
+  ) |> 
+  tab_options(
+    table.background.color = "#fdf6e3"
+    )
+  
+split_gt_nonevents_with_age <- split_data$`0` |>
+  mutate(AGE = c(68, 54, 56, 49, 6, 7),
+         ` ` = case_when(AGE < 10 ~ "🧒", TRUE ~ "🤨")) |> 
+  relocate(AGE) |> 
+  gt::gt() |>
+  cols_label (
+    probs = md("**p̂**"),
+    reals ~ md("**Y**"),
+    AGE ~ md("**AGE**")
+  ) |> 
+  tab_options(
+    table.background.color = "#fdf6e3"
+    )
+
+split_gt_nonevents_reduced <- split_data$`0` |>
+  mutate(AGE = c(68, 54, 56, 49, 6, 7),
+         ` ` = case_when(AGE < 10 ~ "🧒", TRUE ~ "🤨")) |> 
+  filter(AGE > 10) |> 
+  relocate(AGE) |> 
+  gt::gt() |>
+  cols_label (
+    probs = md("**p̂**"),
+    reals ~ md("**Y**"),
+    AGE ~ md("**AGE**")
+  ) |> 
+  tab_options(
+    table.background.color = "#fdf6e3"
+    )
+
+split_gt_events_with_age <- split_data$`1` |>
+  mutate(AGE = c(86, 91, 72, 64),
+         ` ` = case_when(AGE > 80 ~ "👵", TRUE ~ "🤢")) |> 
+  relocate(AGE) |> 
+  gt::gt() |>
+  cols_label (
+    probs = md("**p̂**"),
+    reals ~ md("**Y**"),
+    AGE ~ md("**AGE**")
+  ) |> 
+  tab_options(
+    table.background.color = "#fdf6e3"
+    )
+
+split_gt_events_reduced <- split_data$`1` |>
+  mutate(AGE = c(86, 91, 72, 64),
+         ` ` = case_when(AGE > 80 ~ "👵", TRUE ~ "🤢")) |> 
+  relocate(AGE) |> 
+  filter(AGE < 80) |> 
+  gt::gt() |>
+  cols_label (
+    probs = md("**p̂**"),
+    reals ~ md("**Y**"),
+    AGE ~ md("**AGE**")
+  ) |> 
+  tab_options(
+    table.background.color = "#fdf6e3"
+    )
+
+
+auc_data <- expand_grid(
+  split_data$`1` |> 
+    select(-reals) |> 
+    rename(
+      "probs_event" = "probs",
+      "emoji_event" = " "), 
+  split_data$`0`|> 
+    select(-reals) |> 
+    rename(
+      "probs_nonevent" = "probs",
+      "emoji_nonevent" = " ")
+) |> 
+  mutate(
+    bigger_equal = case_when(
+      probs_event > probs_nonevent ~ ">",
+      TRUE ~ "<"
+    ),
+    emoji_full = glue("{emoji_event} {bigger_equal} {emoji_nonevent}"),
+    emoji_not_full = glue("{emoji_event}   {emoji_nonevent}"),
+    discriminate = ifelse(
+      bigger_equal == ">",
+      "👍", "👎"
+  )) |> 
+  select(
+    probs_event, emoji_full, emoji_not_full, probs_nonevent, bigger_equal, discriminate
+  )
+
+make_gt_auc_table <- function(auc_data, 
+                              filled_with_checks = FALSE) {
+  
+  
+  if (filled_with_checks == FALSE) {
+    
+    auc_data_ready <- auc_data |> 
+      mutate(
+        emoji_selected = emoji_not_full,
+        discriminate = ""
+      ) 
+    
+  } else {
+    
+    auc_data_ready <- auc_data |> 
+      mutate(
+        emoji_selected = emoji_full
+      ) 
+  }
+  
+  auc_gt_table <- auc_data_ready |> 
+      select(
+        probs_event, emoji_selected, probs_nonevent,
+        bigger_equal, discriminate) |> 
+  gt::gt() |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+  
+  if (filled_with_checks == TRUE) {
+    
+    auc_gt_table <- auc_gt_table |>
+  tab_style(
+    style = list(
+      cell_fill(color = "lightgreen")
+    ),
+    locations = cells_body(
+      columns = c(emoji_selected, discriminate),
+      rows = bigger_equal == ">"
+    )
+  ) |>
+  tab_style(
+    style = list(
+      cell_fill(color = "pink")
+    ),
+    locations = cells_body(
+      columns = c(emoji_selected, discriminate),
+      rows = bigger_equal == "<"
+    )
+  ) 
+    
+  }
+  
+  auc_gt_table   |>
+  cols_hide(
+    columns = c(
+       bigger_equal)) |>
+  cols_label(
+    probs_event = md("**p̂**"),
+    probs_nonevent = md("**p̂**"),
+    emoji_selected ~ " ",
+    discriminate = "🖖"
+  ) |>   
+  tab_options(
+    table.background.color = "#fdf6e3"
+    ) |> 
+    as_raw_html()
+  
+  
+}
+
+
+original_gt_sorted
+
+```
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="50%"}
+```{r}
+split_gt_events
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+split_gt_nonevents
+```
+:::
+:::
+
+![](cindex_binary_0.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 1
+    )
+  )
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[1:6,], filled_with_checks = FALSE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_1_a.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} }\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events|>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 1
+    )
+  ) 
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[1:6,], filled_with_checks = TRUE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_1_b.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} = \frac{\text{6 +}}{\text{6 + }}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 2
+    )
+  )
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[6 + 1:6,], filled_with_checks = FALSE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_2_a.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} = \frac{\text{6 + }}{\text{6 +  }}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 2
+    )
+  )
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[6 + 1:6,], filled_with_checks = FALSE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_2_a.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} = \frac{\text{6 + }}{\text{6 +  }}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events|>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 2
+    )
+  ) 
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[6 + 1:6,], filled_with_checks = TRUE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_2_b.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} = \frac{\text{6 + 6 +}}{\text{6 + 6 + }}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 3
+    )
+  )
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[12 + 1:6,], filled_with_checks = FALSE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_3_a.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} = \frac{\text{6 + 6 +}}{\text{6 + 6 +}}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events|>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 3
+    )
+  ) 
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[12 + 1:6,], filled_with_checks = TRUE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_3_b.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} = \frac{\text{6 + 6 + 5 +}}{\text{6 + 6 + 6 +}}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 4
+    )
+  )
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[18 + 1:6,], filled_with_checks = FALSE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_4_a.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} = \frac{\text{6 + 6 + 5 +}}{\text{6 + 6 + 6 +}}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events|>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = 4
+    )
+  ) 
+```
+:::
+
+::: {.column width="34%"}
+```{r}
+
+make_gt_auc_table(auc_data[18 + 1:6,], filled_with_checks = TRUE)
+
+```
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents |>
+  tab_style(
+    style = list(
+      cell_fill(color = "cyan")
+    ),
+    locations = cells_body(
+      rows = everything()
+    )
+  )
+```
+:::
+:::
+
+![](cindex_binary_4_b.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{#Concordants}}{\text{#Concordants + #Noncorcodants}} = \frac{\text{6 + 6 + 5 + 4}}{\text{6 + 6 + 6 + 6}}}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events
+```
+:::
+
+::: {.column width="34%"}
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents 
+```
+:::
+:::
+
+![](cindex_binary_4_b.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{21}}{\text{24}} = 0.875}\end{aligned}$
+
+
 ## Why I don't like ROC Curve 😤
 
 ### You don't care about AUROC, you care about the c-statistic
@@ -1138,6 +1799,76 @@ The Target Population is not well defined.
 
 This model has AUROC = 0.625, but the number is misleading:\
 The Target Population is well defined.
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events
+```
+:::
+
+::: {.column width="34%"}
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents 
+```
+:::
+:::
+
+![](cindex_binary_4_b.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{21}}{\text{24}} = 0.875}\end{aligned}$
+
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events_with_age
+```
+:::
+
+::: {.column width="34%"}
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents_with_age 
+```
+:::
+:::
+
+![](cindex_binary_4_b_with_age.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{21}}{\text{24}} = 0.875}\end{aligned}$
+
+------------------------------------------------------------------------
+
+::: columns
+::: {.column width="33%"}
+```{r}
+split_gt_events_reduced
+```
+:::
+
+::: {.column width="34%"}
+:::
+
+::: {.column width="33%"}
+```{r}
+split_gt_nonevents_reduced
+```
+:::
+:::
+
+![](cindex_binary_4_b_with_age_better_target_population.svg){fig-align="center"}
+
+$\begin{aligned} \ {\scriptsize \text{C-index} = \frac{\text{5}}{\text{8}} = 0.625}\end{aligned}$
 
 ## Lift Curve
 
