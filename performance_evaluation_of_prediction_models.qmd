@@ -932,6 +932,9 @@ original_gt_sorted <- original_data |>
   ) |> 
   tab_options(
     table.background.color = "#fdf6e3"
+    ) |>
+    gt::tab_options(
+        table.font.size = gt::px(20)
     )
 
 split_data <- original_data |> 
@@ -945,6 +948,9 @@ split_gt_events  <- split_data$`1` |>
   ) |> 
   tab_options(
     table.background.color = "#fdf6e3"
+    )   |>
+    gt::tab_options(
+        table.font.size = gt::px(20)
     )
 
 split_gt_nonevents <- split_data$`0` |>
@@ -955,6 +961,9 @@ split_gt_nonevents <- split_data$`0` |>
   ) |> 
   tab_options(
     table.background.color = "#fdf6e3"
+    )   |>
+    gt::tab_options(
+        table.font.size = gt::px(20)
     )
   
 split_gt_nonevents_with_age <- split_data$`0` |>
@@ -969,6 +978,9 @@ split_gt_nonevents_with_age <- split_data$`0` |>
   ) |> 
   tab_options(
     table.background.color = "#fdf6e3"
+    )   |>
+    gt::tab_options(
+        table.font.size = gt::px(20)
     )
 
 split_gt_nonevents_reduced <- split_data$`0` |>
@@ -984,6 +996,9 @@ split_gt_nonevents_reduced <- split_data$`0` |>
   ) |> 
   tab_options(
     table.background.color = "#fdf6e3"
+    )   |>
+    gt::tab_options(
+        table.font.size = gt::px(20)
     )
 
 split_gt_events_with_age <- split_data$`1` |>
@@ -998,6 +1013,9 @@ split_gt_events_with_age <- split_data$`1` |>
   ) |> 
   tab_options(
     table.background.color = "#fdf6e3"
+    )   |>
+    gt::tab_options(
+        table.font.size = gt::px(20)
     )
 
 split_gt_events_reduced <- split_data$`1` |>
@@ -1013,6 +1031,9 @@ split_gt_events_reduced <- split_data$`1` |>
   ) |> 
   tab_options(
     table.background.color = "#fdf6e3"
+    )   |>
+    gt::tab_options(
+        table.font.size = gt::px(20)
     )
 
 
@@ -1075,7 +1096,10 @@ make_gt_auc_table <- function(auc_data,
     locations = cells_body(
       rows = everything()
     )
-  )
+  )   |>
+    gt::tab_options(
+        table.font.size = gt::px(20)
+    )
   
   if (filled_with_checks == TRUE) {
     
